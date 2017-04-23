@@ -10,3 +10,9 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/JsInteropTest/gradle
+/JsInteropTest/build
+/JsInteropTest/.gradle
+/JsInteropTest/war
+/JsInteropTest/gradlew.bat
+/JsInteropTest/gradlew
