@@ -25,6 +25,7 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.Navig
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.SearchPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.ShellPresenter;
 import de.gishmo.gwt.mvp4g2.client.eventbus.IsEventBus;
+import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Debug;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Event;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.EventBus;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
@@ -33,6 +34,7 @@ import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
  * Event bus of the Mvp4G 2 Mail example
  */
 @EventBus(shell = ShellPresenter.class)
+@Debug(logLevel = Debug.LogLevel.DETAILED)
 public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {
 

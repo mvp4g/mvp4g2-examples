@@ -61,7 +61,6 @@ public class ShellView
 
   @Override
   public void setNavigation(Widget widget) {
-    GWT.debugger();
     panel.addWest(widget, 212);
   }
 

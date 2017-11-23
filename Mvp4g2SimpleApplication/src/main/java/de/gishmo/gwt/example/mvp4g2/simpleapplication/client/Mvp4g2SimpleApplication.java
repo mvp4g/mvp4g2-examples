@@ -18,7 +18,6 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -29,7 +28,6 @@ public class Mvp4g2SimpleApplication
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		GWT.debugger();
 		Mvp4g2SimpleApplicationApplication application = new Mvp4g2SimpleApplicationApplicationImpl();
 		application.run();
 	}

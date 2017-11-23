@@ -39,7 +39,6 @@ public class NavigationPresenter
 
   @Override
   public void bind() {
-    GWT.debugger();
     eventBus.setNavigation(view.asWidget());
   }
 

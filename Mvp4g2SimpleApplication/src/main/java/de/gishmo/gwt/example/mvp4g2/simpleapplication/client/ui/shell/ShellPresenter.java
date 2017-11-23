@@ -60,7 +60,6 @@ public class ShellPresenter
 
   @Override
   public void setShell() {
-    GWT.debugger();
     RootLayoutPanel.get()
                    .add(view.asWidget());
   }

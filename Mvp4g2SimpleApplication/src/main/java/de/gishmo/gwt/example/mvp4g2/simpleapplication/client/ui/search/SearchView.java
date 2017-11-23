@@ -34,7 +34,6 @@ public class SearchView
   }
 
   public void bind() {
-    GWT.debugger();
     searchButton.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {

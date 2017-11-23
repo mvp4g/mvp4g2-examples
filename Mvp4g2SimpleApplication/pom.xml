@@ -182,6 +182,8 @@
             <arg>8888</arg>
             <arg>-codeServerPort</arg>
             <arg>9876</arg>
+            <arg>-setProperty</arg>
+            <arg>mvp4g2.logging=true</arg>
           </devmodeArgs>
           <startupUrls>
             <startupUrl>Mvp4g2SimpleApplication.html</startupUrl>
