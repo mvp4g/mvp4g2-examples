@@ -1,6 +1,5 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.*;
@@ -51,7 +50,6 @@ public class SearchView
   }
   
   public void createView() {
-    GWT.debugger();
     panel = new ScrollPanel();
     
     FlowPanel searchPanel = new FlowPanel();

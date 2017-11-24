@@ -19,6 +19,7 @@ package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
 import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler.SimpleApplicationHandler;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DefaultHistoryConverter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.DetailPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.ListPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.NavigationPresenter;
@@ -33,7 +34,7 @@ import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
 /**
  * Event bus of the Mvp4G 2 Mail example
  */
-@EventBus(shell = ShellPresenter.class)
+@EventBus(shell = ShellPresenter.class, historyOnStart = false)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
 public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {
@@ -53,24 +54,27 @@ public interface Mvp4g2SimpleApplicationEventBus
   @Event(handlers = ShellPresenter.class)
   void setStatus(String status);
 
-  @Event(handlers = {DetailPresenter.class})
-////    historyConverter = DefaultHistoryConverter.class,
-////    navigationEvent = true)
+  @Event(handlers = {DetailPresenter.class},
+    historyConverter = DefaultHistoryConverter.class,
+    navigationEvent = true)
   void gotoDetail(long id);
 
-  @Event(handlers = {ListPresenter.class})
-//    historyConverter = DefaultHistoryConverter.class,
-////    navigationEvent = true)
-  void gotoList(String searchName, String searchOrt);
+  @Event(handlers = {ListPresenter.class},
+    historyConverter = DefaultHistoryConverter.class,
+    navigationEvent = true)
+  void gotoList(String searchName,
+                String searchOrt);
 
-////  @InitHistory
+  ////  @InitHistory
 ////  @Event(handlers = {SearchPresenter.class},
 ////    historyConverter = DefaultHistoryConverter.class,
 ////    navigationEvent = true)
 //  void initHistory();
 //
-  @Event(handlers = {SearchPresenter.class})
-//    historyConverter = DefaultHistoryConverter.class)
-  void gotoSearch(String searchName, String searchOrt);
+  @Event(handlers = {SearchPresenter.class},
+    historyConverter = DefaultHistoryConverter.class,
+    navigationEvent = true)
+  void gotoSearch(String searchName,
+                  String searchOrt);
 
 }

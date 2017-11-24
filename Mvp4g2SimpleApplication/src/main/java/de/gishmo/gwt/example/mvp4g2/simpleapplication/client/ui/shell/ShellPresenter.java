@@ -65,6 +65,7 @@ public class ShellPresenter
   }
 
   public void onStart() {
+    GWT.debugger();
     // TODO remove this, once History is implemented
     eventBus.gotoSearch("", "");
   }

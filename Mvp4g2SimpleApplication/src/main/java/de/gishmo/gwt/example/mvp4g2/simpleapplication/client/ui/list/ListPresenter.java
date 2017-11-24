@@ -1,5 +1,6 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import de.gishmo.gwt.example.module0503.shared.dto.Person;
@@ -49,6 +50,7 @@ public class ListPresenter
                           } else if (result.size() == 1) {
                             eventBus.setStatus(ApplicationConstants.CONSTANTS.statusListOne());
                           } else {
+                            GWT.debugger();
                             eventBus.setStatus(ApplicationMessages.MESSAGES.statusListMany(result.size()));
                           }
                         }

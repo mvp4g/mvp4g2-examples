@@ -1,21 +1,22 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-
 import de.gishmo.gwt.example.module0503.shared.dto.Person;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
+import de.gishmo.gwt.mvp4g2.client.history.IsNavigationConfirmation;
+import de.gishmo.gwt.mvp4g2.client.history.NavigationEventCommand;
 import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
 
 @Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class)
 public class DetailPresenter
   extends AbstractPresenter<Mvp4g2SimpleApplicationEventBus, IDetailView>
-  implements IDetailView.Presenter
-  //             NavigationConfirmationInterface
-{
+  implements IDetailView.Presenter,
+             IsNavigationConfirmation {
 
   public DetailPresenter() {
   }
@@ -32,6 +33,7 @@ public class DetailPresenter
 
   @Override
   public void doUpdate(Person person) {
+    GWT.debugger();
     ClientContext.get()
                  .getPersonService()
                  .update(person,
@@ -60,7 +62,8 @@ public class DetailPresenter
   }
 
   public void onGotoDetail(long id) {
-    //    eventBus.setNavigationConfirmation(this);
+    GWT.debugger();
+    eventBus.setNavigationConfirmation(this);
     ClientContext.get()
                  .getPersonService()
                  .get(id,
@@ -79,14 +82,15 @@ public class DetailPresenter
                       });
   }
 
-  //  @Override
-  //  public void confirm(NavigationEventCommand event) {
-  //    if (view.isDirty()) {
-  //      if (Window.confirm("Wollen Sie wirklich Ihre Aendeurngen verwerfen?")) {
-  //        event.fireEvent();
-  //      }
-  //    } else {
-  //      event.fireEvent();
-  //    }
-  //  }
+  @Override
+  public void confirm(NavigationEventCommand event) {
+    GWT.debugger();
+    if (view.isDirty()) {
+      if (Window.confirm("Wollen Sie wirklich Ihre Aendeurngen verwerfen?")) {
+        event.fireEvent();
+      }
+    } else {
+      event.fireEvent();
+    }
+  }
 }
