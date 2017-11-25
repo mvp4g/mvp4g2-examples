@@ -7,7 +7,7 @@ import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.ui.*;
-import de.gishmo.gwt.example.module0503.shared.dto.Person;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;

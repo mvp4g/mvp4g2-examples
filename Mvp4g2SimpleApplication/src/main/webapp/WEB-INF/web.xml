@@ -23,15 +23,7 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
-	<servlet>
-	  <servlet-name>personServiceImpl</servlet-name>
-		<servlet-class>de.gishmo.gwt.example.module0503.server.PersonServiceImpl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	  <servlet-name>personServiceImpl</servlet-name>
-	  <url-pattern>/simpleApplication/person</url-pattern>
-	</servlet-mapping>
-  
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>Module0810.html</welcome-file>

@@ -37,7 +37,6 @@
   <!-- Other module inherits                                      -->
   <inherits name='de.gishmo.gwt.mvp4g2.Mvp4g2'/>
 
-  <inherits name="de.gishmo.gwt.example.module0503.ModulePerson" />
   <inherits name="de.gishmo.gwt.example.module0707.Module0707" />
 
   <!-- Specify the app entry point class.                         -->
