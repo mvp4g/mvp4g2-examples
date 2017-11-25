@@ -36,7 +36,7 @@ import de.gishmo.gwt.mvp4g2.client.history.annotation.NotFoundHistory;
 /**
  * Event bus of the SimpleMvp4G2Application example
  */
-@EventBus(shell = ShellPresenter.class, historyOnStart = false)
+@EventBus(shell = ShellPresenter.class, historyOnStart = true)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
 public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {

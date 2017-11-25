@@ -17,7 +17,6 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
@@ -31,12 +30,8 @@ public class ShellPresenter
                              IShellView>
   implements IShellView.Presenter,
              IsShell {
-//
-//  @SuppressWarnings("unused")
-//  @Inject
-//  private ClientContext clientContext;
-//
-//  public void bind() {
+
+  //  public void bind() {
 //    Element loadingIndicator = DOM.getElementById("loading");
 //    if (loadingIndicator != null) {
 //      loadingIndicator.removeFromParent();
@@ -47,7 +42,6 @@ public class ShellPresenter
   }
 
   public void onBeforeEvent(String eventName) {
-    GWT.log("onBefore for event -> " + eventName);
   }
 
   public void onSetContent(Widget widget) {

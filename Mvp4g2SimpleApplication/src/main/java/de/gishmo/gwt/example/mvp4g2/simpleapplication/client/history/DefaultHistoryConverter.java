@@ -20,7 +20,6 @@ public class DefaultHistoryConverter
                                String param,
                                Mvp4g2SimpleApplicationEventBus eventBus) {
 
-    GWT.debugger();
     if ("gotoSearch".equals(historyName)) {
       String searchName = "";  
       String searchCity = "";

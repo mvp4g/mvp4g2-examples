@@ -1,6 +1,5 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import de.gishmo.gwt.example.module0503.shared.dto.Person;
@@ -82,7 +81,6 @@ public class DetailPresenter
 
   @Override
   public void confirm(NavigationEventCommand event) {
-    GWT.debugger();
     if (view.isDirty()) {
       if (Window.confirm("Wollen Sie wirklich Ihre Aendeurngen verwerfen?")) {
         event.fireEvent();
