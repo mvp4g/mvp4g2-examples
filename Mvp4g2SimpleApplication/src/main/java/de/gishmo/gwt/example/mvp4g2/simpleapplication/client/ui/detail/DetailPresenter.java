@@ -33,7 +33,6 @@ public class DetailPresenter
 
   @Override
   public void doUpdate(Person person) {
-    GWT.debugger();
     ClientContext.get()
                  .getPersonService()
                  .update(person,
@@ -62,7 +61,6 @@ public class DetailPresenter
   }
 
   public void onGotoDetail(long id) {
-    GWT.debugger();
     eventBus.setNavigationConfirmation(this);
     ClientContext.get()
                  .getPersonService()

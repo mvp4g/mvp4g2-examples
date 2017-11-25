@@ -30,9 +30,11 @@ import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Debug;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Event;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.EventBus;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
+import de.gishmo.gwt.mvp4g2.client.history.annotation.InitHistory;
+import de.gishmo.gwt.mvp4g2.client.history.annotation.NotFoundHistory;
 
 /**
- * Event bus of the Mvp4G 2 Mail example
+ * Event bus of the SimpleMvp4G2Application example
  */
 @EventBus(shell = ShellPresenter.class, historyOnStart = false)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
@@ -40,8 +42,7 @@ public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {
 
   @Start
-  @Event(bind = {NavigationPresenter.class},
-    handlers = ShellPresenter.class)
+  @Event(bind = {NavigationPresenter.class})
   public void start();
 
   @Event(handlers = {ShellPresenter.class,
@@ -65,12 +66,13 @@ public interface Mvp4g2SimpleApplicationEventBus
   void gotoList(String searchName,
                 String searchOrt);
 
-  ////  @InitHistory
-////  @Event(handlers = {SearchPresenter.class},
-////    historyConverter = DefaultHistoryConverter.class,
-////    navigationEvent = true)
-//  void initHistory();
-//
+  @InitHistory
+  @NotFoundHistory
+  @Event(handlers = {SearchPresenter.class},
+    historyConverter = DefaultHistoryConverter.class,
+    navigationEvent = true)
+  void initHistory();
+
   @Event(handlers = {SearchPresenter.class},
     historyConverter = DefaultHistoryConverter.class,
     navigationEvent = true)

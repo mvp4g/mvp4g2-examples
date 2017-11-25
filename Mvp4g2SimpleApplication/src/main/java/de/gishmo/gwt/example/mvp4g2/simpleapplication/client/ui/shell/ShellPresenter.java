@@ -64,12 +64,6 @@ public class ShellPresenter
                    .add(view.asWidget());
   }
 
-  public void onStart() {
-    GWT.debugger();
-    // TODO remove this, once History is implemented
-    eventBus.gotoSearch("", "");
-  }
-
   public void onSetStatus(String status) {
     view.setStatus(status);
   }
