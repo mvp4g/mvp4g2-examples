@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+.widgetPanel {
+    margin: 6px;
+    height: 72px;
+}
+
+.panel {
+    border: 1px solid #4200fe;
+    border-radius: 6px;
+    background-color: #d3f4fa;
+}
+
+.label {
+    padding: 6px 4px 2px 12px;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4200fe;
+}
+
+.textBox {
+    margin: 6px 4px 2px 12px;
+    display: block;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #4200fe;
+}
