@@ -17,11 +17,13 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Widget;
+
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.AbstractSimpleApplicationPresenter;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
-import elemental2.dom.Element;
 
 @Presenter(viewClass = NavigationView.class, viewInterface= INavigationView.class)
 public class NavigationPresenter
@@ -31,13 +33,13 @@ public class NavigationPresenter
   public NavigationPresenter() {
   }
 
-  public Element asElement() {
-    return view.asElement();
+  public Widget asWidget() {
+    return view.asWidget();
   }
 
   @Override
   public void bind() {
-    eventBus.setNavigation(asElement());
+    eventBus.setNavigation(view.asWidget());
   }
 
   @Override

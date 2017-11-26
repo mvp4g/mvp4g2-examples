@@ -17,13 +17,14 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
+
 import com.google.gwt.core.client.EntryPoint;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Mvp4g2SimpleApplication
-  implements EntryPoint {
+	implements EntryPoint {
 	/**
 	 * This is the entry point method.
 	 */

@@ -1,152 +1,129 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list;
 
-import com.google.gwt.cell.client.Cell;
-import com.google.gwt.cell.client.ClickableTextCell;
-import com.google.gwt.cell.client.FieldUpdater;
-import com.google.gwt.cell.client.TextCell;
-import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.client.ui.*;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;
 import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+import elemental2.dom.*;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static elemental2.dom.DomGlobal.document;
 
 public class ListView
   extends LazyReverseView<IListView.Presenter>
   implements IListView {
 
-  private ScrollPanel       panel;
-  private CellTable<Person> resultTable;
-  private ApplicationCss    style;
+  private HTMLDivElement   panel;
+  private HTMLDivElement   listPanel;
+  private HTMLTableElement resultTable;
+  private HTMLElement      tableBody;
 
   public ListView() {
     super();
-    
-    this.style = ApplicationStyleFactory.get().getStyle();
+  }
+
+  public void createView() {
+    panel = (HTMLDivElement) document.createElement("div");
+
+    listPanel = (HTMLDivElement) document.createElement("div");
+    listPanel.className = "resultPanel";
+    panel.appendChild(listPanel);
+
+    HTMLDivElement headline = (HTMLDivElement) document.createElement("div");
+    headline.innerHTML = "Search Results";
+    headline.className = "headline";
+    listPanel.appendChild(headline);
+  }
+
+  @Override
+  public Element asElement() {
+    return panel;
   }
 
   @Override
   public void resetTable() {
-    // Row-Count zurück setzen
-    resultTable.setRowCount(0, true);
-    // Mit leerer Liste fuellen ... Brauch man das wirklich ... ?????
-    resultTable.setRowData(0, new ArrayList<Person>());
+    if (resultTable != null) {
+      listPanel.removeChild(resultTable);
+      resultTable = null;
+    }
   }
 
   @Override
   public void setData(List<Person> result) {
-    resultTable.setRowData(result);
-  }
-
-  public void createView() {
-    panel = new ScrollPanel();
-    
-    FlowPanel resultPanel = new FlowPanel();
-    resultPanel.addStyleName(style.resultPanel());
-    panel.add(resultPanel);
-    
-    Label headline = new Label(ApplicationConstants.CONSTANTS.resultHeadline());
-    headline.addStyleName(style.headline());
-    resultPanel.add(headline);
-    
-    resultTable = new CellTable<Person>();
-    resultPanel.add(resultTable);
-    resultTable.setEmptyTableWidget(new HTML(ApplicationConstants.CONSTANTS.resultText()));
-    Column<Person, String> nameColumn = addColumn(new ClickableTextCell(),
-                                                  ApplicationConstants.CONSTANTS.columnName(),
-                                                  new GetValue<String>() {
-                                                    @Override
-                                                    public String getValue(Person person) {
-                                                      return person.getName() + ", " + person.getFirstName();
-                                                    }
-                                                  },
-                                                  new FieldUpdater<Person, String>() {
-                                                    @Override
-                                                    public void update(int index, Person object, String value) {
-                                                      getPresenter().doUpdate(object);
-                                                    }
-                                                  });
-    
-    Column<Person, String> streetColumn = addColumn(new TextCell(),
-                                                    ApplicationConstants.CONSTANTS.columnStreet(),
-                                                    new GetValue<String>() {
-                                                      @Override
-                                                      public String getValue(Person person) {
-                                                        return person.getAddress().getStreet();
-                                                      }
-                                                    },
-                                                    null);
-
-    Column<Person, String> plzColumn = addColumn(new TextCell(),
-                                                 ApplicationConstants.CONSTANTS.columnPlz(),
-                                                 new GetValue<String>() {
-                                                   @Override
-                                                   public String getValue(Person person) {
-                                                     return person.getAddress().getZip();
-                                                   }
-                                                 },
-                                                 null);
-    plzColumn.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-
-    Column<Person, String> cityColumn = addColumn(new TextCell(),
-                                                  ApplicationConstants.CONSTANTS.columnCity(),
-                                                  new GetValue<String>() {
-                                                      @Override
-                                                      public String getValue(Person person) {
-                                                        return person.getAddress().getCity();
-                                                      }
-                                                    },
-                                                  null);
-  
-    // Tabellen und Spalten-Breite setzen
-    resultTable.setWidth("100%");
-    resultTable.setColumnWidth(nameColumn, "40%");
-    resultTable.setColumnWidth(streetColumn, "25%");
-    resultTable.setColumnWidth(plzColumn, "10%");
-    resultTable.setColumnWidth(cityColumn, "25%");
-
     resetTable();
+    listPanel.appendChild(createTable(result));
   }
 
-  @Override
-  public Widget asWidget() {
-    return panel;
+  private HTMLTableElement createTable(List<Person> result) {
+    resultTable = (HTMLTableElement) document.createElement("table");
+    resultTable.style.width = CSSProperties.WidthUnionType.of("100%");
+    listPanel.appendChild(resultTable);
+
+    HTMLElement colGroup = (HTMLElement) document.createElement("colgroup");
+    resultTable.appendChild(colGroup);
+    colGroup.appendChild(this.createColElement("40%"));
+    colGroup.appendChild(this.createColElement("25%"));
+    colGroup.appendChild(this.createColElement("10%"));
+    colGroup.appendChild(this.createColElement("25%"));
+
+    HTMLElement tableHeadGroud = (HTMLElement) document.createElement("thead");
+    resultTable.appendChild(tableHeadGroud);
+    HTMLElement trHead = (HTMLElement) document.createElement("tr");
+    tableHeadGroud.appendChild(trHead);
+    tableHeadGroud.appendChild(this.createTableHeaderElement("Name"));
+    tableHeadGroud.appendChild(this.createTableHeaderElement("Street"));
+    tableHeadGroud.appendChild(this.createTableHeaderElement("ZIP"));
+    tableHeadGroud.appendChild(this.createTableHeaderElement("City"));
+
+    for (Person person : result) {
+      resultTable.appendChild(this.createTableDataRow(person));
+    }
+
+    return resultTable;
   }
 
-  /**
-   * Get a cell value from a record.
-   *
-   * @param <C> the cell type
-   */
-  private interface GetValue<C> {
-    C getValue(Person person);
+  private HTMLTableColElement createColElement(String width) {
+    HTMLTableColElement colElement = (HTMLTableColElement) document.createElement("col");
+    colElement.style.width = CSSProperties.WidthUnionType.of(width);
+    return colElement;
   }
 
-  /**
-   * Add a column with a header.
-   *
-   * @param <C> the cell type
-   * @param cell the cell used to render the column
-   * @param headerText the header string
-   * @param getter the value getter for the cell
-   */
-  private <C> Column<Person, C> addColumn(Cell<C> cell,
-                                          String headerText,
-                                          final GetValue<C> getter,
-                                          FieldUpdater<Person, C> fieldUpdater) {
-    Column<Person, C> column = new Column<Person, C>(cell) {
-      @Override
-      public C getValue(Person object) {
-        return getter.getValue(object);
-      }
-    };
-    column.setFieldUpdater(fieldUpdater);
-    resultTable.addColumn(column, headerText);
-    return column;
+  private HTMLElement createTableHeaderElement(String name) {
+    HTMLElement element = (HTMLElement) document.createElement("th");
+    element.innerHTML = name;
+    element.className = "cellTableHeader";
+    return element;
+  }
+
+  private HTMLElement createTableDataRow(Person person) {
+    HTMLElement trElement = (HTMLElement) document.createElement("tr");
+
+    HTMLElement nameCell = (HTMLElement) document.createElement("td");
+    trElement.appendChild(nameCell);
+    HTMLDivElement clickableMNameCell = (HTMLDivElement) document.createElement("div");
+    nameCell.appendChild(clickableMNameCell);
+    clickableMNameCell.innerHTML = person.getName() + ", " + person.getFirstName();
+    clickableMNameCell.style.fontWeight = "bold";
+    clickableMNameCell.style.textDecoration = "underline";
+    clickableMNameCell.addEventListener("click",
+                                        (e) -> {
+                                          getPresenter().doUpdate(person);
+                                        });
+
+    HTMLElement streetCell = (HTMLElement) document.createElement("td");
+    streetCell.innerHTML = person.getAddress()
+                                 .getStreet();
+    trElement.appendChild(streetCell);
+
+    HTMLElement zipCell = (HTMLElement) document.createElement("td");
+    zipCell.innerHTML = person.getAddress()
+                              .getZip();
+    trElement.appendChild(zipCell);
+
+    HTMLElement cityCell = (HTMLElement) document.createElement("td");
+    cityCell.innerHTML = person.getAddress()
+                               .getCity();
+    trElement.appendChild(cityCell);
+
+    return trElement;
   }
 }

@@ -26,7 +26,7 @@ public class SearchPresenter
                            String searchCity) {
     view.setSearch(searchName,
                    searchCity);
-    eventBus.setContent(view.asElement());
+    eventBus.setContent(view.asWidget());
   }
 
   @Override

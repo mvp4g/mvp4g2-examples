@@ -17,17 +17,17 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
+import elemental2.dom.Element;
 
 public interface IShellView
-  extends IsLazyReverseView<IShellView.Presenter>,
-          IsWidget {
+  extends IsLazyReverseView<IShellView.Presenter> {
 
-  void setCenter(Widget asWidget);
+  Element asElement();
 
-  void setNavigation(Widget widget);
+  void setCenter(Element asWidget);
+
+  void setNavigation(Element widget);
 
   void setStatus(String status);
 

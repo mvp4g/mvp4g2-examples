@@ -5,6 +5,7 @@ import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
 import elemental2.dom.Element;
 import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
+import elemental2.dom.HTMLLabelElement;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -49,7 +50,7 @@ public class SearchView
     searchPanel.className = "searchPanel";
     panel.appendChild(searchPanel);
 
-    HTMLDivElement headline = (HTMLDivElement) document.createElement("div");
+    HTMLLabelElement headline = (HTMLLabelElement) document.createElement("div");
     headline.innerHTML = "Search Parameter";
     headline.className = "headline";
     searchPanel.appendChild(headline);

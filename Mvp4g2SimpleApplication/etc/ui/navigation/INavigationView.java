@@ -15,18 +15,20 @@
  *
  */
 
-package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources;
+package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.user.client.ui.IsWidget;
+import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
 
-public interface ImageResources
-  extends ClientBundle {
+public interface INavigationView
+  extends IsLazyReverseView<INavigationView.Presenter>,
+          IsWidget {
 
-  ImageResources INSTANCE = (ImageResources) GWT.create(ImageResources.class);
-  
-  @Source("Gwt-logo.png")
-  ImageResource gwtLogo();
-  
+  interface Presenter {
+
+    void doShowList();
+
+    void doShowSearch();
+
+  }
 }

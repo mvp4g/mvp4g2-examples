@@ -17,64 +17,55 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Widget;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;
 import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+import elemental2.dom.Element;
+import elemental2.dom.HTMLButtonElement;
+import elemental2.dom.HTMLDivElement;
+
+import static elemental2.dom.DomGlobal.document;
 
 public class NavigationView
   extends LazyReverseView<INavigationView.Presenter>
   implements INavigationView {
 
-  private ApplicationCss style;
+  private HTMLDivElement panel;
 
-  private FlowPanel panel;
-
-  private Button searchButton;
-  private Button listButton;
+  HTMLButtonElement searchButton;
+  HTMLButtonElement listButton;
 
   public NavigationView() {
     super();
-    this.style = ApplicationStyleFactory.get()
-                                        .getStyle();
   }
 
   public void createView() {
-    panel = new FlowPanel();
-    panel.addStyleName(style.navigationPanel());
+    panel = (HTMLDivElement) document.createElement("div");
+    panel.style.cssFloat = "left";
+    panel.style.display = "block";
+    panel.style.overflow = "hidden";
 
-    searchButton = new Button(ApplicationConstants.CONSTANTS.searchFormButton());
-    searchButton.addStyleName(style.navigationButton());
-    panel.add(searchButton);
+    searchButton = (HTMLButtonElement) document.createElement("button");
+    searchButton.textContent = "Search";
+    searchButton.className = "navigationButton";
+    panel.appendChild(searchButton);
 
-    listButton = new Button(ApplicationConstants.CONSTANTS.listFormButton());
-    listButton.addStyleName(style.navigationButton());
-    panel.add(listButton);
+    listButton = (HTMLButtonElement) document.createElement("button");
+    listButton.textContent = "List";
+    listButton.className = "navigationButton";
+    panel.appendChild(listButton);
   }
 
   public void bind() {
-    searchButton.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-        getPresenter().doShowSearch();
-      }
+    searchButton.addEventListener("click", (e) -> {
+      getPresenter().doShowSearch();
     });
 
-    listButton.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-        getPresenter().doShowList();
-      }
+    listButton.addEventListener("click", (e) -> {
+      getPresenter().doShowList();
     });
   }
 
   @Override
-  public Widget asWidget() {
+  public Element asElement() {
     return panel;
   }
 }

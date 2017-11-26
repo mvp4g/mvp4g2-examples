@@ -15,40 +15,17 @@
  *
  */
 
-package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources;
+package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui;
 
-import com.google.gwt.resources.client.CssResource;
+import de.gishmo.gwt.mvp4g2.client.eventbus.IsEventBus;
+import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
+import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
 
-public interface ApplicationCss
-  extends CssResource {
-  
-  String button();
-  
-  String header();
+public class AbstractSimpleApplicationPresenter<E extends IsEventBus, V extends IsLazyReverseView<?>>
+  extends AbstractPresenter<E, V> {
 
-  String headerPanel();
+  public AbstractSimpleApplicationPresenter() {
+    super();
+  }
 
-  String headline();
-  
-  String footerLabel();
-  
-  String footerRight();
-  
-  String footerLeft();
-  
-  String footerStatus();
-  
-  String footerPanel();
-
-  String navigationButton();
-
-  String navigationPanel();
-
-  String searchPanel();
-
-  String searchPanelButtonBar();
-
-  String resultPanel();
-
-  String detailPanel();
 }

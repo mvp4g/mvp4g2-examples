@@ -84,11 +84,6 @@
       <artifactId>mvp4g2-processor</artifactId>
       <version>1.0-alpha-1</version>
     </dependency>
-    <dependency>
-      <groupId>de.gishmo.gwt.example</groupId>
-      <artifactId>module0707</artifactId>
-      <version>1.0.0</version>
-    </dependency>
   </dependencies>
 
   <build>
@@ -105,8 +100,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.6.1</version>
         <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <showWarnings>true</showWarnings>
           <showDeprecation>true</showDeprecation>
           <meminitial>128m</meminitial>

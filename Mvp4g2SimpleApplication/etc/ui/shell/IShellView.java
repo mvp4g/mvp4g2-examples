@@ -15,16 +15,23 @@
  *
  */
 
-package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources;
+package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.i18n.client.Messages;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
+import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
 
-public interface ApplicationMessages
-  extends Messages {
+public interface IShellView
+  extends IsLazyReverseView<IShellView.Presenter>,
+          IsWidget {
 
-  ApplicationMessages MESSAGES = GWT.create(ApplicationMessages.class);
- 
-  String statusListMany(int size);
+  void setCenter(Widget asWidget);
 
+  void setNavigation(Widget widget);
+
+  void setStatus(String status);
+
+  interface Presenter {
+
+  }
 }

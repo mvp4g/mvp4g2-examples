@@ -17,12 +17,13 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
-import com.google.gwt.user.client.ui.IsWidget;
 import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
+import elemental2.dom.Element;
 
 public interface INavigationView
-  extends IsLazyReverseView<INavigationView.Presenter>,
-          IsWidget {
+  extends IsLazyReverseView<INavigationView.Presenter> {
+
+  Element asElement();
 
   interface Presenter {
 

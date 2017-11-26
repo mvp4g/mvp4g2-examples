@@ -1,9 +1,9 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
+import java.io.Serializable;
 
 public class PersonSearch
-  implements IsSerializable {
+  implements Serializable {
 
   private String name;
   private String city;

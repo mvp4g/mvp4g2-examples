@@ -1,0 +1,146 @@
+@CHARSET "UTF-8";
+
+.headerPanel {
+    border-bottom: 1px solid black;
+}
+
+.header {
+    margin: 12px;
+}
+
+.footerLeft {
+    float: left;
+    padding: 12px;
+}
+
+.footerRight {
+    text-align: right;
+    padding: 12px;
+}
+
+.footerLabel {
+}
+
+.footerStatus {
+    white-space: nowrap;
+}
+
+.footerPanel {
+    border-top: 1px solid black;
+    float: left;
+    width: 100%;
+}
+
+.navigationButton {
+    width: 188px;
+    height: 36px;
+    background-color: lightgray;
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border: 2px solid darkgrey;
+    margin: 12px;
+}
+
+.navigationPanel {
+    border-bottom: 1px solid black;
+}
+
+.resultPanel {
+    width: 100%;
+}
+
+.searchPanel {
+    width: 100%;
+}
+
+.searchPanelButtonBar {
+    text-align: right;
+    width: 100%;
+    float: left;
+}
+
+.headline {
+    font-family: arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4200fe;
+    margin: 6px;
+}
+
+.button {
+    width: 112px;
+    margin: 6px;
+}
+
+.detailPanel {
+    width: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+html, body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 42px;
+    min-height: 100%;
+}
+
+.widgetContainerTextBox {
+    width: 100%;
+}
+
+.widgetContainerTextBoxTextBox {
+    padding: 6px 0px 6px 0px;
+}
+
+.widgetPanelTextBox {
+    height: 32px;
+    padding: 6px;
+}
+
+.panelTextBox {
+    /*border: 1px solid #4200fe;*/
+    /*border-radius: 6px;*/
+    /*background-color: #d3f4fa;*/
+    /*width: 100%;*/
+    padding: 6px 4px 2px 12px;
+}
+
+.labelTextBox {
+    padding: 9px 12px 12px 0px;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4200fe;
+    float: left;
+}
+
+.textBoxTextBox {
+    display: block;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #4200fe;
+    width: 400px;
+}
+
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+.cellTableHeader {
+    border-bottom: 2px solid #6f7277;
+    padding: 3px 15px;
+    text-align: left;
+    color: #4b4a4a;
+    text-shadow: #ddf 1px 1px 0;
+    overflow: hidden;
+}

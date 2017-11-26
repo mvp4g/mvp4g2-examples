@@ -1,11 +1,11 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.exception;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
+import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class PersonNotFoundException
   extends Exception
-  implements IsSerializable {
+  implements Serializable {
 
   /* for serialization only */
   @SuppressWarnings("unused")

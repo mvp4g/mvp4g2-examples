@@ -17,7 +17,6 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
-import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler.SimpleApplicationHandler;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DefaultHistoryConverter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.DetailPresenter;
@@ -32,6 +31,7 @@ import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.EventBus;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
 import de.gishmo.gwt.mvp4g2.client.history.annotation.InitHistory;
 import de.gishmo.gwt.mvp4g2.client.history.annotation.NotFoundHistory;
+import elemental2.dom.Element;
 
 /**
  * Event bus of the SimpleMvp4G2Application example
@@ -47,10 +47,10 @@ public interface Mvp4g2SimpleApplicationEventBus
 
   @Event(handlers = {ShellPresenter.class,
                      SimpleApplicationHandler.class})
-  void setNavigation(Widget widget);
+  void setNavigation(Element element);
 
   @Event(handlers = ShellPresenter.class)
-  void setContent(Widget widget);
+  void setContent(Element element);
 
   @Event(handlers = ShellPresenter.class)
   void setStatus(String status);

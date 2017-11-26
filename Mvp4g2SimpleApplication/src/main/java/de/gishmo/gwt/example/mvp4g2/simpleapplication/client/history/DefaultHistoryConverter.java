@@ -1,6 +1,5 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history;
 
-import com.google.gwt.core.client.GWT;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.mvp4g2.client.history.IsHistoryConverter;
@@ -21,7 +20,7 @@ public class DefaultHistoryConverter
                                Mvp4g2SimpleApplicationEventBus eventBus) {
 
     if ("gotoSearch".equals(historyName)) {
-      String searchName = "";  
+      String searchName = "";
       String searchCity = "";
       if (param.length() > 0) {
         searchName = param.substring(0, param.indexOf(DELIMITER));
@@ -32,7 +31,7 @@ public class DefaultHistoryConverter
       eventBus.gotoSearch(searchName,
                           searchCity);
     } else if ("gotoList".equals(historyName)) {
-      String searchName = "";  
+      String searchName = "";
       String searchCity = "";
       if (param.length() > 0) {
         searchName = param.substring(0, param.indexOf(DELIMITER));
@@ -48,7 +47,6 @@ public class DefaultHistoryConverter
                             "");
       }
     } else if ("gotoDetail".equals(historyName)) {
-      GWT.debugger();
       try {
         long id = Long.parseLong(param);
         eventBus.gotoDetail(id);

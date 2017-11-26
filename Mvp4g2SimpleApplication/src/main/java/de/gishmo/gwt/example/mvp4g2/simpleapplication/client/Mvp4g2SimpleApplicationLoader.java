@@ -17,8 +17,8 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
-import com.google.gwt.user.client.Window;
 import de.gishmo.gwt.mvp4g2.client.application.IsApplicationLoader;
+import elemental2.dom.DomGlobal;
 
 /**
  * A applicaiton loader of the Mvp4g2MailApplication
@@ -28,7 +28,7 @@ public class Mvp4g2SimpleApplicationLoader
 
   @Override
   public void load(FinishLoadCommand finishLoadCommand) {
-    Window.alert("Do Loading ... ");
+    DomGlobal.window.alert("Do Loading ... ");
     finishLoadCommand.finishLoading();
   }
 }

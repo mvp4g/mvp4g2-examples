@@ -21,9 +21,8 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplica
 import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.client.ui.IsShell;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
+import elemental2.dom.DomGlobal;
 import elemental2.dom.Element;
-
-import static elemental2.dom.DomGlobal.document;
 
 @Presenter(viewClass = ShellView.class, viewInterface = IShellView.class)
 public class ShellPresenter
@@ -55,7 +54,7 @@ public class ShellPresenter
 
   @Override
   public void setShell() {
-    document.body.appendChild(view.asElement());
+    DomGlobal.document.appendChild(view.asElement());
   }
 
   public void onSetStatus(String status) {

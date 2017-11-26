@@ -17,133 +17,157 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
-import com.google.gwt.user.client.ui.*;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ImageResources;
 import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+import elemental2.dom.*;
+import jsinterop.base.Js;
+
+import static elemental2.dom.DomGlobal.document;
 
 public class ShellView
   extends LazyReverseView<IShellView.Presenter>
   implements IShellView {
 
-  private ResizeLayoutPanel shell;
-  private DockLayoutPanel   panel;
-  private ApplicationCss    style;
-  private Label             status;
-  private ResizeLayoutPanel footerPanel;
+  private HTMLDivElement shell;
+  private HTMLDivElement navigation;
+  private HTMLDivElement content;
+  private HTMLDivElement status;
 
-  private Widget widget;
+
+  private HTMLDivElement footerPanel;
 
   public ShellView() {
     super();
-    this.style = ApplicationStyleFactory.get().getStyle();
   }
 
   @Override
-  public Widget asWidget() {
+  public Element asElement() {
     return shell;
   }
 
   @Override
-  public void setCenter(Widget widget) {
-    if (this.widget != null) {
-      this.widget.removeFromParent();
+  public void setCenter(Element element) {
+    Js.debugger();
+    if (content.childElementCount > 0) {
+      for (int i = 0; i < content.childNodes.length; i++) {
+        Node oldChild = content.childNodes.item(i);
+        content.removeChild(oldChild);
+      }
     }
-    panel.add(widget);
-    this.widget = widget;
+    content.appendChild(element);
   }
 
   @Override
-  public void setNavigation(Widget widget) {
-    panel.addWest(widget, 212);
+  public void setNavigation(Element element) {
+    navigation.appendChild(element);
   }
 
   @Override
   public void setStatus(String status) {
-    this.status.setText(status);
+    this.status.innerHTML = status;
   }
 
-//  public void onLoad() {
-//    shell.onLoad();
-//    Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+////  public void onLoad() {
+////    shell.onLoad();
+////    Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+////      @Override
+////      public void execute() {
+////        forceLayout();
+////      }
+////    });
+////  }
+
+  public void createView() {
+    document.body.style.margin = CSSProperties.MarginUnionType.of(0);
+
+    shell = (HTMLDivElement) document.createElement("div");
+    shell.style.height = CSSProperties.HeightUnionType.of("auto");
+    shell.style.width = CSSProperties.WidthUnionType.of("100%");
+    shell.style.margin = CSSProperties.MarginUnionType.of(0);
+//    shell.addResizeHandler(new ResizeHandler() {
 //      @Override
-//      public void execute() {
+//      public void onResize(ResizeEvent event) {
 //        forceLayout();
 //      }
 //    });
-//  }
 
-  public void createView() {
-    shell = new ResizeLayoutPanel();
-    shell.setSize("100%", "100%");
-    shell.addResizeHandler(new ResizeHandler() {
-      @Override
-      public void onResize(ResizeEvent event) {
-        forceLayout();
-      }
-    });
 
-    panel = new DockLayoutPanel(Style.Unit.PX);
-    panel.setSize("100%", "100%");
-    shell.add(panel);
+    Element header = createNorth();
+    shell.appendChild(header);
 
-    Widget header = createNorth();
-    panel.addNorth(header, 128);
+    navigation = (HTMLDivElement) document.createElement("div");
+    navigation.style.overflow = "hidden";
+    navigation.style.width = CSSProperties.WidthUnionType.of("100%");
+    navigation.className = "navigationPanel";
+    shell.appendChild(navigation);
 
-    Widget footer = createSouth();
-    panel.addSouth(footer, 42);
+    content = (HTMLDivElement) document.createElement("div");
+//    content.style.position = "absolute";
+    content.style.overflow = "hidden";
+    content.style.width = CSSProperties.WidthUnionType.of("100%");
+    content.style.cssFloat = "left";
+    shell.appendChild(content);
+
+    Element footer = createSouth();
+    shell.appendChild(footer);
   }
 
-  private Widget createNorth() {
-    FlowPanel panel = new FlowPanel();
-    panel.addStyleName(style.headerPanel());
+  private Element createNorth() {
+    HTMLElement panel = (HTMLElement) document.createElement("header");
+    panel.style.height = CSSProperties.HeightUnionType.of("128px");
+    panel.style.width = CSSProperties.WidthUnionType.of("100%");
+    panel.className = "headerPanel";
 
-    Image image = new Image(ImageResources.INSTANCE.gwtLogo());
-    image.addStyleName(style.header());
-    panel.add(image);
+    HTMLImageElement image = (HTMLImageElement) document.createElement("img");
+    image.className = "header";
+    image.src = "media/images/Gwt-logo.png";
+    panel.appendChild(image);
 
     return panel;
   }
 
-  private Widget createSouth() {
-    footerPanel = new ResizeLayoutPanel();
-    footerPanel.addStyleName(style.footerPanel());
+  private Element createSouth() {
+    footerPanel = (HTMLDivElement) document.createElement("div");
+    footerPanel.style.position = "absolute";
+    footerPanel.style.overflow = "hidden";
+    footerPanel.style.right = String.valueOf(0);
+    footerPanel.style.left = String.valueOf(0);
+    footerPanel.style.bottom = String.valueOf(0);
+    footerPanel.style.height = CSSProperties.HeightUnionType.of("42px");
+    footerPanel.style.width = CSSProperties.WidthUnionType.of("100%");
 
-    FlowPanel panel = new FlowPanel();
-    footerPanel.add(panel);
+    HTMLDivElement panel = (HTMLDivElement) document.createElement("div");
+    panel.style.height = CSSProperties.HeightUnionType.of("42px");
+    panel.style.width = CSSProperties.WidthUnionType.of("100%");
+    panel.className = "footerPanel";
+    footerPanel.appendChild(panel);
 
-    FlowPanel left = new FlowPanel();
-    left.addStyleName(style.footerLeft());
-    panel.add(left);
+    HTMLDivElement left = (HTMLDivElement) document.createElement("div");
+    left.className = "footerLeft";
+    panel.appendChild(left);
 
-    FlowPanel right = new FlowPanel();
-    right.addStyleName(style.footerRight());
-    panel.add(right);
+    HTMLDivElement right = (HTMLDivElement) document.createElement("div");
+    right.className = "footerRight";
+    panel.appendChild(right);
 
-    Label label = new Label(ApplicationConstants.CONSTANTS.footerText());
-    label.addStyleName(style.footerLabel());
-    left.add(label);
+    HTMLDivElement label = (HTMLDivElement) document.createElement("div");
+    label.className = "footerLabel";
+    label.innerHTML = "GWT Basic Training";
+    left.appendChild(label);
 
-    status = new Label("");
-    status.addStyleName(style.footerStatus());
-    right.add(status);
+    status = (HTMLDivElement) document.createElement("div");
+    status.className = "footerStatus";
+    right.appendChild(status);
 
     return footerPanel;
   }
 
-  private void forceLayout() {
-    if (shell.isAttached()) {
-      Widget parent = shell.getParent();
-      if (parent != null) {
-        int parentWidth = parent.getOffsetWidth();
-        footerPanel.setWidth(Integer.toString(parentWidth) + "px");
-      }
-    }
-  }
+//  private void forceLayout() {
+//    if (shell.isAttached()) {
+//      Widget parent = shell.getParent();
+//      if (parent != null) {
+//        int parentWidth = parent.getOffsetWidth();
+//        footerPanel.setWidth(Integer.toString(parentWidth) + "px");
+//      }
+//    }
+//  }
 }

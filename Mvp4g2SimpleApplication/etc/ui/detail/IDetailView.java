@@ -1,15 +1,14 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail;
 
+import com.google.gwt.user.client.ui.IsWidget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
 import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
-import elemental2.dom.Element;
 
 
 public interface IDetailView
-  extends IsLazyReverseView<IDetailView.Presenter> {
-
-  Element asElement();
-
+  extends IsLazyReverseView<IDetailView.Presenter>,
+          IsWidget {
+  
   boolean isDirty();
   
   void setUpData(Person result);

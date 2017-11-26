@@ -1,24 +1,23 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail;
 
+import com.google.gwt.user.client.Window;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.exception.PersonException;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.exception.PersonNotFoundException;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.service.PersonService;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
 import de.gishmo.gwt.mvp4g2.client.history.IsNavigationConfirmation;
 import de.gishmo.gwt.mvp4g2.client.history.NavigationEventCommand;
 import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.client.ui.IsViewCreator;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
-import elemental2.dom.DomGlobal;
 
-@Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class, viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER)
+@Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class)
 public class DetailPresenter
   extends AbstractPresenter<Mvp4g2SimpleApplicationEventBus, IDetailView>
   implements IDetailView.Presenter,
-             IsNavigationConfirmation,
-             IsViewCreator<IDetailView> {
+             IsNavigationConfirmation {
 
   public DetailPresenter() {
   }
@@ -51,7 +50,7 @@ public class DetailPresenter
                                        .getCity());
       }
     } catch (PersonException e) {
-      DomGlobal.window.alert("Panic!");
+      Window.alert("Panic!");
     }
   }
 
@@ -61,26 +60,21 @@ public class DetailPresenter
       Person result = PersonService.get()
                                    .get(id);
       view.setUpData(result);
-      eventBus.setContent(view.asElement());
-      eventBus.setStatus("Edit person data");
+      eventBus.setContent(view.asWidget());
+      eventBus.setStatus(ApplicationConstants.CONSTANTS.statusDetail());
     } catch (PersonNotFoundException e) {
-      DomGlobal.window.alert("Panic!");
+      Window.alert("Panic!");
     }
   }
 
   @Override
   public void confirm(NavigationEventCommand event) {
     if (view.isDirty()) {
-      if ((Boolean) DomGlobal.window.confirm("Wollen Sie wirklich Ihre Aendeurngen verwerfen?")) {
+      if (Window.confirm("Wollen Sie wirklich Ihre Aendeurngen verwerfen?")) {
         event.fireEvent();
       }
     } else {
       event.fireEvent();
     }
-  }
-
-  @Override
-  public IDetailView createView() {
-    return new DetailView();
   }
 }
