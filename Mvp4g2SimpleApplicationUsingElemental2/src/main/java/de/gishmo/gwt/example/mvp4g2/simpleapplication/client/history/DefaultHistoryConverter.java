@@ -23,7 +23,8 @@ public class DefaultHistoryConverter
       String searchName = "";
       String searchCity = "";
       if (param.length() > 0) {
-        searchName = param.substring(0, param.indexOf(DELIMITER));
+        searchName = param.substring(0,
+                                     param.indexOf(DELIMITER));
         if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
           searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
         }
@@ -34,14 +35,15 @@ public class DefaultHistoryConverter
       String searchName = "";
       String searchCity = "";
       if (param.length() > 0) {
-        searchName = param.substring(0, param.indexOf(DELIMITER));
+        searchName = param.substring(0,
+                                     param.indexOf(DELIMITER));
         if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
           searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
         }
       }
       if (searchName.length() > 0 || searchCity.length() > 0) {
         eventBus.gotoList(searchName,
-                            searchCity);
+                          searchCity);
       } else {
         eventBus.gotoSearch("",
                             "");
@@ -51,16 +53,23 @@ public class DefaultHistoryConverter
         long id = Long.parseLong(param);
         eventBus.gotoDetail(id);
       } catch (NumberFormatException e) {
-        if (ClientContext.get().getPersonSearch() != null) {
-          eventBus.gotoSearch(ClientContext.get().getPersonSearch().getName(),
-                              ClientContext.get().getPersonSearch().getCity());
+        if (ClientContext.get()
+                         .getPersonSearch() != null) {
+          eventBus.gotoSearch(ClientContext.get()
+                                           .getPersonSearch()
+                                           .getName(),
+                              ClientContext.get()
+                                           .getPersonSearch()
+                                           .getCity());
         } else {
-          eventBus.gotoSearch("", "");
+          eventBus.gotoSearch("",
+                              "");
         }
       }
     } else {
       // Defaultwerte setzen ....
-      eventBus.gotoSearch("", "");
+      eventBus.gotoSearch("",
+                          "");
     }
   }
 
@@ -82,6 +91,6 @@ public class DefaultHistoryConverter
   public String convertToToken(String historyName,
                                String param1,
                                String param2) {
-    return param1 + DELIMITER + param2;
+    return (param1.equals("undefined") ? "" : param1) + DELIMITER + (param2.equals("undefined") ? "" : param2);
   }
 }
