@@ -91,6 +91,16 @@ public class DefaultHistoryConverter
   public String convertToToken(String historyName,
                                String param1,
                                String param2) {
-    return (param1.equals("undefined") ? "" : param1) + DELIMITER + (param2.equals("undefined") ? "" : param2);
+    return convertParameter(param1) + DELIMITER + convertParameter(param1);
+  }
+
+  private String convertParameter(String param) {
+    if (param == null) {
+      return "";
+    }
+    if ("undefined".equals(param)) {
+      return "";
+    }
+    return param;
   }
 }
