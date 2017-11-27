@@ -26,10 +26,7 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.Navig
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.SearchPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.ShellPresenter;
 import de.gishmo.gwt.mvp4g2.client.eventbus.IsEventBus;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Debug;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Event;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.EventBus;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
+import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.*;
 import de.gishmo.gwt.mvp4g2.client.history.annotation.InitHistory;
 import de.gishmo.gwt.mvp4g2.client.history.annotation.NotFoundHistory;
 
@@ -38,6 +35,8 @@ import de.gishmo.gwt.mvp4g2.client.history.annotation.NotFoundHistory;
  */
 @EventBus(shell = ShellPresenter.class, historyOnStart = true)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
+@Filters(filterClasses = {Mvp4g2SimpleApplicationFilter01.class,
+                          Mvp4g2SimpleApplicationFilter02.class})
 public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {
 
