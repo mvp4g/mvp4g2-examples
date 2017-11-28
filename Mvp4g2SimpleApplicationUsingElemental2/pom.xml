@@ -121,9 +121,11 @@
             <configuration>
               <proc>only</proc>
               <annotationProcessors>
-                <!--<annotationProcessor>com.google.auto.value.processor.AutoValueProcessor</annotationProcessor>-->
-                <!--<annotationProcessor>com.google.auto.service.processor.AutoServiceProcessor</annotationProcessor>-->
-                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.Processor</annotationProcessor>
+                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.ApplicationProcessor</annotationProcessor>
+                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.EventBusProcessor</annotationProcessor>
+                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.EventHandlerProcessor</annotationProcessor>
+                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.HistoryProcessor</annotationProcessor>
+                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.PresenterProcessor</annotationProcessor>
               </annotationProcessors>
             </configuration>
           </execution>

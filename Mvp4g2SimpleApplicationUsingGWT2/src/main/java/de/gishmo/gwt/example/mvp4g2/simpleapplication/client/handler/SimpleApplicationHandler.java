@@ -8,7 +8,7 @@ import de.gishmo.gwt.mvp4g2.client.ui.annotation.EventHandler;
 
 @EventHandler
 public class SimpleApplicationHandler
-  extends AbstractEventHandler <Mvp4g2SimpleApplicationEventBus> {
+  extends AbstractEventHandler<Mvp4g2SimpleApplicationEventBus> {
 
 
   public void onSetNavigation(Widget widget) {
