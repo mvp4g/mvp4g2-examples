@@ -17,7 +17,9 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.UiUtils;
 import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+
 import elemental2.dom.Element;
 import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
@@ -39,29 +41,28 @@ public class NavigationView
 
   public void createView() {
     panel = (HTMLDivElement) document.createElement("div");
-    panel.style.cssFloat = "left";
-    panel.style.display = "block";
-    panel.style.overflow = "hidden";
 
     searchButton = (HTMLButtonElement) document.createElement("button");
     searchButton.textContent = "Search";
-    searchButton.className = "navigationButton";
+    UiUtils.setUpNavigationButton(searchButton);
     panel.appendChild(searchButton);
 
     listButton = (HTMLButtonElement) document.createElement("button");
     listButton.textContent = "List";
-    listButton.className = "navigationButton";
+    UiUtils.setUpNavigationButton(listButton);
     panel.appendChild(listButton);
   }
 
   public void bind() {
-    searchButton.addEventListener("click", (e) -> {
-      getPresenter().doShowSearch();
-    });
+    searchButton.addEventListener("click",
+                                  (e) -> {
+                                    getPresenter().doShowSearch();
+                                  });
 
-    listButton.addEventListener("click", (e) -> {
-      getPresenter().doShowList();
-    });
+    listButton.addEventListener("click",
+                                (e) -> {
+                                  getPresenter().doShowList();
+                                });
   }
 
   @Override

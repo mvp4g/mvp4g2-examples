@@ -1,8 +1,11 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.UiUtils;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.widgets.TextField;
 import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+
+import elemental2.dom.CSSProperties;
 import elemental2.dom.Element;
 import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
@@ -67,7 +70,7 @@ public class DetailView
 
     HTMLDivElement headline = (HTMLDivElement) document.createElement("div");
     headline.innerHTML = "Details";
-    headline.className = "headline";
+    UiUtils.setUpHeadline(headline);
     detailPanel.appendChild(headline);
 
     detailFirstName = new TextField("Firstname");
@@ -86,17 +89,19 @@ public class DetailView
     detailPanel.appendChild(detailCity.getElement());
 
     HTMLDivElement buttonBar = (HTMLDivElement) document.createElement("div");
-    buttonBar.className = "searchPanelButtonBar";
+    buttonBar.style.cssFloat = "left";
+    buttonBar.style.textAlign = "right";
+    buttonBar.style.width = CSSProperties.WidthUnionType.of("100%");
     detailPanel.appendChild(buttonBar);
 
     saveButton = (HTMLButtonElement) document.createElement("button");
     saveButton.textContent = "Save";
-    saveButton.className = "button";
+    UiUtils.setUButton(saveButton);
     buttonBar.appendChild(saveButton);
 
     revertButton = (HTMLButtonElement) document.createElement("button");
     revertButton.textContent = "Revert";
-    revertButton.className = "button";
+    UiUtils.setUButton(revertButton);
     buttonBar.appendChild(revertButton);
   }
 

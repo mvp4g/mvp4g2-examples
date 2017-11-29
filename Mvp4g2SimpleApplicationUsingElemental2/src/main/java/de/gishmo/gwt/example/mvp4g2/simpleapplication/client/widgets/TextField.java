@@ -10,17 +10,16 @@ import static elemental2.dom.DomGlobal.document;
 
 public class TextField {
 
-  private HTMLDivElement widgetContainer;
+  private HTMLDivElement   widgetContainer;
   private HTMLDivElement   widgetPanel;
   private HTMLDivElement   panel;
   private HTMLDivElement   label;
-  private HTMLDivElement widgetContainerTextBox;
+  private HTMLDivElement   widgetContainerTextBox;
   private HTMLInputElement textBox;
 
   public TextField() {
     this(null);
   }
-
 
   public TextField(String label) {
     createWidget();
@@ -30,28 +29,37 @@ public class TextField {
 
   private void createWidget() {
     widgetContainer = (HTMLDivElement) document.createElement("div");
-    widgetContainer.className = "widgetContainerTextBox";
-
-    widgetPanel = (HTMLDivElement) document.createElement("div");
-    widgetPanel.className = "widgetPanelTextBox";
-    widgetContainer.appendChild(widgetPanel);
-
+    widgetContainer.style.height = CSSProperties.HeightUnionType.of("72px");
+    widgetContainer.style.margin = CSSProperties.MarginUnionType.of("12px");
+    widgetContainer.style.border = "1px solid #4200fe";
+    widgetContainer.style.borderRadius = CSSProperties.BorderRadiusUnionType.of("6px");
+    widgetContainer.style.backgroundColor = "#d3f4fa";
     panel = (HTMLDivElement) document.createElement("div");
-    panel.className = "panelTextBox";
-    widgetPanel.appendChild(panel);
 
     label = (HTMLDivElement) document.createElement("div");
-    label.className = "labelTextBox";
-    panel.appendChild(label);
+    label.style.margin = CSSProperties.MarginUnionType.of("6px 4px 2px 12px");
+    label.style.fontFamily = "arial, sans-serif";
+    label.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
+    label.style.fontWeight = "bold";
+    label.style.color = "#4200fe";
+    widgetContainer.appendChild(label);
 
-    widgetContainerTextBox = (HTMLDivElement) document.createElement("div");
-    widgetContainerTextBox.className = "widgetContainerTextBoxTextBox";
-    panel.appendChild(widgetContainerTextBox);
+    HTMLDivElement textBoxDivElement = (HTMLDivElement) document.createElement("div");
+    textBoxDivElement.style.display = "flex";
+    textBoxDivElement.style.width = CSSProperties.WidthUnionType.of("100%");
+    widgetContainer.appendChild(textBoxDivElement);
 
     textBox = (HTMLInputElement) document.createElement("input",
                                                         "text");
-    textBox.className = "textBoxTextBox";
-    widgetContainerTextBox.appendChild(textBox);
+    textBox.style.fontFamily = "arial, sans-serif";
+    textBox.style.margin = CSSProperties.MarginUnionType.of("6px 12px 2px 12px");
+    textBox.style.padding = CSSProperties.PaddingUnionType.of("6px");
+    textBox.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
+    textBox.style.fontWeight = "normal";
+    textBox.style.color = "#4200fe";
+    textBox.style.flex = "1 ";
+    textBox.style.width = CSSProperties.WidthUnionType.of("100%");
+    textBoxDivElement.appendChild(textBox);
   }
 
   private void forceLayout() {
@@ -61,10 +69,10 @@ public class TextField {
       if (parent != null) {
         double parentWidth = parent.clientWidth;
 
-//        label.style.width = CSSProperties.WidthUnionType.of("");
-//        textBox.style.width = CSSProperties.WidthUnionType.of(parentWidth - 48);
-//        label.style.width = CSSProperties.WidthUnionType.of(parentWidth - 48);
-//        textBox.style.width = CSSProperties.WidthUnionType.of(parentWidth - 48);
+        //        label.style.width = CSSProperties.WidthUnionType.of("");
+        //        textBox.style.width = CSSProperties.WidthUnionType.of(parentWidth - 48);
+        //        label.style.width = CSSProperties.WidthUnionType.of(parentWidth - 48);
+        //        textBox.style.width = CSSProperties.WidthUnionType.of(parentWidth - 48);
       }
     }
   }
@@ -81,11 +89,11 @@ public class TextField {
     if (label != null && label.length() > 0) {
       this.label.innerHTML = label;
       this.label.style.visibility = "visible";
-      widgetPanel.style.height = CSSProperties.HeightUnionType.of(68);
+      widgetContainer.style.height = CSSProperties.HeightUnionType.of(68);
     } else {
       this.label.innerHTML = label;
       this.label.style.visibility = "hidden";
-      widgetPanel.style.height = CSSProperties.HeightUnionType.of(42);
+      widgetContainer.style.height = CSSProperties.HeightUnionType.of(42);
     }
   }
 

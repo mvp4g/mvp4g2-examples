@@ -1,6 +1,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.UiUtils;
 import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
 import elemental2.dom.*;
 
@@ -30,7 +31,7 @@ public class ListView
 
     HTMLDivElement headline = (HTMLDivElement) document.createElement("div");
     headline.innerHTML = "Search Results";
-    headline.className = "headline";
+    UiUtils.setUpHeadline(headline);
     listPanel.appendChild(headline);
   }
 
@@ -55,6 +56,14 @@ public class ListView
 
   private HTMLTableElement createTable(List<Person> result) {
     resultTable = (HTMLTableElement) document.createElement("table");
+    resultTable.style.display = "table";
+    resultTable.style.borderCollapse = "seperate";
+    resultTable.style.borderSpacing = "2px";
+    resultTable.style.borderColor = "grey";
+    resultTable.style.fontFamily = "Arial, sans-serif";
+    resultTable.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
+    resultTable.style.margin = CSSProperties.MarginUnionType.of("12px");
+
     resultTable.style.width = CSSProperties.WidthUnionType.of("100%");
     listPanel.appendChild(resultTable);
 
@@ -91,6 +100,9 @@ public class ListView
     HTMLElement element = (HTMLElement) document.createElement("th");
     element.innerHTML = name;
     element.className = "cellTableHeader";
+    element.style.fontWeight = "bold";
+    element.style.fontSize = CSSProperties.FontSizeUnionType.of("16px");
+    element.style.borderBottom = "2px solid darkgray";
     return element;
   }
 
@@ -104,22 +116,26 @@ public class ListView
     clickableMNameCell.innerHTML = person.getName() + ", " + person.getFirstName();
     clickableMNameCell.style.fontWeight = "bold";
     clickableMNameCell.style.textDecoration = "underline";
+    clickableMNameCell.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
     clickableMNameCell.addEventListener("click",
                                         (e) -> {
                                           getPresenter().doUpdate(person);
                                         });
 
     HTMLElement streetCell = (HTMLElement) document.createElement("td");
+    streetCell.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
     streetCell.innerHTML = person.getAddress()
                                  .getStreet();
     trElement.appendChild(streetCell);
 
     HTMLElement zipCell = (HTMLElement) document.createElement("td");
+    zipCell.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
     zipCell.innerHTML = person.getAddress()
                               .getZip();
     trElement.appendChild(zipCell);
 
     HTMLElement cityCell = (HTMLElement) document.createElement("td");
+    cityCell.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
     cityCell.innerHTML = person.getAddress()
                                .getCity();
     trElement.appendChild(cityCell);

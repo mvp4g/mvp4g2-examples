@@ -46,7 +46,6 @@ public class ShellView
 
   @Override
   public void setCenter(Element element) {
-    Js.debugger();
     if (content.childElementCount > 0) {
       for (int i = 0; i < content.childNodes.length; i++) {
         Node oldChild = content.childNodes.item(i);
@@ -66,16 +65,6 @@ public class ShellView
     this.status.innerHTML = status;
   }
 
-////  public void onLoad() {
-////    shell.onLoad();
-////    Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-////      @Override
-////      public void execute() {
-////        forceLayout();
-////      }
-////    });
-////  }
-
   public void createView() {
     document.body.style.margin = CSSProperties.MarginUnionType.of(0);
 
@@ -83,28 +72,28 @@ public class ShellView
     shell.style.height = CSSProperties.HeightUnionType.of("auto");
     shell.style.width = CSSProperties.WidthUnionType.of("100%");
     shell.style.margin = CSSProperties.MarginUnionType.of(0);
-//    shell.addResizeHandler(new ResizeHandler() {
-//      @Override
-//      public void onResize(ResizeEvent event) {
-//        forceLayout();
-//      }
-//    });
-
 
     Element header = createNorth();
     shell.appendChild(header);
 
     navigation = (HTMLDivElement) document.createElement("div");
+    navigation.style.position = "absolute";
     navigation.style.overflow = "hidden";
-    navigation.style.width = CSSProperties.WidthUnionType.of("100%");
-    navigation.className = "navigationPanel";
+    navigation.style.top = "128px";
+    navigation.style.bottom = "42px";
+    navigation.style.left = String.valueOf(0);
+    navigation.style.width = CSSProperties.WidthUnionType.of("212px");
+    navigation.style.borderRight = "black 1px solid";
     shell.appendChild(navigation);
 
     content = (HTMLDivElement) document.createElement("div");
-//    content.style.position = "absolute";
+    content.style.position = "absolute";
     content.style.overflow = "hidden";
-    content.style.width = CSSProperties.WidthUnionType.of("100%");
-    content.style.cssFloat = "left";
+    content.style.top = "128px";
+    content.style.bottom = "42px";
+    content.style.left = "212px";
+    content.style.right = String.valueOf(0);
+
     shell.appendChild(content);
 
     Element footer = createSouth();
@@ -113,12 +102,17 @@ public class ShellView
 
   private Element createNorth() {
     HTMLElement panel = (HTMLElement) document.createElement("header");
+    panel.style.position = "absolute";
+    panel.style.overflow = "hidden";
     panel.style.height = CSSProperties.HeightUnionType.of("128px");
+    panel.style.top = String.valueOf(0);
+    panel.style.right = String.valueOf(0);
+    panel.style.left = String.valueOf(0);
     panel.style.width = CSSProperties.WidthUnionType.of("100%");
-    panel.className = "headerPanel";
+    panel.style.borderBottom = "black 1px solid";
 
     HTMLImageElement image = (HTMLImageElement) document.createElement("img");
-    image.className = "header";
+    image.style.margin = CSSProperties.MarginUnionType.of("12px");
     image.src = "media/images/Gwt-logo.png";
     panel.appendChild(image);
 
@@ -129,24 +123,24 @@ public class ShellView
     footerPanel = (HTMLDivElement) document.createElement("div");
     footerPanel.style.position = "absolute";
     footerPanel.style.overflow = "hidden";
+    footerPanel.style.height = CSSProperties.HeightUnionType.of("42px");
+    footerPanel.style.bottom = String.valueOf(0);
     footerPanel.style.right = String.valueOf(0);
     footerPanel.style.left = String.valueOf(0);
-    footerPanel.style.bottom = String.valueOf(0);
-    footerPanel.style.height = CSSProperties.HeightUnionType.of("42px");
     footerPanel.style.width = CSSProperties.WidthUnionType.of("100%");
+    footerPanel.style.borderTop = "black 1px solid";
 
     HTMLDivElement panel = (HTMLDivElement) document.createElement("div");
-    panel.style.height = CSSProperties.HeightUnionType.of("42px");
-    panel.style.width = CSSProperties.WidthUnionType.of("100%");
-    panel.className = "footerPanel";
     footerPanel.appendChild(panel);
 
     HTMLDivElement left = (HTMLDivElement) document.createElement("div");
-    left.className = "footerLeft";
+    left.style.cssFloat = "left";
+    left.style.padding = CSSProperties.PaddingUnionType.of("12px");
     panel.appendChild(left);
 
     HTMLDivElement right = (HTMLDivElement) document.createElement("div");
-    right.className = "footerRight";
+    right.style.textAlign = "right";
+    right.style.padding = CSSProperties.PaddingUnionType.of("12px");
     panel.appendChild(right);
 
     HTMLDivElement label = (HTMLDivElement) document.createElement("div");
@@ -160,14 +154,4 @@ public class ShellView
 
     return footerPanel;
   }
-
-//  private void forceLayout() {
-//    if (shell.isAttached()) {
-//      Widget parent = shell.getParent();
-//      if (parent != null) {
-//        int parentWidth = parent.getOffsetWidth();
-//        footerPanel.setWidth(Integer.toString(parentWidth) + "px");
-//      }
-//    }
-//  }
 }

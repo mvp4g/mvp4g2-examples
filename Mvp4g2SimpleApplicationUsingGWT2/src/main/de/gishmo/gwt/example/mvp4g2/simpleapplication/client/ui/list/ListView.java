@@ -121,7 +121,7 @@ public class ListView
   /**
    * Get a cell value from a record.
    *
-   * @param <C> the cell type
+   * @param <C> the cell generator
    */
   private interface GetValue<C> {
     C getValue(Person person);
@@ -130,7 +130,7 @@ public class ListView
   /**
    * Add a column with a header.
    *
-   * @param <C> the cell type
+   * @param <C> the cell generator
    * @param cell the cell used to render the column
    * @param headerText the header string
    * @param getter the value getter for the cell

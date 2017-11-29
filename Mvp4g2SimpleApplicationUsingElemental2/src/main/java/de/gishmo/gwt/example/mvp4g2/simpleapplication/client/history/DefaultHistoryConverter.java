@@ -1,9 +1,12 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.PersonSearch;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.mvp4g2.client.history.IsHistoryConverter;
 import de.gishmo.gwt.mvp4g2.client.history.annotation.History;
+
+import jsinterop.base.Js;
 
 @History(type = History.HistoryConverterType.SIMPLE)
 public class DefaultHistoryConverter
@@ -32,6 +35,7 @@ public class DefaultHistoryConverter
       eventBus.gotoSearch(searchName,
                           searchCity);
     } else if ("gotoList".equals(historyName)) {
+      Js.debugger();
       String searchName = "";
       String searchCity = "";
       if (param.length() > 0) {
@@ -40,6 +44,9 @@ public class DefaultHistoryConverter
         if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
           searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
         }
+        ClientContext.get()
+                     .setPersonSearch(new PersonSearch(searchName,
+                                                       searchCity));
       }
       if (searchName.length() > 0 || searchCity.length() > 0) {
         eventBus.gotoList(searchName,
@@ -91,7 +98,7 @@ public class DefaultHistoryConverter
   public String convertToToken(String historyName,
                                String param1,
                                String param2) {
-    return convertParameter(param1) + DELIMITER + convertParameter(param1);
+    return convertParameter(param1) + DELIMITER + convertParameter(param2);
   }
 
   private String convertParameter(String param) {

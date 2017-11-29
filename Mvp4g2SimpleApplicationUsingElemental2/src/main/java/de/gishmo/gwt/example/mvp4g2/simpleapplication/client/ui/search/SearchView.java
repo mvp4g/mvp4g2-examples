@@ -1,7 +1,10 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search;
 
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.UiUtils;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.widgets.TextField;
 import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+
+import elemental2.dom.CSSProperties;
 import elemental2.dom.Element;
 import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
@@ -46,12 +49,12 @@ public class SearchView
     panel = (HTMLDivElement) document.createElement("div");
 
     HTMLDivElement searchPanel = (HTMLDivElement) document.createElement("div");
-    searchPanel.className = "searchPanel";
+    searchPanel.style.width = CSSProperties.WidthUnionType.of("100%");
     panel.appendChild(searchPanel);
 
     HTMLDivElement headline = (HTMLDivElement) document.createElement("div");
     headline.innerHTML = "Search Parameter";
-    headline.className = "headline";
+    UiUtils.setUpHeadline(headline);
     searchPanel.appendChild(headline);
 
     searchName = new TextField("Name");
@@ -61,17 +64,19 @@ public class SearchView
     searchPanel.appendChild(searchCity.getElement());
 
     HTMLDivElement buttonBar = (HTMLDivElement) document.createElement("div");
-    buttonBar.className = "searchPanelButtonBar";
+    buttonBar.style.cssFloat = "left";
+    buttonBar.style.textAlign = "right";
+    buttonBar.style.width = CSSProperties.WidthUnionType.of("100%");
     searchPanel.appendChild(buttonBar);
 
     searchButton = (HTMLButtonElement) document.createElement("button");
     searchButton.textContent = "Search";
-    searchButton.className = "button";
+    UiUtils.setUButton(searchButton);
     buttonBar.appendChild(searchButton);
 
     resetButton = (HTMLButtonElement) document.createElement("button");
     resetButton.textContent = "Reset";
-    resetButton.className = "button";
+    UiUtils.setUButton(resetButton);
     buttonBar.appendChild(resetButton);
   }
 
