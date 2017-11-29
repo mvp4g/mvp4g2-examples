@@ -41,7 +41,8 @@ public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {
 
   @Start
-  @Event(bind = {NavigationPresenter.class})
+  @Event(bind = {NavigationPresenter.class},
+         handlers = SimpleApplicationHandler.class)
   public void start();
 
   @Event(handlers = {ShellPresenter.class,

@@ -10,8 +10,12 @@ import de.gishmo.gwt.mvp4g2.client.ui.annotation.EventHandler;
 public class SimpleApplicationHandler
   extends AbstractEventHandler<Mvp4g2SimpleApplicationEventBus> {
 
+  public void onStart() {
+    Window.alert("SimpleApplicaitonHandler handels >>onStart<<");
+  }
 
   public void onSetNavigation(Widget widget) {
-    Window.alert("Navigation is set!");
+    Window.alert("SimpleApplicaitonHandler handels >>onSetNavigation<<");
+
   }
 }
