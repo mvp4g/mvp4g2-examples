@@ -117,6 +117,7 @@ public class ListView
     clickableMNameCell.style.fontWeight = "bold";
     clickableMNameCell.style.textDecoration = "underline";
     clickableMNameCell.style.fontSize = CSSProperties.FontSizeUnionType.of("14px");
+    clickableMNameCell.style.cursor = "pointer";
     clickableMNameCell.addEventListener("click",
                                         (e) -> {
                                           getPresenter().doUpdate(person);
