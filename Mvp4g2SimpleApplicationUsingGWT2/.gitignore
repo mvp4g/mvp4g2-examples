@@ -184,3 +184,7 @@ target
 *.iml
 _DS_Store
 **/webapp/simpleApplication
+
+.classpath
+.project
+.settings

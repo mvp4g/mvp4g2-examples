@@ -55,7 +55,7 @@ public interface Mvp4g2SimpleApplicationEventBus
   @Event(handlers = ShellPresenter.class)
   void setStatus(String status);
 
-  @Event(handlers = {DetailPresenter.class},
+  @Event(handlers = DetailPresenter.class,
     historyConverter = DefaultHistoryConverter.class,
     navigationEvent = true)
   void gotoDetail(long id);
