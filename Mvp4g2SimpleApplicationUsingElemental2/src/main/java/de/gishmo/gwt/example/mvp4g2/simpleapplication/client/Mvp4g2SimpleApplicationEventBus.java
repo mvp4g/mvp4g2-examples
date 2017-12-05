@@ -56,11 +56,13 @@ public interface Mvp4g2SimpleApplicationEventBus
   void setStatus(String status);
 
   @Event(handlers = DetailPresenter.class,
+    deactivate = {SimpleApplicationHandler.class},
     historyConverter = DefaultHistoryConverter.class,
     navigationEvent = true)
   void gotoDetail(long id);
 
   @Event(handlers = {ListPresenter.class},
+    activate = {SimpleApplicationHandler.class},
     historyConverter = DefaultHistoryConverter.class,
     navigationEvent = true)
   void gotoList(String searchName,
