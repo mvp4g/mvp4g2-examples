@@ -63,7 +63,6 @@ public class TextField {
   }
 
   private void forceLayout() {
-    Js.debugger();
     if (widgetPanel.parentNode != null) {
       Element parent = (Element) widgetPanel.parentNode;
       if (parent != null) {

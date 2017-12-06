@@ -35,7 +35,6 @@ public class DefaultHistoryConverter
       eventBus.gotoSearch(searchName,
                           searchCity);
     } else if ("gotoList".equals(historyName)) {
-      Js.debugger();
       String searchName = "";
       String searchCity = "";
       if (param.length() > 0) {
