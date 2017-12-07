@@ -26,14 +26,6 @@
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
 
-  <!-- Inherit the default GWT style sheet.  You can change       -->
-  <!-- the theme of your GWT application by uncommenting          -->
-  <!-- any one of the following lines.                            -->
-  <inherits name='com.google.gwt.user.theme.clean.Clean'/>
-  <!-- <inherits historyName='com.google.gwt.user.theme.standard.Standard'/> -->
-  <!-- <inherits historyName='com.google.gwt.user.theme.chrome.Chrome'/> -->
-  <!-- <inherits historyName='com.google.gwt.user.theme.dark.Dark'/>     -->
-
   <!-- Other module inherits                                      -->
   <inherits name='de.gishmo.gwt.mvp4g2.Mvp4g2'/>
 
@@ -42,22 +34,4 @@
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
-  <source path='shared'/>
-  
-  <!-- Deferred binding rules -->
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.DetailView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.IDetailView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.ListView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.IListView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.NavigationView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.INavigationView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.SearchView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.ISearchView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.ShellView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.IShellView"/>
-  </replace-with>  
-</module>
+ </module>

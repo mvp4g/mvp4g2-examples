@@ -53,7 +53,7 @@ public class SearchView
     panel.appendChild(searchPanel);
 
     HTMLDivElement headline = (HTMLDivElement) document.createElement("div");
-    headline.innerHTML = "Search Parameter";
+    headline.innerHTML = "Search Parameter (search for: 'S' or 'D')";
     UiUtils.setUpHeadline(headline);
     searchPanel.appendChild(headline);
 
