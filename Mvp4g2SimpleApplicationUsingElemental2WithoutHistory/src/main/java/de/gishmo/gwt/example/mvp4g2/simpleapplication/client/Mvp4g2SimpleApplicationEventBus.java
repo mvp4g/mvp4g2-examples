@@ -18,8 +18,6 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler.SimpleApplicationHandler;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DefaultHistoryConverter;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.HistoryName;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.DetailPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.ListPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.NavigationPresenter;
@@ -30,20 +28,19 @@ import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Debug;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Event;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.EventBus;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
-import de.gishmo.gwt.mvp4g2.client.history.annotation.InitHistory;
-import de.gishmo.gwt.mvp4g2.client.history.annotation.NotFoundHistory;
 import elemental2.dom.Element;
 
 /**
  * Event bus of the SimpleMvp4G2Application example
  */
-@EventBus(shell = ShellPresenter.class, historyOnStart = true)
+@EventBus(shell = ShellPresenter.class)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
 public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {
 
   @Start
-  @Event(bind = {NavigationPresenter.class})
+  @Event(bind = {NavigationPresenter.class},
+    handlers = SearchPresenter.class)
   public void start();
 
   @Event(handlers = {ShellPresenter.class,
@@ -58,27 +55,16 @@ public interface Mvp4g2SimpleApplicationEventBus
 
   @Event(handlers = DetailPresenter.class,
     deactivate = {SimpleApplicationHandler.class},
-    historyConverter = DefaultHistoryConverter.class,
-    historyName = HistoryName.DETAIL,
     navigationEvent = true)
   void gotoDetail(long id);
 
   @Event(handlers = {ListPresenter.class},
     activate = {SimpleApplicationHandler.class},
-    historyConverter = DefaultHistoryConverter.class,
-    historyName = HistoryName.LIST,
     navigationEvent = true)
   void gotoList(String searchName,
                 String searchOrt);
 
-  @InitHistory
-  @NotFoundHistory
-  @Event(handlers = SearchPresenter.class)
-  void initHistory();
-
   @Event(handlers = {SearchPresenter.class},
-    historyConverter = DefaultHistoryConverter.class,
-    historyName = HistoryName.SEARCH,
     navigationEvent = true)
   void gotoSearch(String searchName,
                   String searchOrt);

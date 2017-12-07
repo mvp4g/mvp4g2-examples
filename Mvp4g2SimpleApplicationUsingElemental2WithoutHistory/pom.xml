@@ -22,7 +22,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.gishmo.gwt.example.mvp4g2</groupId>
-  <artifactId>Mvp4g2SimpleApplicationUsingGWT2</artifactId>
+  <artifactId>Mvp4g2SimpleApplicationUsingElemental2WithoutHistory</artifactId>
   <version>1.0.0</version>
 
   <packaging>gwt-app</packaging>
@@ -154,9 +154,9 @@
         </executions>
         <configuration>
           <classpathScope>compile</classpathScope>
-          <moduleName>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplication</moduleName>
-          <moduleShortName>Mvp4g2SimpleApplicaiton</moduleShortName>
-          <modules>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplication</modules>
+          <moduleName>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplicationWithoutHistory</moduleName>
+          <moduleShortName>Mvp4g2SimpleApplicaitonWithoutHistory</moduleShortName>
+          <modules>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplicationWithoutHistory</modules>
           <failOnError>true</failOnError>
           <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
            a different source language for java compilation -->
@@ -179,7 +179,7 @@
             <arg>mvp4g2.logging=true</arg>
           </devmodeArgs>
           <startupUrls>
-            <startupUrl>Mvp4g2SimpleApplication.html</startupUrl>
+            <startupUrl>Mvp4g2SimpleApplicationWithoutHistory.html</startupUrl>
           </startupUrls>
           <warDir>${project.basedir}/src/main/webapp</warDir>
           <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>

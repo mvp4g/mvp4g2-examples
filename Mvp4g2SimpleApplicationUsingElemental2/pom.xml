@@ -121,11 +121,7 @@
             <configuration>
               <proc>only</proc>
               <annotationProcessors>
-                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.ApplicationProcessor</annotationProcessor>
-                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.EventBusProcessor</annotationProcessor>
-                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.EventHandlerProcessor</annotationProcessor>
-                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.HistoryProcessor</annotationProcessor>
-                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.PresenterProcessor</annotationProcessor>
+                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.Mvp4g2Processor</annotationProcessor>
               </annotationProcessors>
             </configuration>
           </execution>

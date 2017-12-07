@@ -6,8 +6,6 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext
 import de.gishmo.gwt.mvp4g2.client.history.IsHistoryConverter;
 import de.gishmo.gwt.mvp4g2.client.history.annotation.History;
 
-import jsinterop.base.Js;
-
 @History(type = History.HistoryConverterType.SIMPLE)
 public class DefaultHistoryConverter
   implements IsHistoryConverter<Mvp4g2SimpleApplicationEventBus> {
@@ -21,7 +19,6 @@ public class DefaultHistoryConverter
   public void convertFromToken(String historyName,
                                String param,
                                Mvp4g2SimpleApplicationEventBus eventBus) {
-
     if ("gotoSearch".equals(historyName)) {
       String searchName = "";
       String searchCity = "";
@@ -35,7 +32,6 @@ public class DefaultHistoryConverter
       eventBus.gotoSearch(searchName,
                           searchCity);
     } else if ("gotoList".equals(historyName)) {
-      Js.debugger();
       String searchName = "";
       String searchCity = "";
       if (param.length() > 0) {
