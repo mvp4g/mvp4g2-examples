@@ -11,6 +11,9 @@ Please, keep in mind, mvp4g2 ist a client framework, so all server calls are sim
 #### Mvp4g2SimpleApplicationUsingElemental2
 A simple application based on MVP4g2 and Elemental 2. In this example, the only class used from GWT is the EntryPoint. 
 
+#### Mvp4g2SimpleApplicationUsingElementalo
+A simple application similar to the example Mvp4g2SimpleApplicationUsingElemental2, but using [Elemento](https://github.com/hal/elemento) to create the views.
+
 #### Mvp4g2SimpleApplicationUsingElemental2WithoutHistory
 A simple application similar to the example Mvp4g2SimpleApplicationUsingElemental2, but withput using history.
 
