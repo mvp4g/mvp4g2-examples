@@ -55,9 +55,7 @@ public class DetailView
                                                       .on(click,
                                                           event -> {
                                                             getPresenter().doRevert();
-                                                          })
-                                                      .asElement()))
-                               .asElement())
+                                                          }))))
                      .asElement();
   }
 

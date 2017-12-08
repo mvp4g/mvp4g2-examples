@@ -56,26 +56,18 @@ public class ListView
 
   private HTMLElement createTable(List<Person> result) {
     resultTable = table().css("resultTable")
-                         .add(colgroup().add(col().style("width: 40%;")
-                                                  .asElement())
-                                        .add(col().style("width: 25%;")
-                                                  .asElement())
-                                        .add(col().style("width: 10%;")
-                                                  .asElement())
-                                        .add(col().style("width: 25%;")
-                                                  .asElement()))
+                         .add(colgroup().add(col().style("width: 40%;"))
+                                        .add(col().style("width: 25%;"))
+                                        .add(col().style("width: 10%;"))
+                                        .add(col().style("width: 25%;")))
                          .add(thead().add(th().css("resultTableHeader")
-                                              .textContent("Name")
-                                              .asElement())
+                                              .textContent("Name"))
                                      .add(th().css("resultTableHeader")
-                                              .textContent("Street")
-                                              .asElement())
+                                              .textContent("Street"))
                                      .add(th().css("resultTableHeader")
-                                              .textContent("Zip")
-                                              .asElement())
+                                              .textContent("Zip"))
                                      .add(th().css("resultTableHeader")
-                                              .textContent("City")
-                                              .asElement()))
+                                              .textContent("City")))
                          .asElement();
 
     for (Person person : result) {
@@ -91,14 +83,11 @@ public class ListView
                                   .on(click,
                                       (event) -> getPresenter().doUpdate(person))))
                .add(td().textContent(person.getAddress()
-                                           .getStreet())
-                        .asElement())
+                                           .getStreet()))
                .add(td().textContent(person.getAddress()
-                                           .getZip())
-                        .asElement())
+                                           .getZip()))
                .add(td().textContent(person.getAddress()
-                                           .getCity())
-                        .asElement())
+                                           .getCity()))
                .asElement();
   }
 }
