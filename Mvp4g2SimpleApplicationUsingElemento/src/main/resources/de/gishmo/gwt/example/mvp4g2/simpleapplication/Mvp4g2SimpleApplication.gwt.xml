@@ -43,22 +43,7 @@
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
-  <source path='shared'/>
-  
-  <!-- Deferred binding rules -->
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.DetailView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.IDetailView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.ListView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.IListView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.NavigationView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.INavigationView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.SearchView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.ISearchView"/>
-  </replace-with>  
-  <replace-with class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.ShellView">
-    <when-type-is class="de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.IShellView"/>
-  </replace-with>  
+
+  <set-configuration-property name="mvp4g2.logging" value="true"/>
+
 </module>

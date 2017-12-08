@@ -173,6 +173,8 @@
             <!--Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile)-->
             <arg>-compileReport</arg>
             <arg>-XcompilerMetrics</arg>
+            <arg>-setProperty</arg>
+            <arg>mvp4g2.logging=true</arg>
           </compilerArgs>
           <logLevel>TRACE</logLevel>
           <skipModule>true</skipModule>
