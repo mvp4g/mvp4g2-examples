@@ -4,7 +4,7 @@ To help you understand the framework, Mvp4g2 comes with tutorials and examples.
 To run the examples:
 
 * clone [mvp4g2](https://github.com/mvp4g/mvp4g2) and install it (mvn install).
-* clone mvp4g2-examples and run mvn gwt:devmode
+* clone mvp4g2-examples and run mvn gwt:devmode to start one ogf the examples
 
 Please, keep in mind, mvp4g2 ist a client framework, so all server calls are simulated on the client side and are mocked in this examples.
 
