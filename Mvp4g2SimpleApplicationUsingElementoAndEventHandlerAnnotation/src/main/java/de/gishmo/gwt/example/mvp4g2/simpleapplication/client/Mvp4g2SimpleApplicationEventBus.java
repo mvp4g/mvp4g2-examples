@@ -67,7 +67,7 @@ public interface Mvp4g2SimpleApplicationEventBus
 
   @InitHistory
   @NotFoundHistory
-  @Event()
+  @Event
   void initHistory();
 
   @Event(historyConverter = DefaultHistoryConverter.class,
