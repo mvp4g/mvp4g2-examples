@@ -50,7 +50,6 @@ public class DefaultHistoryConverter
                             "");
       }
     } else if ("gotoDetail".equals(historyName)) {
-      GWT.debugger();
       try {
         long id = Long.parseLong(param);
         eventBus.gotoDetail(id);
