@@ -30,7 +30,8 @@ public class ShellPresenter
   extends AbstractPresenter<Mvp4g2SimpleApplicationEventBus,
                              IShellView>
   implements IShellView.Presenter,
-             IsShell {
+             IsShell<Mvp4g2SimpleApplicationEventBus,
+                      IShellView> {
 
   //  public void bind() {
 //    Element loadingIndicator = DOM.getElementById("loading");

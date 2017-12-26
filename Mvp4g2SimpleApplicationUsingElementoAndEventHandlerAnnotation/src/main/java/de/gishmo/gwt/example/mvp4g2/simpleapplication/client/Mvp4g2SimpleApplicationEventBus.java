@@ -20,10 +20,7 @@ package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler.SimpleApplicationHandler02;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DefaultHistoryConverter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.HistoryName;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail.DetailPresenter;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.ListPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.NavigationPresenter;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.SearchPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.ShellPresenter;
 import de.gishmo.gwt.mvp4g2.client.eventbus.IsEventBus;
 import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Debug;
@@ -43,28 +40,25 @@ public interface Mvp4g2SimpleApplicationEventBus
   extends IsEventBus {
 
   @Start
-  @Event(bind = {NavigationPresenter.class},
-    handlers = SimpleApplicationHandler02.class)
+  @Event(bind = {NavigationPresenter.class})
   public void start();
 
-  @Event(handlers = {ShellPresenter.class})
+  @Event()
   void setNavigation(Element element);
 
-  @Event(handlers = ShellPresenter.class)
+  @Event()
   void setContent(Element element);
 
-  @Event(handlers = ShellPresenter.class)
+  @Event()
   void setStatus(String status);
 
-  @Event(handlers = DetailPresenter.class,
-    deactivate = {SimpleApplicationHandler02.class},
+  @Event(deactivate = {SimpleApplicationHandler02.class},
     historyConverter = DefaultHistoryConverter.class,
     historyName = HistoryName.DETAIL,
     navigationEvent = true)
   void gotoDetail(long id);
 
-  @Event(handlers = {ListPresenter.class},
-    activate = {SimpleApplicationHandler02.class},
+  @Event(activate = {SimpleApplicationHandler02.class},
     historyConverter = DefaultHistoryConverter.class,
     historyName = HistoryName.LIST,
     navigationEvent = true)
@@ -73,11 +67,10 @@ public interface Mvp4g2SimpleApplicationEventBus
 
   @InitHistory
   @NotFoundHistory
-  @Event(handlers = SearchPresenter.class)
+  @Event()
   void initHistory();
 
-  @Event(handlers = {SearchPresenter.class},
-    historyConverter = DefaultHistoryConverter.class,
+  @Event(historyConverter = DefaultHistoryConverter.class,
     historyName = HistoryName.SEARCH,
     navigationEvent = true)
   void gotoSearch(String searchName,

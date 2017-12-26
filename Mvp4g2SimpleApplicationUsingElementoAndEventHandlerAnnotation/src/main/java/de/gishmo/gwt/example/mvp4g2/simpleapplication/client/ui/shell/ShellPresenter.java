@@ -17,12 +17,14 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
 import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.client.ui.IsShell;
+import de.gishmo.gwt.mvp4g2.client.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
+import elemental2.dom.Element;
+
+import static elemental2.dom.DomGlobal.document;
 
 @Presenter(viewClass = ShellView.class, viewInterface = IShellView.class)
 public class ShellPresenter
@@ -45,20 +47,22 @@ public class ShellPresenter
   public void onBeforeEvent(String eventName) {
   }
 
-  public void onSetContent(Widget widget) {
-    view.setCenter(widget);
+  @EventHandler
+  public void onSetContent(Element element) {
+    view.setCenter(element);
   }
 
-  public void onSetNavigation(Widget widget) {
-    view.setNavigation(widget);
+  @EventHandler
+  public void onSetNavigation(Element element) {
+    view.setNavigation(element);
   }
 
   @Override
   public void setShell() {
-    RootLayoutPanel.get()
-                   .add(view.asWidget());
+    document.body.appendChild(view.asElement());
   }
 
+  @EventHandler
   public void onSetStatus(String status) {
     view.setStatus(status);
   }
