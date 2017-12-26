@@ -15,7 +15,7 @@ A simple application based on MVP4g2 and Elemental 2. In this example, the only 
 A simple application similar to the example Mvp4g2SimpleApplicationUsingElemental2, but using [Elemento](https://github.com/hal/elemento) to create the views.
 
 #### Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation
-A simple application similar to the example Mvp4g2SimpleApplicationUsingElementalo, but using the new @EventHandler annotation to bind a method to an event instead of the handler-attribute inside of the @Event-annotation.
+A simple application similar to the example Mvp4g2SimpleApplicationUsingElementalo, but using the new @EventHandler annotation to bind a handler/presetner method to an event instead of using the handler-attribute inside of the @Event-annotation.
 
 #### Mvp4g2SimpleApplicationUsingElemental2WithoutHistory
 A simple application similar to the example Mvp4g2SimpleApplicationUsingElemental2, but withput using history.
