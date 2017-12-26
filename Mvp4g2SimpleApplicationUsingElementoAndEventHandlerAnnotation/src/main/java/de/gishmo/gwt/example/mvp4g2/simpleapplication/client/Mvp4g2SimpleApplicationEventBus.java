@@ -43,13 +43,13 @@ public interface Mvp4g2SimpleApplicationEventBus
   @Event(bind = {NavigationPresenter.class})
   public void start();
 
-  @Event()
+  @Event
   void setNavigation(Element element);
 
-  @Event()
+  @Event
   void setContent(Element element);
 
-  @Event()
+  @Event
   void setStatus(String status);
 
   @Event(deactivate = {SimpleApplicationHandler02.class},
