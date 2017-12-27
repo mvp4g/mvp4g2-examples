@@ -1,6 +1,6 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list;
 
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.PersonSearch;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.service.PersonService;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Presenter(viewClass = ListView.class, viewInterface = IListView.class, viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER)
 public class ListPresenter
-  extends AbstractPresenter<Mvp4g2SimpleApplicationEventBus, IListView>
+  extends AbstractPresenter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus, IListView>
   implements IListView.Presenter,
              IsViewCreator<IListView> {
 

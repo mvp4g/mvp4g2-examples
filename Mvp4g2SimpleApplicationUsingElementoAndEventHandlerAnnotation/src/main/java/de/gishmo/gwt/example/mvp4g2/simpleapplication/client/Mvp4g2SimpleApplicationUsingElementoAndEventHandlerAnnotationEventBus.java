@@ -17,6 +17,7 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
+
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler.SimpleApplicationHandler02;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DefaultHistoryConverter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.HistoryName;
@@ -36,7 +37,7 @@ import elemental2.dom.Element;
  */
 @EventBus(shell = ShellPresenter.class, historyOnStart = true)
 @Debug(logLevel = Debug.LogLevel.SIMPLE)
-public interface Mvp4g2SimpleApplicationEventBus
+public interface Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus
   extends IsEventBus {
 
   @Start

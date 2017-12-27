@@ -1,6 +1,6 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history;
 
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.PersonSearch;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.mvp4g2.client.history.IsHistoryConverter;
@@ -8,7 +8,7 @@ import de.gishmo.gwt.mvp4g2.client.history.annotation.History;
 
 @History(type = History.HistoryConverterType.SIMPLE)
 public class DefaultHistoryConverter
-  implements IsHistoryConverter<Mvp4g2SimpleApplicationEventBus> {
+  implements IsHistoryConverter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus> {
 
   private final static String DELIMITER = "+!!+";
 
@@ -18,7 +18,7 @@ public class DefaultHistoryConverter
   @Override
   public void convertFromToken(String historyName,
                                String param,
-                               Mvp4g2SimpleApplicationEventBus eventBus) {
+                               Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus eventBus) {
     if ("gotoSearch".equals(historyName)) {
       String searchName = "";
       String searchCity = "";

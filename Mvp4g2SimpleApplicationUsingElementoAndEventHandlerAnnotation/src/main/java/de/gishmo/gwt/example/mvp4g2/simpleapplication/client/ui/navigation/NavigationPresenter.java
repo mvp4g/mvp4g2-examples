@@ -17,7 +17,7 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.AbstractSimpleApplicationPresenter;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
@@ -25,7 +25,7 @@ import elemental2.dom.Element;
 
 @Presenter(viewClass = NavigationView.class, viewInterface = INavigationView.class)
 public class NavigationPresenter
-  extends AbstractSimpleApplicationPresenter<Mvp4g2SimpleApplicationEventBus, INavigationView>
+  extends AbstractSimpleApplicationPresenter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus, INavigationView>
   implements INavigationView.Presenter {
 
   public NavigationPresenter() {

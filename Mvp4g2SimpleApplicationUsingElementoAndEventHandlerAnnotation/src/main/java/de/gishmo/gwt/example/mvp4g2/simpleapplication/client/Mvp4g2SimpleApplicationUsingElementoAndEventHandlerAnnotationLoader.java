@@ -17,19 +17,18 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
-
-import com.google.gwt.core.client.EntryPoint;
+import de.gishmo.gwt.mvp4g2.client.application.IsApplicationLoader;
+import elemental2.dom.DomGlobal;
 
 /**
- * Entry point classes define <code>onModuleLoad()</code>.
+ * A applicaiton loader of the Mvp4g2MailApplication
  */
-public class Mvp4g2SimpleApplication
-  implements EntryPoint {
-  /**
-   * This is the entry point method.
-   */
-  public void onModuleLoad() {
-    Mvp4g2SimpleApplicationApplication application = new Mvp4g2SimpleApplicationApplicationImpl();
-    application.run();
+public class Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationLoader
+  implements IsApplicationLoader {
+
+  @Override
+  public void load(FinishLoadCommand finishLoadCommand) {
+    DomGlobal.window.alert("Do Loading ... ");
+    finishLoadCommand.finishLoading();
   }
 }

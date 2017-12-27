@@ -1,7 +1,6 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler;
 
-import com.google.gwt.core.client.GWT;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.mvp4g2.client.ui.AbstractHandler;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.Handler;
@@ -10,7 +9,7 @@ import elemental2.dom.Element;
 
 @Handler
 public class SimpleApplicationHandler01
-  extends AbstractHandler<Mvp4g2SimpleApplicationEventBus> {
+  extends AbstractHandler<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus> {
 
   @EventHandler
   public void onSetNavigation(Element element) {

@@ -1,6 +1,6 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail;
 
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.exception.PersonException;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.exception.PersonNotFoundException;
@@ -16,7 +16,7 @@ import elemental2.dom.DomGlobal;
 
 @Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class, viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER)
 public class DetailPresenter
-  extends AbstractSimpleApplicationPresenter<Mvp4g2SimpleApplicationEventBus, IDetailView>
+  extends AbstractSimpleApplicationPresenter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus, IDetailView>
   implements IDetailView.Presenter,
              IsNavigationConfirmation,
              IsViewCreator<IDetailView> {

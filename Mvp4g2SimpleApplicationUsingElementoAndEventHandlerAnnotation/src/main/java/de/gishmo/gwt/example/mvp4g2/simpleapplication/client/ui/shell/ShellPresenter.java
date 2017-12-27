@@ -17,7 +17,7 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.client.ui.IsShell;
 import de.gishmo.gwt.mvp4g2.client.ui.annotation.EventHandler;
@@ -28,10 +28,10 @@ import static elemental2.dom.DomGlobal.document;
 
 @Presenter(viewClass = ShellView.class, viewInterface = IShellView.class)
 public class ShellPresenter
-  extends AbstractPresenter<Mvp4g2SimpleApplicationEventBus,
+  extends AbstractPresenter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus,
                              IShellView>
   implements IShellView.Presenter,
-             IsShell<Mvp4g2SimpleApplicationEventBus,
+             IsShell<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus,
                       IShellView> {
 
   //  public void bind() {

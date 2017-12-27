@@ -161,9 +161,9 @@
         </executions>
         <configuration>
           <classpathScope>compile</classpathScope>
-          <moduleName>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplication</moduleName>
-          <moduleShortName>Mvp4g2SimpleApplication</moduleShortName>
-          <modules>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplication</modules>
+          <moduleName>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation</moduleName>
+          <moduleShortName>Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation</moduleShortName>
+          <modules>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation</modules>
           <failOnError>true</failOnError>
           <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
            a different source language for java compilation -->
@@ -188,7 +188,7 @@
             <arg>mvp4g2.logging=true</arg>
           </devmodeArgs>
           <startupUrls>
-            <startupUrl>Mvp4g2SimpleApplicationElemento.html</startupUrl>
+            <startupUrl>Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation.html</startupUrl>
           </startupUrls>
           <warDir>${project.basedir}/src/main/webapp</warDir>
           <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
