@@ -15,7 +15,7 @@ public interface IListView
 
   void setData(List<Person> result);
 
-  public interface Presenter {
+  interface Presenter {
 
     void doUpdate(Person object);
 
