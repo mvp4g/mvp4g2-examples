@@ -20,9 +20,9 @@ package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
-import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.client.ui.IsShell;
-import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
+import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
+import de.gishmo.gwt.mvp4g2.core.ui.IsShell;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
 @Presenter(viewClass = ShellView.class, viewInterface = IShellView.class)
 public class ShellPresenter

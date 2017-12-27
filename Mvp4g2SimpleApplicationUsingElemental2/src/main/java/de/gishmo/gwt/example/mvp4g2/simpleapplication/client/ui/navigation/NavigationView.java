@@ -18,7 +18,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.UiUtils;
-import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
 
 import elemental2.dom.Element;
 import elemental2.dom.HTMLButtonElement;

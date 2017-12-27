@@ -23,13 +23,13 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DefaultHist
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.HistoryName;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.NavigationPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.ShellPresenter;
-import de.gishmo.gwt.mvp4g2.client.eventbus.IsEventBus;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Debug;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Event;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.EventBus;
-import de.gishmo.gwt.mvp4g2.client.eventbus.annotation.Start;
-import de.gishmo.gwt.mvp4g2.client.history.annotation.InitHistory;
-import de.gishmo.gwt.mvp4g2.client.history.annotation.NotFoundHistory;
+import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
+import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Debug;
+import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Event;
+import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.EventBus;
+import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Start;
+import de.gishmo.gwt.mvp4g2.core.history.annotation.InitHistory;
+import de.gishmo.gwt.mvp4g2.core.history.annotation.NotFoundHistory;
 import elemental2.dom.Element;
 
 /**

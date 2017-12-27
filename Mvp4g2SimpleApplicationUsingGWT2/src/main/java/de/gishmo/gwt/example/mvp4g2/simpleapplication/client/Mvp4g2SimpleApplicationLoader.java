@@ -18,7 +18,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
 import com.google.gwt.user.client.Window;
-import de.gishmo.gwt.mvp4g2.client.application.IsApplicationLoader;
+import de.gishmo.gwt.mvp4g2.core.application.IsApplicationLoader;
 
 /**
  * A applicaiton loader of the Mvp4g2MailApplication

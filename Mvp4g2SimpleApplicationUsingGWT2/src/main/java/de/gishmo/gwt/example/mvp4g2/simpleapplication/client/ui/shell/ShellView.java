@@ -26,7 +26,7 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.Applicati
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ImageResources;
-import de.gishmo.gwt.mvp4g2.client.ui.LazyReverseView;
+import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
 
 public class ShellView
   extends LazyReverseView<IShellView.Presenter>

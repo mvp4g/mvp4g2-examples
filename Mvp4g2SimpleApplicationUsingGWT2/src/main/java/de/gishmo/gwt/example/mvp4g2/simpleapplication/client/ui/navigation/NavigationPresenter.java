@@ -21,7 +21,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.AbstractSimpleApplicationPresenter;
-import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
 @Presenter(viewClass = NavigationView.class, viewInterface = INavigationView.class)
 public class NavigationPresenter

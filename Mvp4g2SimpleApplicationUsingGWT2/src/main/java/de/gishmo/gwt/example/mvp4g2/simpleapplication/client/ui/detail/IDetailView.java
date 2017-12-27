@@ -2,7 +2,7 @@ package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.detail;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.shared.dto.Person;
-import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
+import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
 
 
 public interface IDetailView

@@ -18,10 +18,10 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
-import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.client.ui.IsShell;
-import de.gishmo.gwt.mvp4g2.client.ui.annotation.EventHandler;
-import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
+import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
+import de.gishmo.gwt.mvp4g2.core.ui.IsShell;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 import elemental2.dom.Element;
 
 import static elemental2.dom.DomGlobal.document;

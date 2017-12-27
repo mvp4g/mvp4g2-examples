@@ -17,9 +17,9 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui;
 
-import de.gishmo.gwt.mvp4g2.client.eventbus.IsEventBus;
-import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
+import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
+import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
+import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
 
 public class AbstractSimpleApplicationPresenter<E extends IsEventBus, V extends IsLazyReverseView<?>>
   extends AbstractPresenter<E, V> {

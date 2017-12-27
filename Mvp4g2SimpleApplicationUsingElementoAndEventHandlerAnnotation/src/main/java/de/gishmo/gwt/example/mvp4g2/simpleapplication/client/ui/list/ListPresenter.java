@@ -4,10 +4,10 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplica
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.Person;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.PersonSearch;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.service.PersonService;
-import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.client.ui.IsViewCreator;
-import de.gishmo.gwt.mvp4g2.client.ui.annotation.EventHandler;
-import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
+import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
+import de.gishmo.gwt.mvp4g2.core.ui.IsViewCreator;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
 import java.util.List;
 

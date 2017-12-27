@@ -8,8 +8,8 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.Applicati
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationMessages;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.shared.dto.Person;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.shared.dto.PersonSearch;
-import de.gishmo.gwt.mvp4g2.client.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.client.ui.annotation.Presenter;
+import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
 import java.util.List;
 

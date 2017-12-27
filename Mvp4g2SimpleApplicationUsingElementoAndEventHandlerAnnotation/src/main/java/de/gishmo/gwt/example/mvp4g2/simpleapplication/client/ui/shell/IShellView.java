@@ -17,7 +17,7 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import de.gishmo.gwt.mvp4g2.client.ui.IsLazyReverseView;
+import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
 import elemental2.dom.Element;
 
 public interface IShellView

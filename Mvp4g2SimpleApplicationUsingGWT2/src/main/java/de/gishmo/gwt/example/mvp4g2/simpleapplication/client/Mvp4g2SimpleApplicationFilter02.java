@@ -1,7 +1,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
 import com.google.gwt.core.client.GWT;
-import de.gishmo.gwt.mvp4g2.client.eventbus.IsEventFilter;
+import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventFilter;
 
 public class Mvp4g2SimpleApplicationFilter02
   implements IsEventFilter<Mvp4g2SimpleApplicationEventBus> {
