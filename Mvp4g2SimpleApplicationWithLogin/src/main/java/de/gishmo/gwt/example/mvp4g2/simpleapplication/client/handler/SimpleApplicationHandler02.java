@@ -1,6 +1,5 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler;
 
-import com.google.gwt.core.client.GWT;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.LoginFilter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationWithLoginEventBus;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractHandler;

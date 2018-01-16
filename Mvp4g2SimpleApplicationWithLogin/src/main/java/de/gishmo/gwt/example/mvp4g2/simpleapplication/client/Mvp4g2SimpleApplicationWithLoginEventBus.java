@@ -17,7 +17,6 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler.SimpleApplicationHandler02;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DetailHistoryConverter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.HistoryName;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.ListHistoryConverter;
@@ -27,11 +26,9 @@ import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Debug;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Event;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.EventBus;
-import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Filters;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Start;
 import de.gishmo.gwt.mvp4g2.core.history.annotation.InitHistory;
 import de.gishmo.gwt.mvp4g2.core.history.annotation.NotFoundHistory;
-
 import elemental2.dom.Element;
 
 /**
@@ -58,10 +55,10 @@ public interface Mvp4g2SimpleApplicationWithLoginEventBus
   @Event
   void setStatus(String status);
 
-  @Event(deactivate = { SimpleApplicationHandler02.class }, historyConverter = DetailHistoryConverter.class, historyName = HistoryName.DETAIL, navigationEvent = true)
+  @Event(historyConverter = DetailHistoryConverter.class, historyName = HistoryName.DETAIL, navigationEvent = true)
   void gotoDetail(long id);
 
-  @Event(activate = { SimpleApplicationHandler02.class }, historyConverter = ListHistoryConverter.class, historyName = HistoryName.LIST, navigationEvent = true)
+  @Event(historyConverter = ListHistoryConverter.class, historyName = HistoryName.LIST, navigationEvent = true)
   void gotoList(String searchName,
                 String searchOrt);
 
