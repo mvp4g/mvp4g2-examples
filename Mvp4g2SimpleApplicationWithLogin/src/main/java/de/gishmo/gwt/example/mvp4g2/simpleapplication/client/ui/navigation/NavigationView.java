@@ -33,7 +33,6 @@ public class NavigationView
 
   private HTMLButtonElement searchButton;
   private HTMLButtonElement listButton;
-  private HTMLButtonElement loginButton;
   private HTMLButtonElement logoutButton;
   private HTMLDivElement    container;
 
@@ -57,15 +56,9 @@ public class NavigationView
                            .on(click,
                                event -> getPresenter().doLogout())
                            .asElement();
-    loginButton = button().css("navigationButton")
-                           .textContent("Login")
-                           .on(click,
-                               event -> getPresenter().doLogin())
-                           .asElement();
 
     container = div().add(searchButton)
                      .add(listButton)
-                     .add(loginButton)
                      .add(logoutButton)
                      .asElement();
   }

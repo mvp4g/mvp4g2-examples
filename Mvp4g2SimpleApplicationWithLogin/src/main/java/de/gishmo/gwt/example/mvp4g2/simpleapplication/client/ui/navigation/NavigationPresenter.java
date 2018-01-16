@@ -24,6 +24,8 @@ import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 import elemental2.dom.Element;
 
+import static elemental2.dom.DomGlobal.alert;
+
 @Presenter(viewClass = NavigationView.class, viewInterface = INavigationView.class)
 public class NavigationPresenter
   extends AbstractSimpleApplicationPresenter<Mvp4g2SimpleApplicationWithLoginEventBus, INavigationView>
@@ -42,15 +44,11 @@ public class NavigationPresenter
   }
 
   @Override
-  public void doLogin() {
-    eventBus.gotoLogin();
-  }
-
-  @Override
   public void doLogout() {
     ClientContext.get().setLoggedIn(false);
-    eventBus.logoff();
+    alert("Logout process in progress");
     eventBus.setStatus("User not login");
+    eventBus.logoff();
   }
 
   @Override

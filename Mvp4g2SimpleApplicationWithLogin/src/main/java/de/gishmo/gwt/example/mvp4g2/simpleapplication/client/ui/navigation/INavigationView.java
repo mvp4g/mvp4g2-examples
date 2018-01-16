@@ -27,8 +27,6 @@ public interface INavigationView
 
   interface Presenter {
 
-    void doLogin();
-
     void doLogout();
 
     void doShowList();
