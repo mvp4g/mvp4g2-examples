@@ -17,7 +17,6 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
-
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.handler.SimpleApplicationHandler02;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.DetailHistoryConverter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history.HistoryName;
@@ -28,22 +27,27 @@ import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Debug;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Event;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.EventBus;
+import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Filters;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Start;
 import de.gishmo.gwt.mvp4g2.core.history.annotation.InitHistory;
 import de.gishmo.gwt.mvp4g2.core.history.annotation.NotFoundHistory;
+
 import elemental2.dom.Element;
 
 /**
  * Event bus of the SimpleMvp4G2Application example
  */
 @EventBus(shell = ShellPresenter.class, historyOnStart = true)
-@Debug(logLevel = Debug.LogLevel.SIMPLE)
+@Debug(logLevel = Debug.LogLevel.DETAILED)
 public interface Mvp4g2SimpleApplicationWithLoginEventBus
   extends IsEventBus {
 
   @Start
   @Event
-  public void start();
+  void start();
+
+  @Event
+  void setUpShell();
 
   @Event
   void setNavigation(Element element);
@@ -54,16 +58,10 @@ public interface Mvp4g2SimpleApplicationWithLoginEventBus
   @Event
   void setStatus(String status);
 
-  @Event(deactivate = {SimpleApplicationHandler02.class},
-    historyConverter = DetailHistoryConverter.class,
-    historyName = HistoryName.DETAIL,
-    navigationEvent = true)
+  @Event(deactivate = { SimpleApplicationHandler02.class }, historyConverter = DetailHistoryConverter.class, historyName = HistoryName.DETAIL, navigationEvent = true)
   void gotoDetail(long id);
 
-  @Event(activate = {SimpleApplicationHandler02.class},
-    historyConverter = ListHistoryConverter.class,
-    historyName = HistoryName.LIST,
-    navigationEvent = true)
+  @Event(activate = { SimpleApplicationHandler02.class }, historyConverter = ListHistoryConverter.class, historyName = HistoryName.LIST, navigationEvent = true)
   void gotoList(String searchName,
                 String searchOrt);
 
@@ -72,10 +70,20 @@ public interface Mvp4g2SimpleApplicationWithLoginEventBus
   @Event
   void initHistory();
 
-  @Event(historyConverter = SearchHistoryConverter.class,
-    historyName = HistoryName.SEARCH,
-    navigationEvent = true)
+  @Event(historyConverter = SearchHistoryConverter.class, historyName = HistoryName.SEARCH, navigationEvent = true)
   void gotoSearch(String searchName,
                   String searchOrt);
+
+  @Event
+  void login();
+
+  @Event
+  void logoff();
+
+  @Event
+  void noValidLogin();
+
+  @Event
+  void gotoLogin();
 
 }

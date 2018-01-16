@@ -20,6 +20,7 @@ package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationWithLoginEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.AbstractSimpleApplicationPresenter;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 import elemental2.dom.Element;
 
@@ -31,8 +32,25 @@ public class NavigationPresenter
   public NavigationPresenter() {
   }
 
+  @EventHandler
+  public void onSetUpShell() {
+    eventBus.setNavigation(view.asElement());
+  }
+
   public Element asElement() {
     return view.asElement();
+  }
+
+  @Override
+  public void doLogin() {
+    eventBus.gotoLogin();
+  }
+
+  @Override
+  public void doLogout() {
+    ClientContext.get().setLoggedIn(false);
+    eventBus.logoff();
+    eventBus.setStatus("User not login");
   }
 
   @Override

@@ -18,6 +18,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
 import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
+
 import elemental2.dom.CSSProperties;
 import elemental2.dom.Element;
 import elemental2.dom.HTMLElement;
@@ -32,6 +33,7 @@ import static org.jboss.gwt.elemento.core.Elements.img;
 import static org.jboss.gwt.elemento.core.Elements.input;
 import static org.jboss.gwt.elemento.core.Elements.label;
 import static org.jboss.gwt.elemento.core.Elements.p;
+import static org.jboss.gwt.elemento.core.EventType.click;
 
 public class ShellView
   extends LazyReverseView<IShellView.Presenter>
@@ -39,6 +41,7 @@ public class ShellView
 
   /* Login screen */
   private HTMLElement      login;
+  private HTMLElement      headline;
   private HTMLInputElement userId;
   private HTMLInputElement password;
   private HTMLInputElement loginButton;
@@ -56,12 +59,15 @@ public class ShellView
   @Override
   public Element loginAsElement() {
     document.body.className = "loginBody";
+    shell.remove();
     return login;
   }
 
   @Override
   public Element shellAsElement() {
     document.body.classList.remove("loginBody");
+    headline.remove();
+    login.remove();
     return shell;
   }
 
@@ -94,6 +100,9 @@ public class ShellView
   }
 
   private void createLogin() {
+    headline = div().css("pageFont01 headline")
+                    .textContent("Please use 'admin' and 'password'")
+                    .asElement();
     userId = input("text").css("formField",
                                "formFieldUserId")
                           .asElement();
@@ -105,11 +114,12 @@ public class ShellView
                                 .attr("value",
                                       "login")
                                 .css("submitButton")
+                                .on(click,
+                                    e -> getPresenter().doLogin(userId.value,
+                                                                password.value))
                                 .asElement();
 
-    login = div().add(div().css("pageFont01 headline")
-                           .textContent("Please use 'admin' and 'password'")
-                           .asElement())
+    login = div().add(headline)
                  .add(div().css("containerOutter")
                            .add(div().css("containerMiddle")
                                      .add(div().css("containerInner",
@@ -123,8 +133,7 @@ public class ShellView
                                                                  .add(div().css("arPassword")
                                                                            .textContent("Password:"))
                                                                  .add(password)
-                                                                 .add(loginButton)
-                                                         )))))
+                                                                 .add(loginButton))))))
                  .asElement();
   }
 

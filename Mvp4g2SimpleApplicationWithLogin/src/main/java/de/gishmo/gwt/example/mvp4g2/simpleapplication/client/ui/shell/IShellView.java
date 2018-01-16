@@ -35,5 +35,7 @@ public interface IShellView
 
   interface Presenter {
 
+    void doLogin(String userId,
+                 String password);
   }
 }

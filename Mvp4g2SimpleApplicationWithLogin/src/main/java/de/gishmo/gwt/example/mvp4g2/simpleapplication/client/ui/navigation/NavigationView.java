@@ -18,6 +18,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
 import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
+
 import elemental2.dom.Element;
 import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
@@ -30,25 +31,42 @@ public class NavigationView
   extends LazyReverseView<INavigationView.Presenter>
   implements INavigationView {
 
-  HTMLButtonElement searchButton;
-  HTMLButtonElement listButton;
-  private HTMLDivElement container;
+  private HTMLButtonElement searchButton;
+  private HTMLButtonElement listButton;
+  private HTMLButtonElement loginButton;
+  private HTMLButtonElement logoutButton;
+  private HTMLDivElement    container;
 
   public NavigationView() {
     super();
   }
 
   public void createView() {
-    container = div().add(searchButton = button().css("navigationButton")
-                                                 .textContent("Search")
-                                                 .on(click,
-                                                     event -> getPresenter().doShowSearch())
-                                                 .asElement())
-                     .add(listButton = button().css("navigationButton")
-                                               .textContent("List")
-                                               .on(click,
-                                                   event -> getPresenter().doShowList())
-                                               .asElement())
+    searchButton = searchButton = button().css("navigationButton")
+                                          .textContent("Search")
+                                          .on(click,
+                                              event -> getPresenter().doShowSearch())
+                                          .asElement();
+    listButton = button().css("navigationButton")
+                         .textContent("List")
+                         .on(click,
+                             event -> getPresenter().doShowList())
+                         .asElement();
+    logoutButton = button().css("navigationButton")
+                           .textContent("Logout")
+                           .on(click,
+                               event -> getPresenter().doLogout())
+                           .asElement();
+    loginButton = button().css("navigationButton")
+                           .textContent("Login")
+                           .on(click,
+                               event -> getPresenter().doLogin())
+                           .asElement();
+
+    container = div().add(searchButton)
+                     .add(listButton)
+                     .add(loginButton)
+                     .add(logoutButton)
                      .asElement();
   }
 

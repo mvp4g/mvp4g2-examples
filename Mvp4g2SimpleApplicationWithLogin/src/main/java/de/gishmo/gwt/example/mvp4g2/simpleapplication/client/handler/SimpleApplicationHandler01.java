@@ -4,8 +4,11 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplica
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Handler;
+
 import elemental2.dom.DomGlobal;
 import elemental2.dom.Element;
+
+import static elemental2.dom.DomGlobal.alert;
 
 @Handler
 public class SimpleApplicationHandler01
@@ -32,5 +35,4 @@ public class SimpleApplicationHandler01
                            String searchOrt) {
     DomGlobal.window.alert("SimpleApplicaitonHandler02: -> fire event 'gotoSearch' with searchName: >>" + searchName + "<< and searchName >>" + searchName + "<<");
   }
-
 }
