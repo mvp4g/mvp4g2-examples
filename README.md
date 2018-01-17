@@ -24,4 +24,4 @@ A simple application similar to the example Mvp4g2SimpleApplicationUsingElementa
 Same example as Mvp4g2SimpleApplicationUsingElemental2, but using GWT widgets.
 
 #### Mvp4g2SimpleApplicationWithLogin
-This example uses Elemento and the @EventHandler feature and shows how to use a filter. It has a login page at start and uses a filter to check wheather the user is logged in or not. By pressing the 'logout'-button the user is logged out from the applilcation. The next event will be filtered and the user gets redirected to the login page.
+This example uses Elemento and the @EventHandler feature and shows how to use a filter. It has a login page at start and uses a filter to check wheather the user is logged in or not. By pressing the 'logout'-button, the user is logged out from the applilcation. The next event will be filtered and the user gets redirected to the login page.
