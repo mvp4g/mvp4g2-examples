@@ -14,8 +14,12 @@ import java.util.Map;
 
 /**
  * Due to the fact, that there is currently no J2Cl based server framework and to proof mvp4g2 is working,
- * There is no need to do real server calls. So, we will sumulate the server calls, to concentrate on
+ * There is no need to do real server calls. So, we will simulate the server calls, to concentrate on
  * mvp4g2.
+ * <p>
+ * It is up to you to decide which way you use to talk to the server!
+ * <p>
+ * For the example it does matter, if we retrieve the data form a server mock or a client mock!
  */
 public class PersonService {
 

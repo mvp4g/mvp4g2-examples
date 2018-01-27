@@ -44,6 +44,13 @@ public class ListPresenter
     }
   }
 
+  /**
+   * Because we have told mvp4g2, that this presenter will create it's view
+   * (viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER), we have to
+   * implement this method.
+   *
+   * @return a new instance of the view.
+   */
   @Override
   public IListView createView() {
     return new ListView();

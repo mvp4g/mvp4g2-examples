@@ -26,6 +26,10 @@ import elemental2.dom.Element;
 
 import static elemental2.dom.DomGlobal.document;
 
+/**
+ * this is the presenter of the shell. The shell divides the browser in
+ * severeal areas.
+ */
 @Presenter(viewClass = ShellView.class, viewInterface = IShellView.class)
 public class ShellPresenter
   extends AbstractPresenter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus,
@@ -34,34 +38,53 @@ public class ShellPresenter
              IsShell<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus,
                       IShellView> {
 
-  //  public void bind() {
-//    Element loadingIndicator = DOM.getElementById("loading");
-//    if (loadingIndicator != null) {
-//      loadingIndicator.removeFromParent();
-//    }
-//  }
-
   public ShellPresenter() {
   }
 
+  /**
+   * will be called before every event this presenter handles.
+   *
+   * @param eventName name of the event
+   */
   public void onBeforeEvent(String eventName) {
   }
 
+  /**
+   * Set the element in the content area.
+   *
+   * @param element The element to be set in the content area
+   */
   @EventHandler
   public void onSetContent(Element element) {
     view.setCenter(element);
   }
 
+  /**
+   * Set the element in the navigation area.
+   *
+   * @param element The element to be set in the navigation area
+   */
   @EventHandler
   public void onSetNavigation(Element element) {
     view.setNavigation(element);
   }
 
+  /**
+   * The ShellPresenter has to implemented this method, because the framework
+   * can not do this. (It does not know, what to use).
+   *
+   * We append the ShellView to the browser body.
+   */
   @Override
   public void setShell() {
     document.body.appendChild(view.asElement());
   }
 
+  /**
+   * Set the status to the footer and displays it!
+   *
+   * @param status The new message to display.
+   */
   @EventHandler
   public void onSetStatus(String status) {
     view.setStatus(status);

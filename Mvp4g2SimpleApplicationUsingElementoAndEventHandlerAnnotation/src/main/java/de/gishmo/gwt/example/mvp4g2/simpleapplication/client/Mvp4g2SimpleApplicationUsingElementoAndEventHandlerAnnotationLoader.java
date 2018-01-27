@@ -21,11 +21,19 @@ import de.gishmo.gwt.mvp4g2.core.application.IsApplicationLoader;
 import elemental2.dom.DomGlobal;
 
 /**
- * A applicaiton loader of the Mvp4g2MailApplication
+ * A application loader of the Mvp4g2MailApplication
  */
 public class Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationLoader
   implements IsApplicationLoader {
 
+  /**
+   * The laoder of the applciation.
+   * <p>
+   * Will be executed at the start of the application
+   * and before the first event is executed.
+   *
+   * @param finishLoadCommand has to be called after the application has finieshed loading
+   */
   @Override
   public void load(FinishLoadCommand finishLoadCommand) {
     DomGlobal.window.alert("Do Loading ... ");

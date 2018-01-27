@@ -5,6 +5,12 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext
 import de.gishmo.gwt.mvp4g2.core.history.IsHistoryConverter;
 import de.gishmo.gwt.mvp4g2.core.history.annotation.History;
 
+/**
+ * The DetailHistoryConverter of the application.
+ *
+ * We use different HistroyConverter to check wheather the framework can
+ * handle different converers or not!
+ */
 @History(type = History.HistoryConverterType.DEFAULT)
 public class DetailHistoryConverter
   implements IsHistoryConverter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus> {

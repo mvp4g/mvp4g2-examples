@@ -23,6 +23,14 @@ import elemental2.dom.Element;
 public interface IShellView
   extends IsLazyReverseView<IShellView.Presenter> {
 
+  /**
+   * mvp4g2 does not know Widget-, Element- or any other class. So, the
+   * presenter have to manage the widget by themselves. The method will
+   * enable the presenter to get the view. (In our case it is a
+   * Elemental 2 element!)
+   *
+   * @return The shell element
+   */
   Element asElement();
 
   void setCenter(Element asWidget);

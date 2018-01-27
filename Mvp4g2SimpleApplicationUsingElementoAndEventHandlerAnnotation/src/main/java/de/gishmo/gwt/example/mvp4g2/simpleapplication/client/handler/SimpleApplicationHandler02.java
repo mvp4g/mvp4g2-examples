@@ -6,13 +6,36 @@ import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Handler;
 import elemental2.dom.DomGlobal;
 
+/**
+ * we use the handler to check weather the framework will be able to call
+ * presenters and handlers for the same event.
+ *
+ * for any ecvnt we handle, we will use a alert to present a info message.
+ */
 @Handler
 public class SimpleApplicationHandler02
   extends AbstractHandler<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus> {
 
   @EventHandler
   public void onStart() {
-    DomGlobal.window.alert("SimpleApplicaitonHandler02: -> handling start event");
+    DomGlobal.window.alert("SimpleApplicationHandler02: -> handling start event");
+  }
+
+  @EventHandler
+  public void onGotoDetail(long id) {
+    DomGlobal.window.alert("SimpleApplicationHandler02: -> fire event 'gotoDetail' with key: >>" + id + "<<");
+  }
+
+  @EventHandler
+  public void onGotoList(String searchName,
+                         String searchOrt) {
+    DomGlobal.window.alert("SimpleApplicationHandler02: -> fire event 'gotoList' with searchName: >>" + searchName + "<< and searchName >>" + searchName + "<<");
+  }
+
+  @EventHandler
+  public void onGotoSearch(String searchName,
+                           String searchOrt) {
+    DomGlobal.window.alert("SimpleApplicationHandler02: -> fire event 'gotoSearch' with searchName: >>" + searchName + "<< and searchName >>" + searchName + "<<");
   }
 
 }

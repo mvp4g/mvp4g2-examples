@@ -56,6 +56,11 @@ public class DetailPresenter
     }
   }
 
+  /**
+   * handles the gotoDetail-Event
+   *
+   * @param id id of the person to display
+   */
   @EventHandler
   public void onGotoDetail(long id) {
     eventBus.setNavigationConfirmation(this);
@@ -70,6 +75,12 @@ public class DetailPresenter
     }
   }
 
+  /**
+   * This method will be called from the framework. The DetailPresenter can decide
+   * weather the next event will be exceuted or not.
+   *
+   * @param event command representation of the event to confirm or stop
+   */
   @Override
   public void confirm(NavigationEventCommand event) {
     if (view.isDirty()) {
@@ -81,6 +92,13 @@ public class DetailPresenter
     }
   }
 
+  /**
+   * Because we have told mvp4g2, that this presenter will create it's view
+   * (viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER), we have to
+   * implement this method.
+   *
+   * @return a new instance of the view.
+   */
   @Override
   public IDetailView createView() {
     return new DetailView();

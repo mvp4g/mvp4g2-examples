@@ -18,6 +18,9 @@ public class SearchPresenter
     super();
   }
 
+  /**
+   * This method wil lhandle the case, that there is no history inside the url!
+   */
   @EventHandler
   public void onInitHistory() {
     onGotoSearch("",
@@ -43,6 +46,13 @@ public class SearchPresenter
                       searchCity);
   }
 
+  /**
+   * Because we have told mvp4g2, that this presenter will create it's view
+   * (viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER), we have to
+   * implement this method.
+   *
+   * @return a new instance of the view.
+   */
   @Override
   public ISearchView createView() {
     return new SearchView();

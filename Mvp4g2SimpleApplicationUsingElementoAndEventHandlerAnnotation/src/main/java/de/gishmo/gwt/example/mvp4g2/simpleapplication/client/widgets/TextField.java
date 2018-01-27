@@ -11,6 +11,9 @@ import static org.jboss.gwt.elemento.core.Elements.input;
 import static org.jboss.gwt.elemento.core.EventType.blur;
 import static org.jboss.gwt.elemento.core.EventType.focus;
 
+/**
+ * The TextField class is the text widget used by the application.
+ */
 public class TextField
   implements IsElement<HTMLElement> {
 

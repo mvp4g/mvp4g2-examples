@@ -24,6 +24,12 @@ import de.gishmo.gwt.mvp4g2.core.application.annotation.Application;
  * Implemantation of the MailApplicaiton class.
  * <p>
  * <p>Use the @IsApplication annotation to perform configuration informations.</p>
+ * <p>In this case we use the 'Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus' class
+ * as event bus of our application and 'Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationLoader'
+ * as loader!</p>
+ * <p>Please keep in mind, the services are simulated inside the client (because this is not part of the
+ * framework). You can use any technique to call the serner!</p>
+ * <p>Inside the view, we will use Elemento to setup view.</p>
  */
 @Application(eventBus = Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus.class,
   loader = Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationLoader.class)
