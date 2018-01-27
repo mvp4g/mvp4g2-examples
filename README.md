@@ -6,7 +6,10 @@ To run the examples:
 * clone [mvp4g2](https://github.com/mvp4g/mvp4g2) and install it (mvn install).
 * clone mvp4g2-examples and run mvn gwt:devmode to start one of the examples
 
-Please, keep in mind, mvp4g2 ist a client framework, so all server calls are simulated on the client side and are mocked in this examples.
+Please, keep in mind, mvp4g2 ist a client framework, so all server calls are simulated on the client side and are mocked in this examples. Because of that, there is no need to have a server. Most of the examples are used to check features of the framework. The *Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation* example
+
+
+Most of the examples implement only the Entrypoint an no more other GWT classes (except the Mvp4g2SimpleApplicationUsingGWT2 example). So, it will be quite easy to migrate thes examples to J2CL/GWT 3.
 
 #### Mvp4g2SimpleApplicationUsingElemental2
 A simple application based on MVP4g2 and Elemental 2. In this example, the only class used from GWT is the EntryPoint. 
