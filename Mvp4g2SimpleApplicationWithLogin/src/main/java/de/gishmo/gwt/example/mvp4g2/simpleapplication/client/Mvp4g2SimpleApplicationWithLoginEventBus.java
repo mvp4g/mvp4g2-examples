@@ -34,7 +34,7 @@ import elemental2.dom.Element;
 /**
  * Event bus of the SimpleMvp4G2Application example
  */
-@EventBus(shell = ShellPresenter.class, historyOnStart = true)
+@EventBus(shell = ShellPresenter.class)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
 public interface Mvp4g2SimpleApplicationWithLoginEventBus
   extends IsEventBus {

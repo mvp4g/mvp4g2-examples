@@ -26,7 +26,8 @@ import de.gishmo.gwt.mvp4g2.core.application.annotation.Application;
  * <p>Use the @IsApplication annotation to perform configuration informations.</p>
  */
 @Application(eventBus = Mvp4g2SimpleApplicationWithLoginEventBus.class,
-  loader = Mvp4g2SimpleApplicationWithLoginLoader.class)
+             loader = Mvp4g2SimpleApplicationWithLoginLoader.class,
+             historyOnStart = true)
 interface Mvp4g2SimpleApplicationWithLoginApplication
   extends IsApplication {
 }

@@ -32,7 +32,8 @@ import de.gishmo.gwt.mvp4g2.core.application.annotation.Application;
  * <p>Inside the view, we will use Elemento to setup view.</p>
  */
 @Application(eventBus = Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus.class,
-  loader = Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationLoader.class)
+             loader = Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationLoader.class,
+             historyOnStart = true)
 interface Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationApplication
   extends IsApplication {
 }

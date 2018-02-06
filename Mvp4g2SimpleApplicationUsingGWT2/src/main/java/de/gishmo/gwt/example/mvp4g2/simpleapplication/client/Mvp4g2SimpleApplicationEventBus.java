@@ -33,7 +33,7 @@ import de.gishmo.gwt.mvp4g2.core.history.annotation.NotFoundHistory;
 /**
  * Event bus of the SimpleMvp4G2Application example
  */
-@EventBus(shell = ShellPresenter.class, historyOnStart = true)
+@EventBus(shell = ShellPresenter.class)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
 @Filters(filterClasses = {Mvp4g2SimpleApplicationFilter01.class,
                           Mvp4g2SimpleApplicationFilter02.class})

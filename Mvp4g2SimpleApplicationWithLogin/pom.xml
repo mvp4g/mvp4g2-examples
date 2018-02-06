@@ -31,6 +31,9 @@
     <!-- Convenience property to set the GWT version -->
     <gwtVersion>2.8.2</gwtVersion>
 
+    <!-- mvp4g2 version -->
+    <mvp4g2.version>1.0-beta-2</mvp4g2.version>
+
     <elemento.version>0.6.2</elemento.version>
 
     <!-- GWT needs at least java 1.6 -->
@@ -79,12 +82,12 @@
     <dependency>
       <groupId>de.gishmo.gwt</groupId>
       <artifactId>mvp4g2</artifactId>
-      <version>1.0-beta-1</version>
+      <version>${mvp4g2.version}</version>
     </dependency>
     <dependency>
       <groupId>de.gishmo.gwt</groupId>
       <artifactId>mvp4g2-processor</artifactId>
-      <version>1.0-beta-1</version>
+      <version>${mvp4g2.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.gwt.elemento</groupId>
@@ -187,6 +190,7 @@
             <arg>-setProperty</arg>
             <arg>mvp4g2.logging=true</arg>
           </devmodeArgs>
+          <launcherDir>${project.basedir}/src/main/webapp</launcherDir>
           <startupUrls>
             <startupUrl>Mvp4g2SimpleApplicationWithLogin.html</startupUrl>
           </startupUrls>

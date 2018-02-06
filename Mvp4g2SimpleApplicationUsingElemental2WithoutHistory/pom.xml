@@ -31,6 +31,9 @@
     <!-- Convenience property to set the GWT version -->
     <gwtVersion>2.8.2</gwtVersion>
 
+    <!-- mvp4g2 version -->
+    <mvp4g2.version>1.0-beta-2</mvp4g2.version>
+
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -77,12 +80,12 @@
     <dependency>
       <groupId>de.gishmo.gwt</groupId>
       <artifactId>mvp4g2</artifactId>
-      <version>1.0-beta-1</version>
+      <version>${mvp4g2.version}</version>
     </dependency>
     <dependency>
       <groupId>de.gishmo.gwt</groupId>
       <artifactId>mvp4g2-processor</artifactId>
-      <version>1.0-beta-1</version>
+      <version>${mvp4g2.version}</version>
     </dependency>
   </dependencies>
 
