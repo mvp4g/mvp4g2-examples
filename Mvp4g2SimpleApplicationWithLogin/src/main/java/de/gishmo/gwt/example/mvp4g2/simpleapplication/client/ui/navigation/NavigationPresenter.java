@@ -48,7 +48,7 @@ public class NavigationPresenter
     ClientContext.get().setLoggedIn(false);
     alert("Logout process in progress");
     eventBus.setStatus("User not login");
-    eventBus.logoff();
+    // eventBus.logoff();
   }
 
   @Override

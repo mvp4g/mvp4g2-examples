@@ -75,9 +75,6 @@ public interface Mvp4g2SimpleApplicationWithLoginEventBus
   void login();
 
   @Event
-  void logoff();
-
-  @Event
   void noValidLogin();
 
   @Event
