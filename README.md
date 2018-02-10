@@ -13,7 +13,7 @@ Most of the examples are used to check features of the framework. Except the *Mv
 Most of the examples implement only the Entrypoint an no more other GWT classes (except the Mvp4g2SimpleApplicationUsingGWT2 example). So, it will be quite easy to migrate thes examples to J2CL/GWT 3.
 
 #### Mvp4g2MailApplication
-A simple mail application with a master slave layout. Using the multiple presenter feature. GXT GPL is used for layout. ***In Progress** 
+A simple mail application with a master slave layout. Using the multiple presenter feature. GXT GPL is used for layout. ***In Progress***
 
 #### Mvp4g2SimpleApplicationUsingElemental2
 A simple application based on MVP4g2 and Elemental 2. In this example, the only class used from GWT is the EntryPoint. 
