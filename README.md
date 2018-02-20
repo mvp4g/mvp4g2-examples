@@ -1,5 +1,5 @@
 # MVP4G2 Examples
-To help you understand the framework, Mvp4g2 comes with tutorials and examples. 
+To help you to understand how the framework works, Mvp4g2 comes with tutorials and examples. 
 
 To run the examples:
 
