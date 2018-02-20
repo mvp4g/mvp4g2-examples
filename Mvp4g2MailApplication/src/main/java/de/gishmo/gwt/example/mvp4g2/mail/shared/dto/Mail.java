@@ -15,21 +15,25 @@
  */
 package de.gishmo.gwt.example.mvp4g2.mail.shared.dto;
 
+import de.gishmo.gwt.example.mvp4g2.mail.shared.GUID;
+
 /**
  * A simple structure containing the basic components of an email.
  */
 public final class Mail {
 
+  /* uniques id */
+  private final String id = GUID.get();
   /* The sender's name */
-  public String sender;
+  private String sender;
   /* The sender's email */
-  public String email;
+  private String email;
   /* The email subject line */
-  public String subject;
+  private String subject;
   /* The email's HTML body */
-  public String body;
+  private String body;
   /* Read flag */
-  public boolean read;
+  private boolean read;
 
   public Mail() {
   }
@@ -43,6 +47,10 @@ public final class Mail {
     this.subject = subject;
     this.body = body;
     this.read = read;
+  }
+
+  public String getId() {
+    return id;
   }
 
   public String getSender() {

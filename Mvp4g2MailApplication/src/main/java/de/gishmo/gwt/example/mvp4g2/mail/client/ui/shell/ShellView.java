@@ -17,7 +17,9 @@
 
 package de.gishmo.gwt.example.mvp4g2.mail.client.ui.shell;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.container.Viewport;
@@ -29,8 +31,8 @@ public class ShellView
 
   private Viewport              viewport;
   private BorderLayoutContainer shell;
-  private SimpleContainer       northContainer;
-  private SimpleContainer       southContainer;
+  private ContentPanel       northContainer;
+  private ContentPanel       southContainer;
   private SimpleContainer       centerContainer;
 
   public ShellView() {
@@ -62,6 +64,7 @@ public class ShellView
 
   @Override
   public void setSouth(Widget widget) {
+    GWT.debugger();
     if (this.southContainer.getWidget() != null) {
       this.southContainer.getWidget()
                          .removeFromParent();
@@ -75,19 +78,25 @@ public class ShellView
     this.shell = new BorderLayoutContainer();
     viewport.add(this.shell);
 
-    this.northContainer = new SimpleContainer();
-    BorderLayoutContainer.BorderLayoutData bldNorth = new BorderLayoutContainer.BorderLayoutData(0.4);
+    this.northContainer = createContentPanel();
+    BorderLayoutContainer.BorderLayoutData bldNorth = new BorderLayoutContainer.BorderLayoutData(512);
     bldNorth.setCollapsible(true);
     bldNorth.setSplit(true);
     this.shell.setNorthWidget(this.northContainer,
                               bldNorth);
 
-    this.southContainer = new SimpleContainer();
+    this.southContainer = createContentPanel();
     BorderLayoutContainer.BorderLayoutData bldSouth = new BorderLayoutContainer.BorderLayoutData(36);
-    this.shell.setNorthWidget(this.southContainer,
+    this.shell.setSouthWidget(this.southContainer,
                               bldSouth);
 
     this.centerContainer = new SimpleContainer();
     this.shell.setCenterWidget(this.centerContainer);
+  }
+
+  private ContentPanel createContentPanel() {
+    ContentPanel cp = new ContentPanel();
+    cp.setHeaderVisible(false);
+    return cp;
   }
 }

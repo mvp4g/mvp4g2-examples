@@ -17,7 +17,6 @@
 
 package de.gishmo.gwt.example.mvp4g2.mail.client.ui.shell;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
@@ -39,8 +38,13 @@ public class ShellPresenter
 
   @Override
   public void setShell() {
-    GWT.debugger();
+    // add the shell to the browser viewport
     RootPanel.get().add(view.asWidget());
+
+    // add list of mails
+    eventBus.addMailList();
+    // add status bar
+    eventBus.addStatusBar();
   }
 
   @EventHandler
