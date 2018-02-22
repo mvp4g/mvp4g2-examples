@@ -23,6 +23,7 @@ import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+
 import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
 
 public class ShellView
@@ -31,8 +32,8 @@ public class ShellView
 
   private Viewport              viewport;
   private BorderLayoutContainer shell;
-  private ContentPanel       northContainer;
-  private ContentPanel       southContainer;
+  private ContentPanel          northContainer;
+  private ContentPanel          southContainer;
   private SimpleContainer       centerContainer;
 
   public ShellView() {
@@ -48,7 +49,7 @@ public class ShellView
   public void setCenter(Widget widget) {
     if (this.centerContainer.getWidget() != null) {
       this.centerContainer.getWidget()
-                         .removeFromParent();
+                          .removeFromParent();
     }
     this.centerContainer.setWidget(widget);
   }
@@ -79,7 +80,8 @@ public class ShellView
     viewport.add(this.shell);
 
     this.northContainer = createContentPanel();
-    BorderLayoutContainer.BorderLayoutData bldNorth = new BorderLayoutContainer.BorderLayoutData(512);
+    BorderLayoutContainer.BorderLayoutData bldNorth = new BorderLayoutContainer.BorderLayoutData(
+      .4);
     bldNorth.setCollapsible(true);
     bldNorth.setSplit(true);
     this.shell.setNorthWidget(this.northContainer,
