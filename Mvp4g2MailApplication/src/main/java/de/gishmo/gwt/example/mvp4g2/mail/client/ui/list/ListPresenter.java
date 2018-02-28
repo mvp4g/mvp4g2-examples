@@ -34,7 +34,7 @@ public class ListPresenter
   extends AbstractPresenter<Mvp4g2MailEventBus,
                              IListView>
   implements IListView.Presenter,
-             IsViewCreator {
+             IsViewCreator<IListView> {
 
   public ListPresenter() {
   }
