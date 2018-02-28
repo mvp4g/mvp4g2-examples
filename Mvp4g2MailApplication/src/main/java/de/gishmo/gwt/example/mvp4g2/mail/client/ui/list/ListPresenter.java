@@ -19,14 +19,16 @@ package de.gishmo.gwt.example.mvp4g2.mail.client.ui.list;
 
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
+import de.gishmo.gwt.mvp4g2.core.ui.IsViewCreator;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
-@Presenter(viewClass = ListView.class, viewInterface = IListView.class)
+@Presenter(viewClass = ListView.class, viewInterface = IListView.class, viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER)
 public class ListPresenter
   extends AbstractPresenter<Mvp4g2MailEventBus,
                              IListView>
-  implements IListView.Presenter {
+  implements IListView.Presenter,
+             IsViewCreator<IListView> {
 
   public ListPresenter() {
   }
@@ -36,4 +38,8 @@ public class ListPresenter
     eventBus.setNorth(view.asWidget());
   }
 
+  @Override
+  public IListView createView() {
+    return new ListView();
+  }
 }
