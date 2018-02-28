@@ -23,14 +23,14 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
-  <!--<servlet>-->
-    <!--<servlet-name>personServiceImpl</servlet-name>-->
-    <!--<servlet-class>de.gishmo.gwt.example.mvp4g2.simpleapplication.server.PersonServiceImpl</servlet-class>-->
-  <!--</servlet>-->
-  <!--<servlet-mapping>-->
-    <!--<servlet-name>personServiceImpl</servlet-name>-->
-    <!--<url-pattern>/simpleApplication/person</url-pattern>-->
-  <!--</servlet-mapping>-->
+  <servlet>
+    <servlet-name>mailServiceImpl</servlet-name>
+    <servlet-class>de.gishmo.gwt.example.mvp4g2.mail.server.FakedMailServer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mailServiceImpl</servlet-name>
+    <url-pattern>/mailapplication/mailService</url-pattern>
+  </servlet-mapping>
 
   <!-- Default page to serve -->
   <welcome-file-list>

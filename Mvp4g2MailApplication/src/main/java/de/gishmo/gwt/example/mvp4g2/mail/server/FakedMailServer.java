@@ -13,9 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.gishmo.gwt.example.mvp4g2.mail.shared.server;
+package de.gishmo.gwt.example.mvp4g2.mail.server;
 
 
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import de.gishmo.gwt.example.mvp4g2.mail.client.service.MailService;
 import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
 
 import java.util.ArrayList;
@@ -23,12 +25,14 @@ import java.util.ArrayList;
 /**
  * A simple client-side generator of fake email messages.
  */
-public class FakedMailServer {
+public class FakedMailServer
+  extends RemoteServiceServlet
+  implements MailService {
 
   private static final int NUM_ITEMS           = 64;
   private static final int FRAGMENTS_PER_EMAIL = 10;
 
-  private static final String[] senders = new String[]{"markboland05",
+  private final String[] senders = new String[]{"markboland05",
                                                        "Hollie Voss",
                                                        "boticario",
                                                        "Emerson Milton",
@@ -76,7 +80,7 @@ public class FakedMailServer {
                                                        "wishesundmore",
                                                        "Benito Meeks"};
 
-  private static final String[] emails = new String[]{"mark@example.com",
+  private final String[] emails = new String[]{"mark@example.com",
                                                       "hollie@example.com",
                                                       "boticario@example.com",
                                                       "emerson@example.com",
@@ -123,7 +127,7 @@ public class FakedMailServer {
                                                       "wishesundmore@example.com",
                                                       "benito@example.com"};
 
-  private static final String[] subjects = new String[]{"URGENT -[Mon, 24 Apr 2006 02:17:27 +0000]",
+  private final String[] subjects = new String[]{"URGENT -[Mon, 24 Apr 2006 02:17:27 +0000]",
                                                         "URGENT TRANSACTION -[Sun, 23 Apr 2006 13:10:03 +0000]",
                                                         "fw: Here it comes",
                                                         "voce ganho um vale presente Boticario",
@@ -163,7 +167,7 @@ public class FakedMailServer {
                                                         "We will sale 4 you cebtdbwtcv",
                                                         "RE: Best Top Financial Market Specialists Trader Picks"};
 
-  private static final String[] fragments = new String[]{
+  private final String[] fragments = new String[]{
     "Dear Friend,<br><br>I am Mr. Mark Boland the Bank Manager of ABN AMRO " + "BANK 101 Moorgate, London, EC2M 6SB.<br><br>",
     "I have an urgent and very confidential business proposition for you. On "
     + "July 20, 2001; Mr. Zemenu Gente, a National of France, who used to be a "
@@ -264,54 +268,64 @@ public class FakedMailServer {
     + "but they are not what is most important. What is important are the "
     + "rights of man, emancipation from prejudices, and equality of "
     + "citizenship, and all these ideas Napoleon has retained in full " + "force.\""};
+//
+//  private static int senderIdx = 0, emailIdx = 0, subjectIdx = 0, fragmentIdx = 0;
+  private ArrayList<Mail> listOfEmails = new ArrayList<>();
 
-  private static int senderIdx = 0, emailIdx = 0, subjectIdx = 0, fragmentIdx = 0;
-  private static ArrayList<Mail> items = new ArrayList<Mail>();
+//  static {
+//    for (int i = 0; i < NUM_ITEMS; ++i) {
+//      items.add(createFakeMail());
+//    }
+//  }
 
-  static {
+  @Override
+  public void init() {
+    this.listOfEmails = new ArrayList<>();
     for (int i = 0; i < NUM_ITEMS; ++i) {
-      items.add(createFakeMail());
+      listOfEmails.add(createFakeMail(i));
     }
   }
 
-  public static Mail getMail(int index) {
-    if (index >= items.size()) {
-      return null;
-    }
-    return items.get(index);
-  }
-
-  public static int getMailCount() {
-    return items.size();
-  }
-
-  private static Mail createFakeMail() {
-    String sender = senders[senderIdx++];
-    if (senderIdx == senders.length) {
-      senderIdx = 0;
-    }
-
-    String email = emails[emailIdx++];
-    if (emailIdx == emails.length) {
-      emailIdx = 0;
-    }
-
-    String subject = subjects[subjectIdx++];
-    if (subjectIdx == subjects.length) {
-      subjectIdx = 0;
-    }
-
+//
+//  public static Mail getMail(int index) {
+//    if (index >= items.size()) {
+//      return null;
+//    }
+//    return items.get(index);
+//  }
+//
+//  public static int getMailCount() {
+//    return items.size();
+//  }
+//
+//  public static ArrayList<Mail> getAllMails() {
+//    return items;
+//  }
+//
+  private Mail createFakeMail(int i) {
+    String sender = senders[i % senders.length];
+    String email = emails[i % emails.length];
+    String subject = subjects[i % subjects.length];
     StringBuilder body = new StringBuilder();
-    for (int i = 0; i < FRAGMENTS_PER_EMAIL; ++i) {
-      body.append(fragments[fragmentIdx++]);
-      if (fragmentIdx == fragments.length) {
-        fragmentIdx = 0;
-      }
+    for (int j = 0; j < FRAGMENTS_PER_EMAIL; ++j) {
+      body.append(fragments[j % fragments.length]);
     }
-
     return new Mail(sender,
                     email,
                     subject,
                     body.toString());
+  }
+
+  @Override
+  public ArrayList<Mail> getAllMails() {
+    return listOfEmails;
+  }
+
+  @Override
+  public Mail getMail(String mailId) {
+    return listOfEmails.stream()
+                       .filter(mail -> mail.getId() == mailId)
+                       .findFirst()
+                       .orElse(null);
   }
 }

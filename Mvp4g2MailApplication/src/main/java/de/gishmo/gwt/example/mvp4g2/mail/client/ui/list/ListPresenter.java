@@ -17,18 +17,24 @@
 
 package de.gishmo.gwt.example.mvp4g2.mail.client.ui.list;
 
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
+import de.gishmo.gwt.example.mvp4g2.mail.client.model.ClientContext;
+import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.core.ui.IsViewCreator;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
+
+import java.util.ArrayList;
 
 @Presenter(viewClass = ListView.class, viewInterface = IListView.class, viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER)
 public class ListPresenter
   extends AbstractPresenter<Mvp4g2MailEventBus,
                              IListView>
   implements IListView.Presenter,
-             IsViewCreator<IListView> {
+             IsViewCreator {
 
   public ListPresenter() {
   }
@@ -36,6 +42,21 @@ public class ListPresenter
   @EventHandler
   public void onAddMailList() {
     eventBus.setNorth(view.asWidget());
+  }
+
+  @EventHandler
+  public void onStartApplication() {
+    ClientContext.get().getMailService().getAllMails(new AsyncCallback<ArrayList<Mail>>() {
+      @Override
+      public void onFailure(Throwable throwable) {
+        Window.alert("panic!");
+      }
+
+      @Override
+      public void onSuccess(ArrayList<Mail> listOfEmails) {
+        view.edit(listOfEmails);
+      }
+    });
   }
 
   @Override

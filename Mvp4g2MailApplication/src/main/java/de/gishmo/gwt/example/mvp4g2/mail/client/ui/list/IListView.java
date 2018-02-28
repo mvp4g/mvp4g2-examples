@@ -19,13 +19,18 @@ package de.gishmo.gwt.example.mvp4g2.mail.client.ui.list;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
 import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
+
+import java.util.ArrayList;
 
 public interface IListView
   extends IsLazyReverseView<IListView.Presenter>,
           IsWidget {
 
   Widget asWidget();
+
+  void edit(ArrayList<Mail> listOfEmails);
 
   interface Presenter {
   }

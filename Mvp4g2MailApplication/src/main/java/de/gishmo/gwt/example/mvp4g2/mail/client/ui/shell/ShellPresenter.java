@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.core.ui.IsShell;
+import de.gishmo.gwt.mvp4g2.core.ui.IsViewCreator;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
@@ -31,6 +32,7 @@ public class ShellPresenter
   extends AbstractPresenter<Mvp4g2MailEventBus,
                              IShellView>
   implements IShellView.Presenter,
+             IsViewCreator<IShellView>,
              IsShell<Mvp4g2MailEventBus,
                       IShellView> {
 
@@ -66,7 +68,4 @@ public class ShellPresenter
   public IShellView createView() {
     return GWT.create(ShellView.class);
   }
-
-  // TODO: Plausi einbauen, die prüft, ob bei View-Creation Presenter die createView()-Methode
-  // vorhanden ist
 }

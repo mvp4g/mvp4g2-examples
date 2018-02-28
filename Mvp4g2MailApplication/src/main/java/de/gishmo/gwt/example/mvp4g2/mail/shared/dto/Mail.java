@@ -15,12 +15,14 @@
  */
 package de.gishmo.gwt.example.mvp4g2.mail.shared.dto;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import de.gishmo.gwt.example.mvp4g2.mail.shared.GUID;
 
 /**
  * A simple structure containing the basic components of an email.
  */
-public final class Mail {
+public final class Mail
+  implements IsSerializable {
 
   /* uniques id */
   private final String id = GUID.get();

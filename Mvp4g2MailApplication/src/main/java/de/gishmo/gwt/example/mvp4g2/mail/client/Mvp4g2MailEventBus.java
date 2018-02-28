@@ -6,13 +6,13 @@ import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Debug;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Event;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.EventBus;
+import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Start;
 
 @EventBus(shell = ShellPresenter.class)
 @Debug(logLevel = Debug.LogLevel.DETAILED)
 public interface Mvp4g2MailEventBus
   extends IsEventBus {
 
-//  @EventHandler
   @Event
   void addMailList();
 
@@ -25,4 +25,7 @@ public interface Mvp4g2MailEventBus
   @Event
   void setSouth(Widget widget);
 
+  @Start
+  @Event
+  void startApplication();
 }

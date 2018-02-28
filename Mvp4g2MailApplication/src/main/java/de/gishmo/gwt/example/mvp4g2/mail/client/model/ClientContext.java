@@ -1,37 +1,27 @@
 package de.gishmo.gwt.example.mvp4g2.mail.client.model;
 
+import com.google.gwt.core.client.GWT;
+import de.gishmo.gwt.example.mvp4g2.mail.client.service.MailService;
+import de.gishmo.gwt.example.mvp4g2.mail.client.service.MailServiceAsync;
+
 public class ClientContext {
-//
-//  {
-//    this.personSearch = new PersonSearch();
-//  }
-//
-  private static ClientContext      instance;
-//  /* searchs */
-//  private        PersonSearch       personSearch;
-//  /* Service */
-//  private        PersonServiceAsync personService;
+
+  private static ClientContext    instance;
+  /* Service */
+  private        MailServiceAsync mailService;
 
   private ClientContext() {
+    mailService = GWT.create(MailService.class);
   }
 
   public static ClientContext get() {
     if (instance == null) {
       instance = new ClientContext();
-//      instance.personService = GWT.create(PersonService.class);
     }
     return instance;
   }
-//
-//  public PersonSearch getPersonSearch() {
-//    return personSearch;
-//  }
-//
-//  public void setPersonSearch(PersonSearch personSearch) {
-//    this.personSearch = personSearch;
-//  }
-//
-//  public PersonServiceAsync getPersonService() {
-//    return personService;
-//  }
+
+  public MailServiceAsync getMailService() {
+    return mailService;
+  }
 }

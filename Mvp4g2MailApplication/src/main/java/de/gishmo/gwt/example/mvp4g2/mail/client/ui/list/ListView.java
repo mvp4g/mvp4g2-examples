@@ -54,6 +54,12 @@ public class ListView
     return this.container;
   }
 
+  @Override
+  public void edit(ArrayList<Mail> listOfEmails) {
+    this.store.clear();
+    this.store.addAll(listOfEmails);
+  }
+
   public void createView() {
     this.container = new SimpleContainer();
 
