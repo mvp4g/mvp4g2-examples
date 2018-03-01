@@ -39,8 +39,7 @@ public class ListPresenter
   public ListPresenter() {
   }
 
-  @EventHandler
-  public void onAddMailList() {
+  public void bind() {
     eventBus.setNorth(view.asWidget());
   }
 
@@ -55,6 +54,7 @@ public class ListPresenter
       @Override
       public void onSuccess(ArrayList<Mail> listOfEmails) {
         view.edit(listOfEmails);
+        eventBus.updateStatus("Found: " + Integer.toString(listOfEmails.size()) + " emails");
       }
     });
   }
@@ -62,5 +62,10 @@ public class ListPresenter
   @Override
   public IListView createView() {
     return new ListView();
+  }
+
+  @Override
+  public void doSelectRow(String id) {
+
   }
 }

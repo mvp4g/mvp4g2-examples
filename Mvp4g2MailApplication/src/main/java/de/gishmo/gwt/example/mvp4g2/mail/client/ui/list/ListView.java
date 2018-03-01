@@ -67,6 +67,8 @@ public class ListView
     this.createGrid();
 
     this.container.add(this.grid);
+
+    this.bind();
   }
 
   private void createStore() {
@@ -113,4 +115,11 @@ public class ListView
         .setForceFit(true);
   }
 
+  @Override
+  public void bind() {
+    grid.addRowClickHandler(rowClickEvent -> {
+      getPresenter().doSelectRow(store.get(rowClickEvent.getRowIndex())
+                                      .getId());
+    });
+  }
 }

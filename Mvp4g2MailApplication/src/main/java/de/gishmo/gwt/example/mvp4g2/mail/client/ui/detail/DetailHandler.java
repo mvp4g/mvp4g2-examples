@@ -15,26 +15,16 @@
  *
  */
 
-package de.gishmo.gwt.example.mvp4g2.mail.client.ui.list;
+package de.gishmo.gwt.example.mvp4g2.mail.client.ui.detail;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Widget;
-import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
-import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
+import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
+import de.gishmo.gwt.mvp4g2.core.ui.AbstractHandler;
+import de.gishmo.gwt.mvp4g2.core.ui.annotation.Handler;
 
-import java.util.ArrayList;
+@Handler
+public class DetailHandler
+  extends AbstractHandler<Mvp4g2MailEventBus> {
 
-public interface IListView
-  extends IsLazyReverseView<IListView.Presenter>,
-          IsWidget {
-
-  Widget asWidget();
-
-  void edit(ArrayList<Mail> listOfEmails);
-
-  interface Presenter {
-
-    void doSelectRow(String id);
-
+  public DetailHandler() {
   }
 }

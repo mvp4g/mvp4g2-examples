@@ -15,30 +15,49 @@
  *
  */
 
-package de.gishmo.gwt.example.mvp4g2.mail.client.ui.status;
+package de.gishmo.gwt.example.mvp4g2.mail.client.ui.content;
 
-import com.google.gwt.core.client.GWT;
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
-@Presenter(viewClass = StatusView.class, viewInterface = IStatusView.class)
-public class StatusPresenter
+@Presenter(viewClass = ContentView.class, viewInterface = IContentView.class)
+public class ContentPresenter
   extends AbstractPresenter<Mvp4g2MailEventBus,
-                             IStatusView>
-  implements IStatusView.Presenter {
+                             IContentView>
+  implements IContentView.Presenter {
 
-  public StatusPresenter() {
+  public ContentPresenter() {
   }
 
   public void bind() {
-    eventBus.setSouth(view.asWidget());
+    eventBus.setCenter(view.asWidget());
   }
 
   @EventHandler
-  public void onUpdateStatus(String status) {
-    view.setStatus(status);
+  public void onStartApplication() {
+//    ClientContext.get().getMailService().getAllMails(new AsyncCallback<ArrayContent<Mail>>() {
+//      @Override
+//      public void onFailure(Throwable throwable) {
+//        Window.alert("panic!");
+//      }
+//
+//      @Override
+//      public void onSuccess(ArrayContent<Mail> listOfEmails) {
+//        view.edit(listOfEmails);
+//        eventBus.updateStatus("Found: " + Integer.toString(listOfEmails.size()) + " emails");
+//      }
+//    });
   }
 
+//  @Override
+//  public IContentView createView() {
+//    return new ContentView();
+//  }
+//
+//  @Override
+//  public void doSelectRow(String id) {
+//
+//  }
 }

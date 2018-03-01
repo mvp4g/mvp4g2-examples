@@ -1,7 +1,10 @@
 package de.gishmo.gwt.example.mvp4g2.mail.client;
 
 import com.google.gwt.user.client.ui.Widget;
+import de.gishmo.gwt.example.mvp4g2.mail.client.ui.content.ContentPresenter;
+import de.gishmo.gwt.example.mvp4g2.mail.client.ui.list.ListPresenter;
 import de.gishmo.gwt.example.mvp4g2.mail.client.ui.shell.ShellPresenter;
+import de.gishmo.gwt.example.mvp4g2.mail.client.ui.status.StatusPresenter;
 import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Debug;
 import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Event;
@@ -14,10 +17,7 @@ public interface Mvp4g2MailEventBus
   extends IsEventBus {
 
   @Event
-  void addMailList();
-
-  @Event
-  void addStatusBar();
+  void setCenter(Widget widget);
 
   @Event
   void setNorth(Widget widget);
@@ -26,6 +26,12 @@ public interface Mvp4g2MailEventBus
   void setSouth(Widget widget);
 
   @Start
-  @Event
+  @Event(bind = { ListPresenter.class,
+                  StatusPresenter.class,
+                  ContentPresenter.class })
   void startApplication();
+
+  @Event
+  void updateStatus(String status);
+
 }

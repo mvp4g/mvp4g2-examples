@@ -27,6 +27,8 @@ public interface IStatusView
 
   Widget asWidget();
 
+  void setStatus(String status);
+
   interface Presenter {
   }
 }

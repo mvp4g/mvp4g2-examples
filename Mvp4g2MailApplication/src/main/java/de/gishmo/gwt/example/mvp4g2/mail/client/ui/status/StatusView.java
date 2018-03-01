@@ -43,8 +43,18 @@ public class StatusView
     return this.container;
   }
 
+  @Override
+  public void setStatus(String status) {
+    this.label.setText(status);
+  }
+
   public void createView() {
     this.container = new SimpleContainer();
+
+    this.container.getElement()
+                  .getStyle()
+                  .setProperty("borderTop",
+                               themeDetails.borderColor() + " 1px solid");
 
     this.label = new Label("loading ...");
     this.label.getElement()

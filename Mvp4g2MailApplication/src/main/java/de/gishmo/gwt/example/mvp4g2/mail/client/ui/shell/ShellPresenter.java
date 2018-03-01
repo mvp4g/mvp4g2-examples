@@ -43,11 +43,6 @@ public class ShellPresenter
   public void setShell() {
     // add the shell to the browser viewport
     RootPanel.get().add(view.asWidget());
-
-    // add list of mails
-    eventBus.addMailList();
-    // add status bar
-    eventBus.addStatusBar();
   }
 
   @EventHandler
