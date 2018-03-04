@@ -26,6 +26,7 @@ import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.info.Info;
 import de.gishmo.gwt.example.mvp4g2.mail.client.model.MailProperties;
 import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
 import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
@@ -60,6 +61,7 @@ public class ListView
     this.store.addAll(listOfEmails);
   }
 
+  @Override
   public void createView() {
     this.container = new SimpleContainer();
 
@@ -67,8 +69,6 @@ public class ListView
     this.createGrid();
 
     this.container.add(this.grid);
-
-    this.bind();
   }
 
   private void createStore() {
@@ -117,8 +117,8 @@ public class ListView
 
   @Override
   public void bind() {
-    grid.addRowClickHandler(rowClickEvent -> {
-      getPresenter().doSelectRow(store.get(rowClickEvent.getRowIndex())
+    grid.addRowDoubleClickHandler(rowDoubleClickEvent -> {
+       getPresenter().doSelectRow(store.get(rowDoubleClickEvent.getRowIndex())
                                       .getId());
     });
   }

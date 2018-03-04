@@ -18,13 +18,11 @@
 package de.gishmo.gwt.example.mvp4g2.mail.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 
 public class Mvp4g2Mail
   implements EntryPoint {
 
 	public void onModuleLoad() {
-		GWT.debugger();
 		Mvp4g2MailApplication application = new Mvp4g2MailApplicationImpl();
 		application.run();
 	}

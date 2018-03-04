@@ -66,6 +66,6 @@ public class ListPresenter
 
   @Override
   public void doSelectRow(String id) {
-
+    eventBus.selectEmail(id);
   }
 }

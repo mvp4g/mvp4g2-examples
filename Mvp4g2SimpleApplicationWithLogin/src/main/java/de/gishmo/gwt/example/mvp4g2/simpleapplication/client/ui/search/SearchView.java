@@ -28,7 +28,6 @@ public class SearchView
   }
 
   public void createView() {
-    GWT.debugger();
     container = div().add(div().style("width: 100%;")
                                .add(div().css("headline")
                                          .textContent("Search Parameter (search for: 'S' or 'D')"))

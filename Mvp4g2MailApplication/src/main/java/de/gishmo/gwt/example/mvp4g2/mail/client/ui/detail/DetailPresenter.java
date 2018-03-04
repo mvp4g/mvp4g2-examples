@@ -15,44 +15,31 @@
  *
  */
 
-package de.gishmo.gwt.example.mvp4g2.mail.client.ui.content;
+package de.gishmo.gwt.example.mvp4g2.mail.client.ui.detail;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
+import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
 import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
 
-@Presenter(viewClass = ContentView.class, viewInterface = IContentView.class)
-public class ContentPresenter
+@Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class, multiple = true)
+public class DetailPresenter
   extends AbstractPresenter<Mvp4g2MailEventBus,
-                             IContentView>
-  implements IContentView.Presenter {
+                             IDetailView>
+  implements IDetailView.Presenter {
 
-  public ContentPresenter() {
+  private String mailId;
+
+  public DetailPresenter() {
   }
 
-  public void bind() {
-    eventBus.setCenter(view.asWidget());
-  }
-
-  @EventHandler
-  public void onAddContent(String id,
-                           String subject,
-                           Widget widget) {
-    view.addContent(id,
-                    subject,
-                    widget);
-  }
-
-  @EventHandler
-  public void onShowContent(String id) {
-    view.showContent(id);
+  public void edit(Mail mail) {
+    view.edit(mail);
   }
 
   @Override
-  public void doRemoveMail(String id) {
-    eventBus.removeEmail(id);
+  public Widget asWidget() {
+    return view.asWidget();
   }
 }

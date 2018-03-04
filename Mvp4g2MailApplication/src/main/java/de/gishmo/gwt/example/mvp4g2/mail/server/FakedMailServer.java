@@ -31,143 +31,141 @@ public class FakedMailServer
 
   private static final int NUM_ITEMS           = 64;
   private static final int FRAGMENTS_PER_EMAIL = 10;
-
-  private final String[] senders = new String[]{"markboland05",
-                                                       "Hollie Voss",
-                                                       "boticario",
-                                                       "Emerson Milton",
-                                                       "Healy Colette",
-                                                       "Brigitte Cobb",
-                                                       "Elba Lockhart",
-                                                       "Claudio Engle",
-                                                       "Dena Pacheco",
-                                                       "Brasil s.p",
-                                                       "Parker",
-                                                       "derbvktqsr",
-                                                       "qetlyxxogg",
-                                                       "antenas.sul",
-                                                       "Christina Blake",
-                                                       "Gail Horton",
-                                                       "Orville Daniel",
-                                                       "PostMaster",
-                                                       "Rae Childers",
-                                                       "Buster misjenou",
-                                                       "user31065",
-                                                       "ftsgeolbx",
-                                                       "aqlovikigd",
-                                                       "user18411",
-                                                       "Mildred Starnes",
-                                                       "Candice Carson",
-                                                       "Louise Kelchner",
-                                                       "Emilio Hutchinson",
-                                                       "Geneva Underwood",
-                                                       "Residence Oper?",
-                                                       "fpnztbwag",
-                                                       "tiger",
-                                                       "Heriberto Rush",
-                                                       "bulrush Bouchard",
-                                                       "Abigail Louis",
-                                                       "Chad Andrews",
-                                                       "bjjycpaa",
-                                                       "Terry English",
-                                                       "Bell Snedden",
-                                                       "huang",
-                                                       "hhh",
-                                                       "(unknown sender)",
-                                                       "Kent",
-                                                       "Dirk Newman",
-                                                       "Equipe Virtual Cards",
-                                                       "wishesundmore",
-                                                       "Benito Meeks"};
-
-  private final String[] emails = new String[]{"mark@example.com",
-                                                      "hollie@example.com",
-                                                      "boticario@example.com",
-                                                      "emerson@example.com",
-                                                      "healy@example.com",
-                                                      "brigitte@example.com",
-                                                      "elba@example.com",
-                                                      "claudio@example.com",
-                                                      "dena@example.com",
-                                                      "brasilsp@example.com",
-                                                      "parker@example.com",
-                                                      "derbvktqsr@example.com",
-                                                      "qetlyxxogg@example.com",
-                                                      "antenas_sul@example.com",
-                                                      "cblake@example.com",
-                                                      "gailh@example.com",
-                                                      "orville@example.com",
-                                                      "post_master@example.com",
-                                                      "rchilders@example.com",
-                                                      "buster@example.com",
-                                                      "user31065@example.com",
-                                                      "ftsgeolbx@example.com",
-                                                      "aqlovikigd@example.com",
-                                                      "user18411@example.com",
-                                                      "mildred@example.com",
-                                                      "candice@example.com",
-                                                      "louise_kelchner@example.com",
-                                                      "emilio@example.com",
-                                                      "geneva@example.com",
-                                                      "residence_oper@example.com",
-                                                      "fpnztbwag@example.com",
-                                                      "tiger@example.com",
-                                                      "heriberto@example.com",
-                                                      "bulrush@example.com",
-                                                      "abigail_louis@example.com",
-                                                      "chada@example.com",
-                                                      "bjjycpaa@example.com",
-                                                      "terry@example.com",
-                                                      "bell@example.com",
-                                                      "huang@example.com",
-                                                      "hhh@example.com",
-                                                      "kent@example.com",
-                                                      "newman@example.com",
-                                                      "equipe_virtual@example.com",
-                                                      "wishesundmore@example.com",
-                                                      "benito@example.com"};
-
-  private final String[] subjects = new String[]{"URGENT -[Mon, 24 Apr 2006 02:17:27 +0000]",
-                                                        "URGENT TRANSACTION -[Sun, 23 Apr 2006 13:10:03 +0000]",
-                                                        "fw: Here it comes",
-                                                        "voce ganho um vale presente Boticario",
-                                                        "Read this ASAP",
-                                                        "Hot Stock Talk",
-                                                        "New Breed of Equity Trader",
-                                                        "FWD: TopWeeks the wire special pr news release",
-                                                        "[fwd] Read this ASAP",
-                                                        "Renda Extra R$1.000,00-R$2.000,00/m?s",
-                                                        "re: Make sure your special pr news released",
-                                                        "Forbidden Knowledge Conference",
-                                                        "decodificadores os menores pre?os",
-                                                        "re: Our Pick",
-                                                        "RE: The hottest pick Watcher",
-                                                        "RE: St0kkMarrkett Picks Trade watch special pr news release",
-                                                        "St0kkMarrkett Picks Watch special pr news release news",
-                                                        "You are a Winner oskoxmshco",
-                                                        "Encrypted E-mail System (VIRUS REMOVED)",
-                                                        "Fw: Malcolm",
-                                                        "Secure Message System (VIRUS REMOVED)",
-                                                        "fwd: St0kkMarrkett Picks Watch special pr news releaser",
-                                                        "FWD: Financial Market Traderr special pr news release",
-                                                        "? s? uma dica r?pida !!!!! leia !!!",
-                                                        "re: You have to heard this",
-                                                        "fwd: Watcher TopNews",
-                                                        "VACANZE alle Mauritius",
-                                                        "funny",
-                                                        "re: You need to review this",
-                                                        "[re:] Our Pick",
-                                                        "RE: Before the be11 special pr news release",
-                                                        "[re:] Market TradePicks Trade watch news",
-                                                        "No prescription needed",
-                                                        "Seu novo site",
-                                                        "[fwd] Financial Market Trader Picker",
-                                                        "FWD: Top Financial Market Specialists Trader interest increases",
-                                                        "Os cart?es mais animados da web!!",
-                                                        "We will sale 4 you cebtdbwtcv",
-                                                        "RE: Best Top Financial Market Specialists Trader Picks"};
-
-  private final String[] fragments = new String[]{
+  //
+  private static       int senderIdx           = 0, emailIdx = 0, subjectIdx = 0, fragmentIdx = 0;
+  private final String[]        senders      = new String[]{"markboland05",
+                                                            "Hollie Voss",
+                                                            "boticario",
+                                                            "Emerson Milton",
+                                                            "Healy Colette",
+                                                            "Brigitte Cobb",
+                                                            "Elba Lockhart",
+                                                            "Claudio Engle",
+                                                            "Dena Pacheco",
+                                                            "Brasil s.p",
+                                                            "Parker",
+                                                            "derbvktqsr",
+                                                            "qetlyxxogg",
+                                                            "antenas.sul",
+                                                            "Christina Blake",
+                                                            "Gail Horton",
+                                                            "Orville Daniel",
+                                                            "PostMaster",
+                                                            "Rae Childers",
+                                                            "Buster misjenou",
+                                                            "user31065",
+                                                            "ftsgeolbx",
+                                                            "aqlovikigd",
+                                                            "user18411",
+                                                            "Mildred Starnes",
+                                                            "Candice Carson",
+                                                            "Louise Kelchner",
+                                                            "Emilio Hutchinson",
+                                                            "Geneva Underwood",
+                                                            "Residence Oper?",
+                                                            "fpnztbwag",
+                                                            "tiger",
+                                                            "Heriberto Rush",
+                                                            "bulrush Bouchard",
+                                                            "Abigail Louis",
+                                                            "Chad Andrews",
+                                                            "bjjycpaa",
+                                                            "Terry English",
+                                                            "Bell Snedden",
+                                                            "huang",
+                                                            "hhh",
+                                                            "(unknown sender)",
+                                                            "Kent",
+                                                            "Dirk Newman",
+                                                            "Equipe Virtual Cards",
+                                                            "wishesundmore",
+                                                            "Benito Meeks"};
+  private final String[]        emails       = new String[]{"mark@example.com",
+                                                            "hollie@example.com",
+                                                            "boticario@example.com",
+                                                            "emerson@example.com",
+                                                            "healy@example.com",
+                                                            "brigitte@example.com",
+                                                            "elba@example.com",
+                                                            "claudio@example.com",
+                                                            "dena@example.com",
+                                                            "brasilsp@example.com",
+                                                            "parker@example.com",
+                                                            "derbvktqsr@example.com",
+                                                            "qetlyxxogg@example.com",
+                                                            "antenas_sul@example.com",
+                                                            "cblake@example.com",
+                                                            "gailh@example.com",
+                                                            "orville@example.com",
+                                                            "post_master@example.com",
+                                                            "rchilders@example.com",
+                                                            "buster@example.com",
+                                                            "user31065@example.com",
+                                                            "ftsgeolbx@example.com",
+                                                            "aqlovikigd@example.com",
+                                                            "user18411@example.com",
+                                                            "mildred@example.com",
+                                                            "candice@example.com",
+                                                            "louise_kelchner@example.com",
+                                                            "emilio@example.com",
+                                                            "geneva@example.com",
+                                                            "residence_oper@example.com",
+                                                            "fpnztbwag@example.com",
+                                                            "tiger@example.com",
+                                                            "heriberto@example.com",
+                                                            "bulrush@example.com",
+                                                            "abigail_louis@example.com",
+                                                            "chada@example.com",
+                                                            "bjjycpaa@example.com",
+                                                            "terry@example.com",
+                                                            "bell@example.com",
+                                                            "huang@example.com",
+                                                            "hhh@example.com",
+                                                            "kent@example.com",
+                                                            "newman@example.com",
+                                                            "equipe_virtual@example.com",
+                                                            "wishesundmore@example.com",
+                                                            "benito@example.com"};
+  private final String[]        subjects     = new String[]{"URGENT -[Mon, 24 Apr 2006 02:17:27 +0000]",
+                                                            "URGENT TRANSACTION -[Sun, 23 Apr 2006 13:10:03 +0000]",
+                                                            "fw: Here it comes",
+                                                            "voce ganho um vale presente Boticario",
+                                                            "Read this ASAP",
+                                                            "Hot Stock Talk",
+                                                            "New Breed of Equity Trader",
+                                                            "FWD: TopWeeks the wire special pr news release",
+                                                            "[fwd] Read this ASAP",
+                                                            "Renda Extra R$1.000,00-R$2.000,00/m?s",
+                                                            "re: Make sure your special pr news released",
+                                                            "Forbidden Knowledge Conference",
+                                                            "decodificadores os menores pre?os",
+                                                            "re: Our Pick",
+                                                            "RE: The hottest pick Watcher",
+                                                            "RE: St0kkMarrkett Picks Trade watch special pr news release",
+                                                            "St0kkMarrkett Picks Watch special pr news release news",
+                                                            "You are a Winner oskoxmshco",
+                                                            "Encrypted E-mail System (VIRUS REMOVED)",
+                                                            "Fw: Malcolm",
+                                                            "Secure Message System (VIRUS REMOVED)",
+                                                            "fwd: St0kkMarrkett Picks Watch special pr news releaser",
+                                                            "FWD: Financial Market Traderr special pr news release",
+                                                            "? s? uma dica r?pida !!!!! leia !!!",
+                                                            "re: You have to heard this",
+                                                            "fwd: Watcher TopNews",
+                                                            "VACANZE alle Mauritius",
+                                                            "funny",
+                                                            "re: You need to review this",
+                                                            "[re:] Our Pick",
+                                                            "RE: Before the be11 special pr news release",
+                                                            "[re:] Market TradePicks Trade watch news",
+                                                            "No prescription needed",
+                                                            "Seu novo site",
+                                                            "[fwd] Financial Market Trader Picker",
+                                                            "FWD: Top Financial Market Specialists Trader interest increases",
+                                                            "Os cart?es mais animados da web!!",
+                                                            "We will sale 4 you cebtdbwtcv",
+                                                            "RE: Best Top Financial Market Specialists Trader Picks"};
+  private final String[]        fragments    = new String[]{
     "Dear Friend,<br><br>I am Mr. Mark Boland the Bank Manager of ABN AMRO " + "BANK 101 Moorgate, London, EC2M 6SB.<br><br>",
     "I have an urgent and very confidential business proposition for you. On "
     + "July 20, 2001; Mr. Zemenu Gente, a National of France, who used to be a "
@@ -180,6 +178,7 @@ public class FakedMailServer
     + "I guarantee you that this will be executed under a legitimate "
     + "arrangement that will protect you from any breach of the law. Please " + "get in touch with me urgently by E-mail and "
     + "Provide me with the following;<br>",
+
     "The OIL sector is going crazy. This is our weekly gift to you!<br>" + "<br>" + "Get KKPT First Thing, This Is Going To Run!<br>"
     + "<br>" + "Check out Latest NEWS!<br>" + "<br>" + "KOKO PETROLEUM (KKPT) - This is our #1 pick for next week!<br>"
     + "Our last pick gained $2.16 in 4 days of trading.<br>",
@@ -191,6 +190,7 @@ public class FakedMailServer
     + "strings from the existing well bore. This process, known as Radial Jet "
     + "Enhancement, will utilize high pressure fluids to drill the lateral well "
     + "bores, which will extend out approximately 350\' each.",
+
     "JMT has contracted with Well Enhancement Services, LLC (www."
     + "wellenhancement.com) to perform the rework on its Pierce nos. 14 and 14a. "
     + "A small sand frac will follow the drilling of the lateral well bores in "
@@ -204,8 +204,10 @@ public class FakedMailServer
     + "arquivo previamente salvo, imprima uma folha e salve a c?pia em seu "
     + "computador para evitar transtornos decorrentes da perda do mesmo. "
     + "Lembramos que o Vale-Presente ? ?nico e intransfer?vel.",
+
     "Large Marketing Campaign running this weekend!<br>" + "<br>" + "Should you get in today before it explodes?<br>" + "<br>"
     + "This Will Fly Starting Monday!",
+
     "PREMIER INFORMATION (PIFR)<br>" + "A U.S. based company offers specialized information management "
     + "serices to both the Insurance and Healthcare Industries. The services "
     + "we provide are specific to each industry and designed for quick " + "response and maximum security.<br>" + "<br>"
@@ -214,6 +216,7 @@ public class FakedMailServer
     + "information, as governed by the Health In-surancee Portability and "
     + "Accountability Act of 1996 (HIPAA), and other applicable state laws and " + "regulations.<br><br>"
     + "Global HealthCare Market Undergoing Digital Conversion",
+
     ">>   Componentes e decodificadores; confira aqui;<br>" + " http://br.geocities.com/listajohn/index.htm<br>",
     "THE GOVERNING AWARD<br>" + "NETHERLANDS HEAD OFFICE<br>" + "AC 76892 HAUITSOP<br>" + "AMSTERDAM, THE NETHERLANDS.<br>"
     + "FROM: THE DESK OF THE PROMOTIONS MANAGER.<br>" + "INTERNATIONAL PROMOTIONS / PRIZE AWARD DEPARTMENT<br>"
@@ -231,6 +234,7 @@ public class FakedMailServer
     + "CART?O SKY E DIRECTV TOTALMENTE HACKEADOS  350,00<br>" + "DECODERS NET TVA DESBLOQUEADOS                       390,00<br>"
     + "KITS COMPLETOS SKY OU DTV ANTENA DECODER E CART?O  650,00<br>" + "TECSAT FREE   450,00<br>"
     + "TENHO TB ACESS?RIOS , CABOS, LNB .<br>",
+
     "********************************************************************<br>" + " Original filename: mail.zip<br>"
     + " Virus discovered: JS.Feebs.AC<br>" + "********************************************************************<br>"
     + " A file that was attached to this email contained a virus.<br>"
@@ -239,6 +243,7 @@ public class FakedMailServer
     + " For more information on why you received this message please visit:<br>",
     "Put a few letters after your name. Let us show you how you can do it in " + "just a few days.<br><br>"
     + "http://thewrongchoiceforyou.info<br><br>" + "kill future mailing by pressing this : see main website",
+
     "We possess scores of pharmaceutical products handy<br>" + "All med\'s are made in U.S. laboratories<br>"
     + "For your wellbeing! Very rapid, protected and secure<br>"
     + "Ordering, No script required. We have the pain aid you require<br>",
@@ -268,15 +273,7 @@ public class FakedMailServer
     + "but they are not what is most important. What is important are the "
     + "rights of man, emancipation from prejudices, and equality of "
     + "citizenship, and all these ideas Napoleon has retained in full " + "force.\""};
-//
-//  private static int senderIdx = 0, emailIdx = 0, subjectIdx = 0, fragmentIdx = 0;
-  private ArrayList<Mail> listOfEmails = new ArrayList<>();
-
-//  static {
-//    for (int i = 0; i < NUM_ITEMS; ++i) {
-//      items.add(createFakeMail());
-//    }
-//  }
+  private       ArrayList<Mail> listOfEmails = new ArrayList<>();
 
   @Override
   public void init() {
@@ -286,31 +283,29 @@ public class FakedMailServer
     }
   }
 
-//
-//  public static Mail getMail(int index) {
-//    if (index >= items.size()) {
-//      return null;
-//    }
-//    return items.get(index);
-//  }
-//
-//  public static int getMailCount() {
-//    return items.size();
-//  }
-//
-//  public static ArrayList<Mail> getAllMails() {
-//    return items;
-//  }
-//
   private Mail createFakeMail(int i) {
-    String sender = senders[i % senders.length];
-    String email = emails[i % emails.length];
-    String subject = subjects[i % subjects.length];
+    String id = Integer.toString(i);
+    String sender = senders[senderIdx++];
+    if (senderIdx == senders.length) {
+      senderIdx = 0;
+    }
+    String email = emails[emailIdx++];
+    if (emailIdx == emails.length) {
+      emailIdx = 0;
+    }
+    String subject = subjects[subjectIdx++];
+    if (subjectIdx == subjects.length) {
+      subjectIdx = 0;
+    }
     StringBuilder body = new StringBuilder();
     for (int j = 0; j < FRAGMENTS_PER_EMAIL; ++j) {
-      body.append(fragments[j % fragments.length]);
+      body.append(fragments[fragmentIdx++]);
+      if (fragmentIdx == fragments.length) {
+        fragmentIdx = 0;
+      }
     }
-    return new Mail(sender,
+    return new Mail(id,
+                    sender,
                     email,
                     subject,
                     body.toString());
@@ -323,8 +318,10 @@ public class FakedMailServer
 
   @Override
   public Mail getMail(String mailId) {
+    System.out.println("mailId: >>" + mailId + "<<");
     return listOfEmails.stream()
-                       .filter(mail -> mail.getId() == mailId)
+                       .filter(mail -> mail.getId()
+                                           .equals(mailId))
                        .findFirst()
                        .orElse(null);
   }

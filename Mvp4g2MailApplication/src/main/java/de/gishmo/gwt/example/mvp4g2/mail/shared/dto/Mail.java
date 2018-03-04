@@ -16,7 +16,8 @@
 package de.gishmo.gwt.example.mvp4g2.mail.shared.dto;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import de.gishmo.gwt.example.mvp4g2.mail.shared.GUID;
+
+import java.util.Objects;
 
 /**
  * A simple structure containing the basic components of an email.
@@ -25,7 +26,7 @@ public final class Mail
   implements IsSerializable {
 
   /* uniques id */
-  private final String id = GUID.get();
+  private String id;
   /* The sender's name */
   private String sender;
   /* The sender's email */
@@ -40,19 +41,25 @@ public final class Mail
   public Mail() {
   }
 
-  public Mail(String sender,
+  public Mail(String id,
+              String sender,
               String email,
               String subject,
               String body) {
+    this.id = id;
     this.sender = sender;
     this.email = email;
     this.subject = subject;
     this.body = body;
-    this.read = read;
+    this.read = false;
   }
 
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getSender() {
@@ -93,5 +100,36 @@ public final class Mail
 
   public void setRead(boolean read) {
     this.read = read;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Mail)) {
+      return false;
+    }
+    Mail mail = (Mail) o;
+    return Objects.equals(getId(),
+                          mail.getId()) &&
+           Objects.equals(getSender(),
+                          mail.getSender()) &&
+           Objects.equals(getEmail(),
+                          mail.getEmail()) &&
+           Objects.equals(getSubject(),
+                          mail.getSubject()) &&
+           Objects.equals(getBody(),
+                          mail.getBody());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getId(),
+                        getSender(),
+                        getEmail(),
+                        getSubject(),
+                        getBody());
   }
 }

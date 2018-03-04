@@ -15,25 +15,20 @@
  *
  */
 
-package de.gishmo.gwt.example.mvp4g2.mail.client.ui.content;
+package de.gishmo.gwt.example.mvp4g2.mail.client.ui.detail;
 
 import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Widget;
+import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
 import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
 
-public interface IContentView
-  extends IsLazyReverseView<IContentView.Presenter>,
+public interface IDetailView
+  extends IsLazyReverseView<IDetailView.Presenter>,
           IsWidget {
 
-  void addContent(String id,
-                  String subject,
-                  Widget widget);
+  void edit(Mail mail);
 
-  void showContent(String id);
-
-  interface Presenter {
-
-    void doRemoveMail(String key);
+  interface Presenter
+    extends IsWidget {
 
   }
 }

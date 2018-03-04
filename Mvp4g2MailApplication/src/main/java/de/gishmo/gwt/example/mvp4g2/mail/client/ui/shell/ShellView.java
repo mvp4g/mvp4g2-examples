@@ -17,13 +17,11 @@
 
 package de.gishmo.gwt.example.mvp4g2.mail.client.ui.shell;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.container.Viewport;
-
 import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
 
 public class ShellView
@@ -65,7 +63,6 @@ public class ShellView
 
   @Override
   public void setSouth(Widget widget) {
-    GWT.debugger();
     if (this.southContainer.getWidget() != null) {
       this.southContainer.getWidget()
                          .removeFromParent();
@@ -80,8 +77,7 @@ public class ShellView
     viewport.add(this.shell);
 
     this.northContainer = createContentPanel();
-    BorderLayoutContainer.BorderLayoutData bldNorth = new BorderLayoutContainer.BorderLayoutData(
-      .4);
+    BorderLayoutContainer.BorderLayoutData bldNorth = new BorderLayoutContainer.BorderLayoutData(.4);
     bldNorth.setCollapsible(true);
     bldNorth.setSplit(true);
     this.shell.setNorthWidget(this.northContainer,

@@ -34,4 +34,17 @@ public interface Mvp4g2MailEventBus
   @Event
   void updateStatus(String status);
 
+  @Event
+  void selectEmail(String id);
+
+  @Event
+  void addContent(String id,
+                  String subject,
+                  Widget widget);
+
+  @Event
+  void showContent(String id);
+
+  @Event
+  void removeEmail(String id);
 }
