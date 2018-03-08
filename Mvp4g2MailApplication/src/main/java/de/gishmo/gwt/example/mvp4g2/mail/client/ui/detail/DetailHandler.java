@@ -30,16 +30,37 @@ import de.gishmo.gwt.mvp4g2.core.ui.annotation.Handler;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * this class manages the presenters of the emails displayed inside the content area.
+ *
+ * each time an email is added to the content area, a new presenter view pair is
+ * created. Once we create a presenter by adding an instance to the event bus,
+ * we receive a presnter registration to remove the presenter.
+ */
 @Handler
 public class DetailHandler
   extends AbstractHandler<Mvp4g2MailEventBus> {
 
+  /* map of presenter registration (id of the mail, presenter registration */
   private Map<String, PresenterRegistration> presenterRegistrations;
 
   public DetailHandler() {
     this.presenterRegistrations = new HashMap<>();
   }
 
+  /**
+   * each time we double click an email in the list, the selectEmail(id) event is fired.
+   *
+   * To handle this event, we check:
+   *
+   * - is the mail already displayed? in this case we will bring this to to front
+   *
+   * - if not, we call the server to get the mail content, create an instance
+   * of the mail presenter (Called DetailPresenter), add the instance to the eventBus,
+   * save the registration and it to the content area.
+   *
+   * @param id of the email 
+   */
   @EventHandler
   public void onSelectEmail(String id) {
     if (this.presenterRegistrations.get(id) == null) {

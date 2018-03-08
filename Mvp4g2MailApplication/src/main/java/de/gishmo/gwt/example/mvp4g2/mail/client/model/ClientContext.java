@@ -4,6 +4,9 @@ import com.google.gwt.core.client.GWT;
 import de.gishmo.gwt.example.mvp4g2.mail.client.service.MailService;
 import de.gishmo.gwt.example.mvp4g2.mail.client.service.MailServiceAsync;
 
+/**
+ * we will use this class as 'client-sided session container'
+ */
 public class ClientContext {
 
   private static ClientContext    instance;
@@ -21,6 +24,11 @@ public class ClientContext {
     return instance;
   }
 
+  /**
+   * our email service ...
+   *
+   * @return instace of the email service
+   */
   public MailServiceAsync getMailService() {
     return mailService;
   }

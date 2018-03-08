@@ -25,7 +25,6 @@ import de.gishmo.gwt.mvp4g2.core.application.annotation.Application;
  * <p>
  * <p>Use the @IsApplication annotation to perform configuration informations.</p>
  */
-// ToDo add loader
 @Application(eventBus = Mvp4g2MailEventBus.class)
 interface Mvp4g2MailApplication
   extends IsApplication {
