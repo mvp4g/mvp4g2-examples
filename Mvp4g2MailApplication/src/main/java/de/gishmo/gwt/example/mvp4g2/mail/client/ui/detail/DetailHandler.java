@@ -59,7 +59,7 @@ public class DetailHandler
    * of the mail presenter (Called DetailPresenter), add the instance to the eventBus,
    * save the registration and it to the content area.
    *
-   * @param id of the email 
+   * @param id of the email
    */
   @EventHandler
   public void onSelectEmail(String id) {
