@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2016 Frank Hossfeld <frank.hossfeld@googlemail.com>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.gishmo.gwt.example.mvp4g2</groupId>
+  <artifactId>Mvp4g2SpringBoot</artifactId>
+  <version>1.0.0</version>
+
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.0.RELEASE</version>
+    <relativePath /> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <!-- Convenience property to set the GWT version -->
+    <gwtVersion>2.8.2</gwtVersion>
+
+    <!-- mvp4g2 version -->
+    <mvp4g2.version>1.0-beta-2</mvp4g2.version>
+
+    <elemento.version>0.6.2</elemento.version>
+
+    <!-- GWT needs at least java 1.6 -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <junit.version>4.12</junit.version>
+    <org.mockito.version>1.10.19</org.mockito.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <gwt.resty.version>2.2.1</gwt.resty.version>
+
+    <serverPort>8080</serverPort>
+  </properties>
+
+  <!--<dependencyManagement>-->
+    <!--<dependencies>-->
+      <!--<dependency>-->
+        <!--<groupId>com.google.gwt</groupId>-->
+        <!--<artifactId>gwt</artifactId>-->
+        <!--<version>${gwtVersion}</version>-->
+        <!--<type>pom</type>-->
+        <!--<scope>import</scope>-->
+      <!--</dependency>-->
+    <!--</dependencies>-->
+  <!--</dependencyManagement>-->
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-codeserver</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+     <dependency>
+      <groupId>de.gishmo.gwt</groupId>
+      <artifactId>mvp4g2</artifactId>
+      <version>${mvp4g2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>de.gishmo.gwt</groupId>
+      <artifactId>mvp4g2-processor</artifactId>
+      <version>${mvp4g2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.gwt.elemento</groupId>
+      <artifactId>elemento-core</artifactId>
+      <version>${elemento.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.boot</groupId>-->
+      <!--<artifactId>spring-boot-starter-test</artifactId>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!-- RestyGWT -->
+    <dependency>
+      <groupId>org.fusesource.restygwt</groupId>
+      <artifactId>restygwt</artifactId>
+      <version>${gwt.resty.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>jsr311-api</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <jvmArguments>
+            -Dserver.port=${serverPort}
+          </jvmArguments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>gwt-dev</id>
+      <build>
+        <resources>
+          <resource>
+            <directory>src/main/resources</directory>
+          </resource>
+        </resources>
+        <plugins>
+          <!--<plugin>-->
+            <!--<artifactId>maven-surefire-plugin</artifactId>-->
+            <!--<version>2.20</version>-->
+            <!--<configuration>-->
+              <!--<skipTests>true</skipTests>-->
+            <!--</configuration>-->
+          <!--</plugin>-->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.1</version>
+            <configuration>
+              <source>1.8</source>
+              <target>1.8</target>
+              <showWarnings>true</showWarnings>
+              <showDeprecation>true</showDeprecation>
+              <meminitial>128m</meminitial>
+              <maxmem>1024m</maxmem>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <compilerArgs>
+                <compilerArgument>-Xlint:all</compilerArgument>
+              </compilerArgs>
+            </configuration>
+            <executions>
+              <execution>
+                <id>process-annotations</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <configuration>
+                  <proc>only</proc>
+                  <annotationProcessors>
+                    <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.Mvp4g2Processor</annotationProcessor>
+                  </annotationProcessors>
+                </configuration>
+              </execution>
+              <execution>
+                <id>default-compile</id> <!-- using an id of default-compile will override the default execution -->
+                <phase>compile</phase>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <configuration>
+                  <compilerArgs>
+                    <arg>-proc:none</arg>
+                  </compilerArgs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>net.ltgt.gwt.maven</groupId>
+            <artifactId>gwt-maven-plugin</artifactId>
+            <version>1.0-rc-9</version>
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>compile</goal>
+                  <goal>package-app</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <classpathScope>compile</classpathScope>
+              <moduleName>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</moduleName>
+              <moduleShortName>Mvp4g2SpringBoot</moduleShortName>
+              <modules>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</modules>
+              <failOnError>true</failOnError>
+              <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
+               a different source language for java compilation -->
+              <sourceLevel>1.8</sourceLevel>
+              <startupUrls>Mvp4g2SpringBoot.html</startupUrls>
+              <!--&lt;!&ndash; Compiler configuration &ndash;&gt;-->
+              <!--<compilerArgs>-->
+                <!--&lt;!&ndash;Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile)&ndash;&gt;-->
+                <!--<arg>-compileReport</arg>-->
+                <!--<arg>-XcompilerMetrics</arg>-->
+                <!--<arg>-setProperty</arg>-->
+                <!--<arg>mvp4g2.logging=true</arg>-->
+              <!--</compilerArgs>-->
+              <logLevel>TRACE</logLevel>
+              <!--<skipModule>true</skipModule>-->
+              <devmodeArgs>
+                <devmodeArg>-noserver</devmodeArg>
+                <devmodeArg>-port</devmodeArg>
+                <devmodeArg>${serverPort}</devmodeArg>
+                <devmodeArg>-setProperty</devmodeArg>
+                <devmodeArg>mvp4g2.logging=true</devmodeArg>
+              </devmodeArgs>
+              <devmodeWorkDir>${project.build.directory}/classes/static</devmodeWorkDir>
+              <launcherDir>${project.build.directory}/classes/static</launcherDir>
+              <warDir>${project.build.directory}/classes/static</warDir>
+              <!--<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>-->
+              <!--<systemProperties>-->
+                <!--<gwt.persistentunitcachedir>${project.build.directory}/gwt/unitCache/</gwt.persistentunitcachedir>-->
+                <!--<gwt.war.directory>${project.basedir}/src/main/webapp</gwt.war.directory>-->
+              <!--</systemProperties>-->
+            </configuration>
+          </plugin>
+
+        </plugins>
+
+      </build>
+    </profile>
+    <!--<profile>-->
+      <!--<id>gwt-dev</id>-->
+    <!--</profile>-->
+  </profiles>
+</project>
