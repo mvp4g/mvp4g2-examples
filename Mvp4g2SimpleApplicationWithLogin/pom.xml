@@ -45,6 +45,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <generated.source.directory>${project.build.directory}/generated-sources/annotations</generated.source.directory>
   </properties>
 
   <dependencyManagement>
@@ -150,6 +152,24 @@
         </executions>
       </plugin>
       <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${generated.source.directory}</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>net.ltgt.gwt.maven</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <version>1.0-rc-9</version>
@@ -166,7 +186,7 @@
           <classpathScope>compile</classpathScope>
           <moduleName>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplicationWithLogin</moduleName>
           <moduleShortName>Mvp4g2SimpleApplicationWithLogin</moduleShortName>
-          <modules>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplicationWithLogin</modules>
+          <modules>de.gishmo.gwt.example.mvp4g2.simpleapplication.Mvp4g2SimpleApplicationWithLogin </modules>
           <failOnError>true</failOnError>
           <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
            a different source language for java compilation -->
@@ -187,18 +207,17 @@
             <arg>8888</arg>
             <arg>-codeServerPort</arg>
             <arg>9876</arg>
-            <arg>-setProperty</arg>
-            <arg>mvp4g2.logging=true</arg>
           </devmodeArgs>
-          <launcherDir>${project.basedir}/src/main/webapp</launcherDir>
           <startupUrls>
             <startupUrl>Mvp4g2SimpleApplicationWithLogin.html</startupUrl>
           </startupUrls>
-          <warDir>${project.basedir}/src/main/webapp</warDir>
+          <devmodeWorkDir>${project.build.directory}/devModeWorkDir</devmodeWorkDir>
+          <launcherDir>${project.build.directory}/classes/static</launcherDir>
+          <warDir>${project.build.directory}/${project.build.finalName}</warDir>
           <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
           <systemProperties>
             <gwt.persistentunitcachedir>${project.build.directory}/gwt/unitCache/</gwt.persistentunitcachedir>
-            <gwt.war.directory>${project.basedir}/src/main/webapp</gwt.war.directory>
+            <gwt.war.directory>${project.basedir}/${project.build.finalName}</gwt.war.directory>
           </systemProperties>
         </configuration>
       </plugin>
@@ -210,7 +229,7 @@
         <configuration>
           <webResources>
             <resource>
-              <directory>src/main/webapp</directory>
+              <directory>${project.build.directory}/classes/static</directory>
             </resource>
           </webResources>
           <failOnMissingWebXml>false</failOnMissingWebXml>

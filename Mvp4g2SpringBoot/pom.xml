@@ -56,6 +56,8 @@
     <gwt.resty.version>2.2.1</gwt.resty.version>
 
     <serverPort>8080</serverPort>
+
+    <generated.source.directory>${project.build.directory}/generated-sources/annotations</generated.source.directory>
   </properties>
 
   <!--<dependencyManagement>-->
@@ -131,6 +133,11 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -141,208 +148,100 @@
           </jvmArguments>
         </configuration>
       </plugin>
-    </plugins>
-  </build>
-
-  <profiles>
-    <profile>
-      <id>gwt-dev</id>
-      <build>
-        <resources>
-          <resource>
-            <directory>src/main/resources</directory>
-          </resource>
-        </resources>
-        <plugins>
-          <!--<plugin>-->
-          <!--<artifactId>maven-surefire-plugin</artifactId>-->
-          <!--<version>2.20</version>-->
-          <!--<configuration>-->
-          <!--<skipTests>true</skipTests>-->
-          <!--</configuration>-->
-          <!--</plugin>-->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.6.1</version>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+          <meminitial>128m</meminitial>
+          <maxmem>1024m</maxmem>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerArgs>
+            <compilerArgument>-Xlint:all</compilerArgument>
+          </compilerArgs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>process-annotations</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
             <configuration>
-              <source>1.8</source>
-              <target>1.8</target>
-              <showWarnings>true</showWarnings>
-              <showDeprecation>true</showDeprecation>
-              <meminitial>128m</meminitial>
-              <maxmem>1024m</maxmem>
-              <encoding>${project.build.sourceEncoding}</encoding>
+              <proc>only</proc>
+              <annotationProcessors>
+                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.Mvp4g2Processor</annotationProcessor>
+              </annotationProcessors>
+            </configuration>
+          </execution>
+          <execution>
+            <id>default-compile</id> <!-- using an id of default-compile will override the default execution -->
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
               <compilerArgs>
-                <compilerArgument>-Xlint:all</compilerArgument>
+                <arg>-proc:none</arg>
               </compilerArgs>
             </configuration>
-            <executions>
-              <execution>
-                <id>process-annotations</id>
-                <phase>generate-sources</phase>
-                <goals>
-                  <goal>compile</goal>
-                </goals>
-                <configuration>
-                  <proc>only</proc>
-                  <annotationProcessors>
-                    <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.Mvp4g2Processor</annotationProcessor>
-                  </annotationProcessors>
-                </configuration>
-              </execution>
-              <execution>
-                <id>default-compile</id> <!-- using an id of default-compile will override the default execution -->
-                <phase>compile</phase>
-                <goals>
-                  <goal>compile</goal>
-                </goals>
-                <configuration>
-                  <compilerArgs>
-                    <arg>-proc:none</arg>
-                  </compilerArgs>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>net.ltgt.gwt.maven</groupId>
-            <artifactId>gwt-maven-plugin</artifactId>
-            <version>1.0-rc-9</version>
-            <extensions>true</extensions>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>compile</goal>
-                  <goal>package-app</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <classpathScope>compile</classpathScope>
-              <moduleName>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</moduleName>
-              <moduleShortName>Mvp4g2SpringBoot</moduleShortName>
-              <modules>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</modules>
-              <failOnError>true</failOnError>
-              <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
-               a different source language for java compilation -->
-              <sourceLevel>1.8</sourceLevel>
-              <startupUrls>
-                <startupUrl>Mvp4g2SpringBoot.html</startupUrl>
-              </startupUrls>
-              <!--&lt;!&ndash; Compiler configuration &ndash;&gt;-->
-              <!--<compilerArgs>-->
-              <!--&lt;!&ndash;Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile)&ndash;&gt;-->
-              <!--<arg>-compileReport</arg>-->
-              <!--<arg>-XcompilerMetrics</arg>-->
-              <!--<arg>-setProperty</arg>-->
-              <!--<arg>mvp4g2.logging=true</arg>-->
-              <!--</compilerArgs>-->
-              <logLevel>TRACE</logLevel>
-              <!--<skipModule>true</skipModule>-->
-              <devmodeArgs>
-                <devmodeArg>-noserver</devmodeArg>
-                <devmodeArg>-port</devmodeArg>
-                <devmodeArg>${serverPort}</devmodeArg>
-                <devmodeArg>-setProperty</devmodeArg>
-                <devmodeArg>mvp4g2.logging=true</devmodeArg>
-              </devmodeArgs>
-              <devmodeWorkDir>${project.build.directory}/classes/static</devmodeWorkDir>
-              <launcherDir>${project.build.directory}/classes/static</launcherDir>
-              <warDir>${project.build.directory}/classes/static</warDir>
-              <!--<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>-->
-              <!--<systemProperties>-->
-              <!--<gwt.persistentunitcachedir>${project.build.directory}/gwt/unitCache/</gwt.persistentunitcachedir>-->
-              <!--<gwt.war.directory>${project.basedir}/src/main/webapp</gwt.war.directory>-->
-              <!--</systemProperties>-->
-            </configuration>
-          </plugin>
-
-        </plugins>
-
-      </build>
-    </profile>
-    <profile>
-      <id>gwt-prod</id>
-      <build>
-        <resources>
-          <resource>
-            <directory>src/main/java</directory>
-          </resource>
-        </resources>
-        <plugins>
-          <plugin>
-            <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
-            <executions>
-              <execution>
-                <phase>compile</phase>
-                <goals>
-                  <goal>clean</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <excludeDefaultDirectories>true</excludeDefaultDirectories>
-              <filesets>
-                <fileset>
-                  <directory>${basedir}/src/main/resources/static/Mvp4g2SpringBoot</directory>
-                </fileset>
-              </filesets>
-            </configuration>
-          </plugin>
-          <plugin>
-            <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
-            <executions>
-              <execution>
-                <phase>compile</phase>
-                <goals>
-                  <goal>clean</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <excludeDefaultDirectories>true</excludeDefaultDirectories>
-              <filesets>
-                <fileset>
-                  <directory>${basedir}/src/main/resources/static/Mvp4g2SpringBoot</directory>
-                </fileset>
-              </filesets>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>net.ltgt.gwt.maven</groupId>
-            <artifactId>gwt-maven-plugin</artifactId>
-            <version>1.0-rc-9</version>
-            <extensions>true</extensions>
-            <executions>
-              <execution>
-                <phase>compile</phase>
-                <goals>
-                  <goal>generate-module</goal>
-                  <goal>compile</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <logLevel>TRACE</logLevel>
-              <moduleName>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</moduleName>
-              <moduleShortName>Mvp4g2SpringBoot</moduleShortName>
-              <modules>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</modules>
-              <startupUrls>Mvp4g2SpringBoot.html</startupUrls>
-              <classpathScope>compile</classpathScope>
-              <webappDirectory>${basedir}/src/main/resources/static</webappDirectory>
-              <workDir>${basedir}/src/main/resources/static</workDir>
-              <warDir>${basedir}/src/main/resources/static</warDir>
-              <devmodeArgs>
-                <devmodeArg>-setProperty</devmodeArg>
-                <devmodeArg>mvp4g2.logging=true</devmodeArg>
-              </devmodeArgs>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>1.0-rc-9</version>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>package-app</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <classpathScope>compile</classpathScope>
+          <moduleName>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</moduleName>
+          <moduleShortName>Mvp4g2SpringBoot</moduleShortName>
+          <modules>de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot</modules>
+          <failOnError>true</failOnError>
+          <!-- GWT 2.8 requires 1.8, hence define sourceLevel here if you use
+           a different source language for java compilation -->
+          <sourceLevel>1.8</sourceLevel>
+          <startupUrls>
+            <startupUrl>Mvp4g2SpringBoot.html</startupUrl>
+          </startupUrls>
+          <!--&lt;!&ndash; Compiler configuration &ndash;&gt;-->
+          <compilerArgs>
+            <!--Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile)-->
+            <arg>-compileReport</arg>
+            <arg>-XcompilerMetrics</arg>
+            <arg>-setProperty</arg>
+            <arg>mvp4g2.logging=true</arg>
+          </compilerArgs>
+          <logLevel>TRACE</logLevel>
+          <!--<skipModule>true</skipModule>-->
+          <devmodeArgs>
+            <devmodeArg>-noserver</devmodeArg>
+            <devmodeArg>-port</devmodeArg>
+            <devmodeArg>${serverPort}</devmodeArg>
+          </devmodeArgs>
+          <devmodeWorkDir>${project.build.directory}/classes/static</devmodeWorkDir>
+          <launcherDir>${project.build.directory}/classes/static</launcherDir>
+          <warDir>${project.build.directory}/classes/static</warDir>
+          <!--<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>-->
+          <!--<systemProperties>-->
+          <!--<gwt.persistentunitcachedir>${project.build.directory}/gwt/unitCache/</gwt.persistentunitcachedir>-->
+          <!--<gwt.war.directory>${project.basedir}/src/main/webapp</gwt.war.directory>-->
+          <!--</systemProperties>-->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
