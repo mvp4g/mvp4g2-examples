@@ -23,3 +23,5 @@ simpleApplicationElemento
 /Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation/src/main/webapp/Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotation
 /Mvp4g2SimpleApplicationWithLogin/src/main/webapp/Mvp4g2SimpleApplicationWithLogin
 /Mvp4g2MailApplication/src/main/webapp/mailapplication
+de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot
+/Mvp4g2SpringBoot/src/main/resources/static/Mvp4g2SpringBoot
