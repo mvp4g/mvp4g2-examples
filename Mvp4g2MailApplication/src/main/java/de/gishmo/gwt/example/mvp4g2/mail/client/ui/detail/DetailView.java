@@ -28,7 +28,7 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
-import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.LazyReverseView;
 
 public class DetailView
   extends LazyReverseView<IDetailView.Presenter>

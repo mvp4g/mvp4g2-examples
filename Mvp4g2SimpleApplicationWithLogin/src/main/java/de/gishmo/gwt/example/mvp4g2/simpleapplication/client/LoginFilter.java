@@ -1,7 +1,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
-import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventFilter;
+import com.github.mvp4g.mvp4g2.core.eventbus.IsEventFilter;
 
 public class LoginFilter
   implements IsEventFilter<Mvp4g2SimpleApplicationWithLoginEventBus> {

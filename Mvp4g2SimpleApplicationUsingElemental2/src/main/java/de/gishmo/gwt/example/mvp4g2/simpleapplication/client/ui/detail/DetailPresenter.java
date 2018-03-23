@@ -7,10 +7,10 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.exceptio
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.service.PersonService;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.AbstractSimpleApplicationPresenter;
-import de.gishmo.gwt.mvp4g2.core.history.IsNavigationConfirmation;
-import de.gishmo.gwt.mvp4g2.core.history.NavigationEventCommand;
-import de.gishmo.gwt.mvp4g2.core.ui.IsViewCreator;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
+import com.github.mvp4g.mvp4g2.core.history.IsNavigationConfirmation;
+import com.github.mvp4g.mvp4g2.core.history.NavigationEventCommand;
+import com.github.mvp4g.mvp4g2.core.ui.IsViewCreator;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 import elemental2.dom.DomGlobal;
 
 @Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class, viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER)

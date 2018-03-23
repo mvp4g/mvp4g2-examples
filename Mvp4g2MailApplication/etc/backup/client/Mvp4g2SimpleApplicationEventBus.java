@@ -25,10 +25,10 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.list.ListPresent
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation.NavigationPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.search.SearchPresenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell.ShellPresenter;
-import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
-import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.*;
-import de.gishmo.gwt.mvp4g2.core.history.annotation.InitHistory;
-import de.gishmo.gwt.mvp4g2.core.history.annotation.NotFoundHistory;
+import com.github.mvp4g.mvp4g2.core.eventbus.IsEventBus;
+import com.github.mvp4g.mvp4g2.core.eventbus.annotation.*;
+import com.github.mvp4g.mvp4g2.core.history.annotation.InitHistory;
+import com.github.mvp4g.mvp4g2.core.history.annotation.NotFoundHistory;
 
 /**
  * Event bus of the SimpleMvp4G2Application example

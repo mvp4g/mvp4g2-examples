@@ -20,8 +20,8 @@ package de.gishmo.gwt.example.mvp4g2.mail.client.ui.detail;
 import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
 import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
-import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
+import com.github.mvp4g.mvp4g2.core.ui.AbstractPresenter;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 
 @Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class, multiple = true)
 public class DetailPresenter

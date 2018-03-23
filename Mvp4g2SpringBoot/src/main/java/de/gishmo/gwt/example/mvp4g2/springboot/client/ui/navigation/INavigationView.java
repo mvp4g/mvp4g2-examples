@@ -17,7 +17,7 @@
 
 package de.gishmo.gwt.example.mvp4g2.springboot.client.ui.navigation;
 
-import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.IsLazyReverseView;
 import elemental2.dom.Element;
 
 public interface INavigationView

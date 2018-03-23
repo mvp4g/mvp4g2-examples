@@ -6,10 +6,10 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplica
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.shared.dto.Person;
-import de.gishmo.gwt.mvp4g2.core.history.IsNavigationConfirmation;
-import de.gishmo.gwt.mvp4g2.core.history.NavigationEventCommand;
-import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
+import com.github.mvp4g.mvp4g2.core.history.IsNavigationConfirmation;
+import com.github.mvp4g.mvp4g2.core.history.NavigationEventCommand;
+import com.github.mvp4g.mvp4g2.core.ui.AbstractPresenter;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 
 @Presenter(viewClass = DetailView.class, viewInterface = IDetailView.class)
 public class DetailPresenter

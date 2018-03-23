@@ -18,7 +18,7 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
 import com.google.gwt.user.client.ui.IsWidget;
-import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.IsLazyReverseView;
 
 public interface INavigationView
   extends IsLazyReverseView<INavigationView.Presenter>,

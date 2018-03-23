@@ -19,10 +19,10 @@ package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationWithLoginEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
-import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
-import de.gishmo.gwt.mvp4g2.core.ui.IsShell;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
+import com.github.mvp4g.mvp4g2.core.ui.AbstractPresenter;
+import com.github.mvp4g.mvp4g2.core.ui.IsShell;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.EventHandler;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 import elemental2.dom.Element;
 
 import static elemental2.dom.DomGlobal.alert;

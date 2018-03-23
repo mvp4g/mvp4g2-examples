@@ -17,8 +17,8 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
-import de.gishmo.gwt.mvp4g2.core.application.IsApplication;
-import de.gishmo.gwt.mvp4g2.core.application.annotation.Application;
+import com.github.mvp4g.mvp4g2.core.application.IsApplication;
+import com.github.mvp4g.mvp4g2.core.application.annotation.Application;
 
 /**
  * Implemantation of the MailApplicaiton class.

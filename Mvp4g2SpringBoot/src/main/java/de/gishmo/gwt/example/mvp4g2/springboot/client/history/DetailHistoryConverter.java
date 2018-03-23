@@ -2,8 +2,8 @@ package de.gishmo.gwt.example.mvp4g2.springboot.client.history;
 
 import de.gishmo.gwt.example.mvp4g2.springboot.client.Mvp4g2SpringBootEventBus;
 import de.gishmo.gwt.example.mvp4g2.springboot.client.model.ClientContext;
-import de.gishmo.gwt.mvp4g2.core.history.IsHistoryConverter;
-import de.gishmo.gwt.mvp4g2.core.history.annotation.History;
+import com.github.mvp4g.mvp4g2.core.history.IsHistoryConverter;
+import com.github.mvp4g.mvp4g2.core.history.annotation.History;
 
 /**
  * The DetailHistoryConverter of the application.

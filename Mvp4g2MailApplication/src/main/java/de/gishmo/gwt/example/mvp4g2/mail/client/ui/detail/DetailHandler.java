@@ -22,10 +22,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import de.gishmo.gwt.example.mvp4g2.mail.client.Mvp4g2MailEventBus;
 import de.gishmo.gwt.example.mvp4g2.mail.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
-import de.gishmo.gwt.mvp4g2.core.eventbus.PresenterRegistration;
-import de.gishmo.gwt.mvp4g2.core.ui.AbstractHandler;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Handler;
+import com.github.mvp4g.mvp4g2.core.eventbus.PresenterRegistration;
+import com.github.mvp4g.mvp4g2.core.ui.AbstractHandler;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.EventHandler;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Handler;
 
 import java.util.HashMap;
 import java.util.Map;

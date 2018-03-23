@@ -25,7 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationConstants;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;
-import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.LazyReverseView;
 
 public class NavigationView
   extends LazyReverseView<INavigationView.Presenter>

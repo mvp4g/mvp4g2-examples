@@ -1,8 +1,8 @@
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history;
 
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationWithLoginEventBus;
-import de.gishmo.gwt.mvp4g2.core.history.IsHistoryConverter;
-import de.gishmo.gwt.mvp4g2.core.history.annotation.History;
+import com.github.mvp4g.mvp4g2.core.history.IsHistoryConverter;
+import com.github.mvp4g.mvp4g2.core.history.annotation.History;
 
 @History(type = History.HistoryConverterType.DEFAULT)
 public class SearchHistoryConverter

@@ -35,7 +35,7 @@
   <!-- <inherits historyName='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
-  <inherits name='de.gishmo.gwt.mvp4g2.Mvp4g2'/>
+  <inherits name='com.github.mvp4g.mvp4g2.Mvp4g2'/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplication'/>

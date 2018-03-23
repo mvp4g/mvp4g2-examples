@@ -19,7 +19,7 @@ package de.gishmo.gwt.example.mvp4g2.mail.client.ui.detail;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import de.gishmo.gwt.example.mvp4g2.mail.shared.dto.Mail;
-import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.IsLazyReverseView;
 
 public interface IDetailView
   extends IsLazyReverseView<IDetailView.Presenter>,

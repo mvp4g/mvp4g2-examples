@@ -20,7 +20,7 @@ package de.gishmo.gwt.example.mvp4g2.springboot.client.ui.navigation;
 import de.gishmo.gwt.example.mvp4g2.springboot.client.Mvp4g2SpringBootEventBus;
 import de.gishmo.gwt.example.mvp4g2.springboot.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.springboot.client.ui.AbstractSpringBootPresenter;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 import elemental2.dom.Element;
 
 @Presenter(viewClass = NavigationView.class, viewInterface = INavigationView.class)

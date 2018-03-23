@@ -32,7 +32,7 @@
     <gwtVersion>2.8.2</gwtVersion>
 
     <!-- mvp4g2 version -->
-    <mvp4g2.version>1.0-beta-3</mvp4g2.version>
+    <mvp4g2.version>1.0-beta-4</mvp4g2.version>
 
     <elemento.version>0.8.0</elemento.version>
 
@@ -82,12 +82,12 @@
       <artifactId>gwt-servlet</artifactId>
     </dependency>
     <dependency>
-      <groupId>de.gishmo.gwt</groupId>
+      <groupId>com.github.mvp4g</groupId>
       <artifactId>mvp4g2</artifactId>
       <version>${mvp4g2.version}</version>
     </dependency>
     <dependency>
-      <groupId>de.gishmo.gwt</groupId>
+      <groupId>com.github.mvp4g</groupId>
       <artifactId>mvp4g2-processor</artifactId>
       <version>${mvp4g2.version}</version>
     </dependency>
@@ -133,7 +133,7 @@
             <configuration>
               <proc>only</proc>
               <annotationProcessors>
-                <annotationProcessor>de.gishmo.gwt.mvp4g2.processor.Mvp4g2Processor</annotationProcessor>
+                <annotationProcessor>com.github.mvp4g.mvp4g2.processor.Mvp4g2Processor</annotationProcessor>
               </annotationProcessors>
             </configuration>
           </execution>

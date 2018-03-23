@@ -1,9 +1,9 @@
 package de.gishmo.gwt.example.mvp4g2.springboot.client.handler;
 
 import de.gishmo.gwt.example.mvp4g2.springboot.client.Mvp4g2SpringBootEventBus;
-import de.gishmo.gwt.mvp4g2.core.ui.AbstractHandler;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.EventHandler;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Handler;
+import com.github.mvp4g.mvp4g2.core.ui.AbstractHandler;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.EventHandler;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Handler;
 import elemental2.dom.DomGlobal;
 
 /**

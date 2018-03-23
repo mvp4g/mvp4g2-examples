@@ -7,7 +7,7 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.Applicati
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.widgets.TextField;
-import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.LazyReverseView;
 
 
 public class SearchView

@@ -6,7 +6,7 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.shared.dto.PersonSearch;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.core.ui.IsViewCreator;
-import de.gishmo.gwt.mvp4g2.core.ui.annotation.Presenter;
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 
 @Presenter(viewClass = SearchView.class, viewInterface = ISearchView.class, viewCreator = Presenter.VIEW_CREATION_METHOD.PRESENTER)
 public class SearchPresenter

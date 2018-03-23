@@ -17,7 +17,7 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client;
 
-import de.gishmo.gwt.mvp4g2.core.application.IsApplicationLoader;
+import com.github.mvp4g.mvp4g2.core.application.IsApplicationLoader;
 import elemental2.dom.DomGlobal;
 
 /**

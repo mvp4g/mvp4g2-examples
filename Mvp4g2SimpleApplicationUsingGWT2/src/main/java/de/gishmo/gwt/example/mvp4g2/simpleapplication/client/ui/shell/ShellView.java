@@ -17,7 +17,6 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
@@ -26,7 +25,7 @@ import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.Applicati
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationCss;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ApplicationStyleFactory;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.resources.ImageResources;
-import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.LazyReverseView;
 
 public class ShellView
   extends LazyReverseView<IShellView.Presenter>

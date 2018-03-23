@@ -5,11 +5,11 @@ import de.gishmo.gwt.example.mvp4g2.mail.client.ui.content.ContentPresenter;
 import de.gishmo.gwt.example.mvp4g2.mail.client.ui.list.ListPresenter;
 import de.gishmo.gwt.example.mvp4g2.mail.client.ui.shell.ShellPresenter;
 import de.gishmo.gwt.example.mvp4g2.mail.client.ui.status.StatusPresenter;
-import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
-import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Debug;
-import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Event;
-import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.EventBus;
-import de.gishmo.gwt.mvp4g2.core.eventbus.annotation.Start;
+import com.github.mvp4g.mvp4g2.core.eventbus.IsEventBus;
+import com.github.mvp4g.mvp4g2.core.eventbus.annotation.Debug;
+import com.github.mvp4g.mvp4g2.core.eventbus.annotation.Event;
+import com.github.mvp4g.mvp4g2.core.eventbus.annotation.EventBus;
+import com.github.mvp4g.mvp4g2.core.eventbus.annotation.Start;
 
 @EventBus(shell = ShellPresenter.class)
 @Debug(logLevel = Debug.LogLevel.DETAILED)

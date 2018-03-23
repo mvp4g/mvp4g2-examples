@@ -17,9 +17,8 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.shell;
 
-import de.gishmo.gwt.mvp4g2.core.ui.LazyReverseView;
+import com.github.mvp4g.mvp4g2.core.ui.LazyReverseView;
 import elemental2.dom.*;
-import jsinterop.base.Js;
 
 import static elemental2.dom.DomGlobal.document;
 

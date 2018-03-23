@@ -17,7 +17,7 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui;
 
-import de.gishmo.gwt.mvp4g2.core.eventbus.IsEventBus;
+import com.github.mvp4g.mvp4g2.core.eventbus.IsEventBus;
 import de.gishmo.gwt.mvp4g2.core.ui.AbstractPresenter;
 import de.gishmo.gwt.mvp4g2.core.ui.IsLazyReverseView;
 
