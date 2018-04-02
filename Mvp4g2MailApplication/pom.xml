@@ -33,7 +33,7 @@
     <!-- GXT GPL version without support -->
     <gxt.version>4.0.0</gxt.version>
     <!-- mvp4g2 version -->
-    <mvp4g2.version>1.0-beta-5</mvp4g2.version>
+    <mvp4g2.version>1.0-rc-2</mvp4g2.version>
 
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.8</maven.compiler.source>

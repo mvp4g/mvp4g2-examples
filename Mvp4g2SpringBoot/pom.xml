@@ -39,7 +39,7 @@
     <gwtVersion>2.8.2</gwtVersion>
 
     <!-- mvp4g2 version -->
-    <mvp4g2.version>1.0-beta-5</mvp4g2.version>
+    <mvp4g2.version>1.0-rc-2</mvp4g2.version>
 
     <elemento.version>0.6.2</elemento.version>
 
