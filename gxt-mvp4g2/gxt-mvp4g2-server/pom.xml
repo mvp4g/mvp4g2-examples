@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.sencha.gxt.archtypes</groupId>
+    <artifactId>gxt-mvp4g2</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>gxt-mvp4g2-server</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <packaging>war</packaging>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <!--<developers>-->
+  <!--<developer>-->
+  <!--<name>Frank Hossfeld</name>-->
+  <!--<id>frankhossfeld</id>-->
+  <!--<email>hossfeld@hossfeld-solutions.de</email>-->
+  <!--<organization>Hossfeld Solutions GmbH</organization>-->
+  <!--<roles>-->
+  <!--<role>Java Developer</role>-->
+  <!--</roles>-->
+  <!--</developer>-->
+  <!--</developers>-->
+
+  <!--<scm>-->
+  <!--<connection>scm:git@github.com:mvp4g/mvp4g2.git</connection>-->
+  <!--<developerConnection>scm:git:git@github.com:mvp4g/mvp4g2.git</developerConnection>-->
+  <!--<url>scm:git:https://github.com/mvp4g/mvp4g2</url>-->
+  <!--</scm>-->
+
+  <!--<issueManagement>-->
+  <!--<system>GitHub</system>-->
+  <!--<url>https://github.com/mvp4g/mvp4g2/issues</url>-->
+  <!--</issueManagement>-->
+
+  <properties>
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+
+    <jackson.databind.version>2.9.5</jackson.databind.version>
+    <jackson.jaxrs.json.provider.version>2.9.5</jackson.jaxrs.json.provider.version>
+    <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
+    <jersey.container.servlet.core.version>2.27</jersey.container.servlet.core.version>
+    <jersey.media.json.jackson.version>2.27</jersey.media.json.jackson.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>${javax.ws.rs-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet-core</artifactId>
+      <version>${jersey.container.servlet.core.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>${jersey.media.json.jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-json-provider</artifactId>
+      <version>${jackson.jaxrs.json.provider.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.databind.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sencha.gxt.archtypes</groupId>
+      <artifactId>gxt-mvp4g2-dto</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${plugin.version.war.maven}</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>exploded</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <webappDirectory>${webappDirectory}</webappDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${plugin.version.compiler.maven}</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+          <meminitial>128m</meminitial>
+          <maxmem>1024m</maxmem>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerArgs>
+            <compilerArgument>-Xlint:all</compilerArgument>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
