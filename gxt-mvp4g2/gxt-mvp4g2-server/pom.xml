@@ -4,12 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.sencha.gxt.archtypes</groupId>
-    <artifactId>gxt-mvp4g2</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-
+  <groupId>com.github.mvp4g</groupId>
   <artifactId>gxt-mvp4g2-server</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -23,17 +18,17 @@
     </license>
   </licenses>
 
-  <!--<developers>-->
-  <!--<developer>-->
-  <!--<name>Frank Hossfeld</name>-->
-  <!--<id>frankhossfeld</id>-->
-  <!--<email>hossfeld@hossfeld-solutions.de</email>-->
-  <!--<organization>Hossfeld Solutions GmbH</organization>-->
-  <!--<roles>-->
-  <!--<role>Java Developer</role>-->
-  <!--</roles>-->
-  <!--</developer>-->
-  <!--</developers>-->
+  <developers>
+    <developer>
+      <name>Frank Hossfeld</name>
+      <id>frankhossfeld</id>
+      <email>hossfeld@hossfeld-solutions.de</email>
+      <organization>Hossfeld Solutions GmbH</organization>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </developer>
+  </developers>
 
   <!--<scm>-->
   <!--<connection>scm:git@github.com:mvp4g/mvp4g2.git</connection>-->
@@ -49,66 +44,90 @@
   <properties>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 
-    <jackson.databind.version>2.9.5</jackson.databind.version>
-    <jackson.jaxrs.json.provider.version>2.9.5</jackson.jaxrs.json.provider.version>
+    <jackson.version>2.8.10</jackson.version>
     <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
-    <jersey.container.servlet.core.version>2.27</jersey.container.servlet.core.version>
-    <jersey.media.json.jackson.version>2.27</jersey.media.json.jackson.version>
+    <jersey.version>2.27</jersey.version>
+
+    <tomcat.version>8.5.23</tomcat.version>
+
+    <plugin.version.compiler.maven>3.5.1</plugin.version.compiler.maven>
+    <plugin.version.war.maven>3.2.0</plugin.version.war.maven>
+
+    <!-- Maven -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.glassfish.jersey</groupId>
+        <artifactId>jersey-bom</artifactId>
+        <version>${jersey.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
-      <groupId>javax.ws.rs</groupId>
-      <artifactId>javax.ws.rs-api</artifactId>
-      <version>${javax.ws.rs-api.version}</version>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet-core</artifactId>
+      <!-- use the following artifactId if you don't need servlet 2.x compatibility -->
+      <!-- artifactId>jersey-container-servlet</artifactId -->
     </dependency>
+
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-servlet-core</artifactId>
-      <version>${jersey.container.servlet.core.version}</version>
+      <version>${jersey.version}</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-json-jackson</artifactId>
-      <version>${jersey.media.json.jackson.version}</version>
+      <version>${jersey.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-common</artifactId>
+      <version>${jersey.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+      <version>${jersey.version}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.jaxrs</groupId>
       <artifactId>jackson-jaxrs-json-provider</artifactId>
-      <version>${jackson.jaxrs.json.provider.version}</version>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>${jackson.databind.version}</version>
+      <version>${jackson.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.sencha.gxt.archtypes</groupId>
+      <groupId>com.github.mvp4g</groupId>
       <artifactId>gxt-mvp4g2-dto</artifactId>
       <version>1.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
+
   <build>
+    <finalName>${project.artifactId}</finalName>
     <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>${plugin.version.war.maven}</version>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <goals>
-              <goal>exploded</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <webappDirectory>${webappDirectory}</webappDirectory>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -125,6 +144,23 @@
             <compilerArgument>-Xlint:all</compilerArgument>
           </compilerArgs>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.10.RC0</version>
+        <configuration>
+          <scanIntervalSeconds>1</scanIntervalSeconds>
+          <contextXml>${basedir}/src/main/jettyconf/context.xml</contextXml>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <!--<configuration>-->
+        <!--<contextFile>${basedir}/src/main/tomcatconf/context.xml</contextFile>-->
+        <!--</configuration>-->
       </plugin>
     </plugins>
   </build>

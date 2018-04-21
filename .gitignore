@@ -25,3 +25,6 @@ simpleApplicationElemento
 /Mvp4g2MailApplication/src/main/webapp/mailapplication
 de.gishmo.gwt.example.mvp4g2.springboot.Mvp4g2SpringBoot
 /Mvp4g2SpringBoot/src/main/resources/static/Mvp4g2SpringBoot
+/gxt-mvp4g2/gxt-mvp4g2-dto/target
+/gxt-mvp4g2/gxt-mvp4g2-application/target
+/gxt-mvp4g2/gxt-mvp4g2-server/target

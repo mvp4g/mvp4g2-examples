@@ -23,7 +23,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>tld.domain.project.application</groupId>
+  <groupId>com.github.mvp4g</groupId>
   <artifactId>gxt-mvp4g2-application</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
@@ -39,7 +39,7 @@
     <gwt.version>2.8.2</gwt.version>
 
     <!-- mvp4g2 version -->
-    <mvp4g2.version>1.0-rc-3</mvp4g2.version>
+    <mvp4g2.version>1.0.0</mvp4g2.version>
 
     <!-- GXT version -->
     <gxt.version>4.0.0</gxt.version>
@@ -53,6 +53,13 @@
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!-- resty gwt -->
+    <restyGWT.version>2.2.3</restyGWT.version>
+    <!-- gwt jackson -->
+    <gwtjackson.version>0.15.0</gwtjackson.version>
+    <!-- jackson -->
+    <jackson.version>2.8.4</jackson.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -106,10 +113,30 @@
       <version>${gxt.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.sencha.gxt.archtypes</groupId>
+      <groupId>com.github.mvp4g</groupId>
       <artifactId>gxt-mvp4g2-dto</artifactId>
       <version>1.0-SNAPSHOT</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.fusesource.restygwt</groupId>
+      <artifactId>restygwt</artifactId>
+      <version>${restyGWT.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nmorel.gwtjackson</groupId>
+      <artifactId>gwt-jackson</artifactId>
+      <version>${gwtjackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>2.1</version>
     </dependency>
   </dependencies>
 
@@ -122,15 +149,16 @@
     </repository>
   </repositories>
   <build>
+    <finalName>${project.artifactId}</finalName>
     <!-- Compiled Classes -->
     <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
     <resources>
       <resource>
         <directory>src/main/java</directory>
-          <includes>
-            <include>**</include>
-          </includes>
+        <includes>
+          <include>**</include>
+        </includes>
       </resource>
     </resources>
 
@@ -170,7 +198,7 @@
 
         <configuration>
           <classpathScope>compile</classpathScope>
-          <moduleName>tld.domain.project.application.gxtmvp4g2application.GxtMvp4g2Application</moduleName>
+          <moduleName>com.github.mvp4g2.application.gxtmvp4g2application.GxtMvp4g2Application</moduleName>
           <moduleShortName>gxtMvp4g2Application</moduleShortName>
           <failOnError>true</failOnError>
           <sourceLevel>${maven.compiler.source}</sourceLevel>
@@ -178,9 +206,15 @@
           <startupUrls>
             <startupUrl>GxtMvp4g2Application.html</startupUrl>
           </startupUrls>
-        <devmodeWorkDir>${project.build.directory}/devModeWorkDir</devmodeWorkDir>
-        <launcherDir>${project.build.directory}/${project.build.finalName}</launcherDir>
-        <warDir>${project.build.directory}/${project.build.finalName}</warDir>
+          <!--<devmodeWorkDir>${project.build.directory}/devModeWorkDir</devmodeWorkDir>-->
+          <devmodeWorkDir>${project.basedir}/../gxt-mvp4g2-server/target/gxt-mvp4g2-server</devmodeWorkDir>
+          <launcherDir>${project.basedir}/../gxt-mvp4g2-server/target/gxt-mvp4g2-server</launcherDir>
+          <!--<launcherDir>${project.build.directory}/${project.build.finalName}</launcherDir>-->
+          <warDir>${project.basedir}/../gxt-mvp4g2-server/target/gxt-mvp4g2-server</warDir>
+          <!--<warDir>${project.build.directory}/${project.build.finalName}</warDir>-->
+          <devmodeArgs>
+            <arg>-noserver</arg>
+          </devmodeArgs>
         </configuration>
       </plugin>
       <plugin>
@@ -190,7 +224,8 @@
         <configuration>
           <webResources>
             <resource>
-              <directory>${project.build.directory}/${project.build.finalName}</directory>
+              <!--<directory>${project.build.directory}/${project.build.finalName}</directory>-->
+              <directory>${project.basedir}/../gxt-mvp4g2-server/target/gxt-mvp4g2-server</directory>
             </resource>
           </webResources>
           <failOnMissingWebXml>false</failOnMissingWebXml>

@@ -31,10 +31,11 @@
   <inherits name='com.github.mvp4g.mvp4g2.Mvp4g2'/>
   <inherits name='com.sencha.gxt.ui.GXT'/>
   <inherits name='com.sencha.gxt.theme.triton.Theme'/>
-  <inherits name="tld.domain.project.dto.DTO"/>
+  <inherits name="com.github.mvp4g.domain.dto.DTO"/>
+  <inherits name="org.fusesource.restygwt.RestyGWT"/>
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='tld.domain.project.application.gxtmvp4g2application.client.GxtMvp4g2Application'/>
+  <entry-point class='com.github.mvp4g2.application.gxtmvp4g2application.client.GxtMvp4g2Application'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>

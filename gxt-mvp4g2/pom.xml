@@ -18,15 +18,14 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <plugin.version.compiler.maven>3.5.1</plugin.version.compiler.maven>
-    <plugin.version.war.maven>3.2.0</plugin.version.war.maven>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <modules>
-    <module>gxt-mvp4g2-dto</module>
-    <module>gxt-mvp4g2-server</module>
-    <!--<module>application</module>-->
+    <!--<module>gxt-mvp4g2-dto</module>-->
+    <!--<module>gxt-mvp4g2-server</module>-->
+    <!--<module>gxt-mvp4g2-application</module>-->
   </modules>
 
   <build>

@@ -12,16 +12,20 @@
     <param-name>resteasy.scan.resources</param-name>
     <param-value>false</param-value>
   </context-param>
+  <servlet-mapping>
+    <servlet-name>JerseyResource</servlet-name>
+    <url-pattern>/gxt-mvp4g2-server/*</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>JerseyResource</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>de.gishmo.module0812.domain.server.resource</param-value>
+      <param-value>com.github.mvp4g.server.resource</param-value>
     </init-param>
     <init-param>
       <param-name>javax.ws.rs.Application</param-name>
-      <param-value>de.gishmo.module0812.domain.server.DomainServiceApplication</param-value>
+      <param-value>com.github.mvp4g.server.ServiceApplication</param-value>
     </init-param>
     <init-param>
       <param-name>jersey.config.feature.Trace</param-name>
@@ -37,8 +41,4 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>JerseyResource</servlet-name>
-    <url-pattern>/api/*</url-pattern>
-  </servlet-mapping>
 </web-app>
