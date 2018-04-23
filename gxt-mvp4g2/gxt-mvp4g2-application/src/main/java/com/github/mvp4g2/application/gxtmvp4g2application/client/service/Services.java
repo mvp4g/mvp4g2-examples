@@ -1,6 +1,5 @@
 package com.github.mvp4g2.application.gxtmvp4g2application.client.service;
 
-import com.github.mvp4g2.application.gxtmvp4g2application.client.service.dto.ExceptionInfoService;
 import com.github.mvp4g2.application.gxtmvp4g2application.client.service.dto.PersonService;
 import com.google.gwt.core.client.GWT;
 import org.fusesource.restygwt.client.Defaults;
@@ -11,14 +10,13 @@ public class Services {
 
   /* instance of the factory */
   private static Services services;
-  private        String   path;
+
+  private String path;
 
   /* Services */
-  private ExceptionInfoService exceptionInfoService;
-  private PersonService        PersonService;
+  private PersonService PersonService;
 
   private Services() {
-    GWT.debugger();
     // set standard date format!
     Defaults.setDateFormat(null);
     // initialize default variable
@@ -54,13 +52,5 @@ public class Services {
                 .append("/" + resource);
     GWT.log("current resource path >>" + resourcePath.toString() + "<<");
     return new Resource(resourcePath.toString());
-  }
-
-  public ExceptionInfoService getExceptionInfoService() {
-    if (exceptionInfoService == null) {
-      exceptionInfoService = GWT.create(ExceptionInfoService.class);
-      ((RestServiceProxy) exceptionInfoService).setResource(getResource("ExceptionInfo"));
-    }
-    return exceptionInfoService;
   }
 }

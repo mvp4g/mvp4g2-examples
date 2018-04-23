@@ -1,15 +1,14 @@
 package com.github.mvp4g2.application.gxtmvp4g2application.client.history;
 
+import com.github.mvp4g.domain.dto.shared.search.PersonSearch;
 import com.github.mvp4g.mvp4g2.core.history.IsHistoryConverter;
 import com.github.mvp4g.mvp4g2.core.history.annotation.History;
 import com.github.mvp4g2.application.gxtmvp4g2application.client.GxtMvp4g2ApplicationEventBus;
 import com.github.mvp4g2.application.gxtmvp4g2application.client.model.ClientContext;
 
-@History(
-  type = History.HistoryConverterType.SIMPLE
-)
+@History(type = History.HistoryConverterType.SIMPLE)
 public class DefaultHistoryConverter
-  implements IsHistoryConverter<GxtMvp4g2ApplicationEventBus> {
+    implements IsHistoryConverter<GxtMvp4g2ApplicationEventBus> {
 
   private final static String DELIMITER = "+!!+";
 
@@ -23,58 +22,70 @@ public class DefaultHistoryConverter
     String searchName = "";
     String searchCity = "";
     switch (historyName) {
-      case "gotoSearch":
-        if (param.length() > 0) {
-          searchName = param.substring(0,
-                                       param.indexOf(DELIMITER));
-          if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
-            searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
-          }
+    case "gotoSearch":
+      if (param.length() > 0) {
+        searchName = param.substring(0,
+                                     param.indexOf(DELIMITER));
+        if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
+          searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
         }
-        eventBus.gotoSearch(searchName,
-                            searchCity);
-        break;
-      case "gotoList":
-        if (param.length() > 0) {
-          searchName = param.substring(0,
-                                       param.indexOf(DELIMITER));
-          if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
-            searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
-          }
+      }
+      ClientContext.get()
+                   .setPersonSearch(new PersonSearch(cleanString(searchName),
+                                                     cleanString(searchCity)));
+      eventBus.gotoSearch(cleanString(searchName),
+                          cleanString(searchCity));
+      break;
+    case "gotoList":
+      if (param.length() > 0) {
+        searchName = param.substring(0,
+                                     param.indexOf(DELIMITER));
+        if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
+          searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
         }
-        if (searchName.length() > 0 || searchCity.length() > 0) {
-          eventBus.gotoList(searchName,
-                            searchCity);
+      }
+      if (searchName.length() > 0 || searchCity.length() > 0) {
+        ClientContext.get()
+                     .setPersonSearch(new PersonSearch(cleanString(searchName),
+                                                       cleanString(searchCity)));
+        eventBus.gotoList(cleanString(searchName),
+                          cleanString(searchCity));
+      } else {
+        eventBus.gotoSearch("",
+                            "");
+      }
+      eventBus.gotoList(cleanString(searchName),
+                        cleanString(searchCity));
+      break;
+    case "showPerson":
+      try {
+        final long id = Long.parseLong(param);
+        eventBus.showPerson(id);
+      } catch (final NumberFormatException e) {
+        if (ClientContext.get()
+                         .getPersonSearch() != null) {
+          ClientContext.get()
+                       .setPersonSearch(new PersonSearch(cleanString(searchName),
+                                                         cleanString(searchCity)));
+          eventBus.gotoSearch(cleanString(ClientContext.get()
+                                                       .getPersonSearch()
+                                                       .getName()),
+                              cleanString(ClientContext.get()
+                                                       .getPersonSearch()
+                                                       .getCity()));
         } else {
           eventBus.gotoSearch("",
                               "");
         }
-        eventBus.gotoList(searchName,
-                          searchCity);
-        break;
-      case "gotoDetailscreen03":
-        try {
-          final long id = Long.parseLong(param);
-          eventBus.gotoDetail(id);
-        } catch (final NumberFormatException e) {
-          if (ClientContext.get()
-                           .getPersonSearch() != null) {
-            eventBus.gotoSearch(ClientContext.get()
-                                             .getPersonSearch()
-                                             .getName(),
-                                ClientContext.get()
-                                             .getPersonSearch()
-                                             .getCity());
-          } else {
-            eventBus.gotoSearch("",
-                                "");
-          }
-        }
-        break;
-      default:
-        eventBus.gotoSearch("",
-                            "");
-        break;
+      }
+      break;
+    case "newPerson":
+      eventBus.newPerson();
+      break;
+    default:
+      eventBus.gotoSearch("",
+                          "");
+      break;
     }
   }
 
@@ -82,7 +93,6 @@ public class DefaultHistoryConverter
   public boolean isCrawlable() {
     return false;
   }
-
 
   public String convertToToken(final String historyName,
                                final long id) {
@@ -97,5 +107,9 @@ public class DefaultHistoryConverter
                                final String param1,
                                final String param2) {
     return param1 + DELIMITER + param2;
+  }
+
+  private String cleanString(String value) {
+    return "undefined".equals(value) ? "" : value;
   }
 }

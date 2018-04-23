@@ -1,5 +1,6 @@
 package com.github.mvp4g2.application.gxtmvp4g2application.client.ui.search;
 
+import com.github.mvp4g.domain.dto.shared.search.PersonSearch;
 import com.github.mvp4g.mvp4g2.core.ui.AbstractPresenter;
 import com.github.mvp4g.mvp4g2.core.ui.annotation.EventHandler;
 import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
@@ -21,13 +22,11 @@ import com.github.mvp4g2.application.gxtmvp4g2application.client.model.ClientCon
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@Presenter(
-  viewClass = SearchView.class,
-  viewInterface = ISearchView.class
-)
+@Presenter(viewClass = SearchView.class,
+           viewInterface = ISearchView.class)
 public class SearchPresenter
-  extends AbstractPresenter<GxtMvp4g2ApplicationEventBus, ISearchView>
-  implements ISearchView.Presenter {
+    extends AbstractPresenter<GxtMvp4g2ApplicationEventBus, ISearchView>
+    implements ISearchView.Presenter {
 
   public SearchPresenter() {
   }
@@ -55,6 +54,9 @@ public class SearchPresenter
   @Override
   public void doSearch(String searchName,
                        String searchCity) {
+    ClientContext.get()
+                 .setPersonSearch(new PersonSearch(searchName,
+                                                   searchCity));
     eventBus.gotoList(searchName,
                       searchCity);
   }

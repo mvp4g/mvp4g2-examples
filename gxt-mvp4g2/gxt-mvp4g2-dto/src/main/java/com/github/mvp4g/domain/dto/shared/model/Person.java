@@ -1,21 +1,15 @@
 package com.github.mvp4g.domain.dto.shared.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.github.mvp4g.domain.dto.shared.AbstractDto;
-
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-@JsonTypeName("Person")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY)
 public class Person
-  extends AbstractDto
-  implements Serializable {
+    implements Serializable {
 
   private long id;
 
   private String name;
+
   private String firstName;
 
   private Address address;

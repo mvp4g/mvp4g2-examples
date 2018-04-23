@@ -1,27 +1,12 @@
 package com.github.mvp4g.server.resource;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-
 import com.github.mvp4g.domain.dto.shared.model.Address;
 import com.github.mvp4g.domain.dto.shared.model.Person;
 import com.github.mvp4g.domain.dto.shared.search.PersonSearch;
-import com.github.mvp4g.domain.dto.shared.transport.ReturnCode;
-import com.github.mvp4g.domain.dto.shared.transport.Status;
-import com.github.mvp4g.domain.dto.shared.transport.response.PersonGetResponse;
-import com.github.mvp4g.domain.dto.shared.transport.response.PersonInsertResponse;
-import com.github.mvp4g.domain.dto.shared.transport.response.PersonSearchResponse;
-import com.github.mvp4g.domain.dto.shared.transport.response.PersonUpdateResponse;
+
+import javax.inject.Singleton;
+import javax.ws.rs.*;
+import java.util.*;
 
 @Singleton
 @Path("/Person")
@@ -34,7 +19,7 @@ public class PersonResource {
   }
 
   private void init() {
-    dummyDB = new HashMap<Long, Person>();
+    dummyDB = new HashMap<>();
     Address address01 = new Address(1,
                                     "Evergreen Terrace",
                                     "7 42",
@@ -103,25 +88,18 @@ public class PersonResource {
   @GET
   @Path("/get/{id}")
   @Produces("application/json")
-  public PersonGetResponse get(@PathParam("id") String id) {
-    Status status = new Status();
-    status.setReturnCode(ReturnCode.OK);
-
-    PersonGetResponse response = new PersonGetResponse();
-    response.setStatus(status);
-
+  public Person get(@PathParam("id") String id) {
     if (dummyDB.containsKey(new Long(id))) {
       System.out.println("Found Person for ID: " + id);
-      response.setPerson(dummyDB.get(new Long(id)));
+      return dummyDB.get(new Long(id));
     }
-
-    return response;
+    return null;
   }
 
   @POST
   @Produces("application/json")
   @Path("/insert")
-  public PersonInsertResponse insert(Person person) {
+  public void insert(Person person) {
     Iterator<Person> iter = dummyDB.values()
                                    .iterator();
     long maxKey = 0;
@@ -135,55 +113,28 @@ public class PersonResource {
     person.setId(maxKey);
     dummyDB.put(new Long(maxKey),
                 person);
-
-    PersonInsertResponse response = new PersonInsertResponse();
-
-    Status status = new Status();
-    status.setReturnCode(ReturnCode.OK);
-    response.setStatus(status);
-
-    response.setPerson(person);
-
-    return response;
   }
 
   @POST
   @Produces("application/json")
   @Path("/update")
-  public PersonUpdateResponse update(Person person) {
+  public void update(Person person) {
     Person value = dummyDB.get(new Long(person.getId()));
     if (value != null) {
       dummyDB.remove(new Long(person.getId()));
       dummyDB.put(new Long(person.getId()),
                   person);
     }
-
-    PersonUpdateResponse response = new PersonUpdateResponse();
-
-    Status status = new Status();
-    status.setReturnCode(ReturnCode.OK);
-    response.setStatus(status);
-
-    response.setPerson(person);
-
-    return response;
   }
 
   @POST
   @Produces("application/json")
   @Path("/search")
-  public PersonSearchResponse search(PersonSearch search) {
-    PersonSearchResponse response = new PersonSearchResponse();
-
-    Status status = new Status();
-    status.setReturnCode(ReturnCode.OK);
-    response.setStatus(status);
-
+  public List<Person> search(PersonSearch search) {
     List<Person> list = new ArrayList<Person>();
     if ((search.getName() != null && search.getName()
-                                           .length() != 0 ) ||
-        (search.getCity() != null && search.getCity()
-                                                .length() != 0)) {
+                                           .length() != 0) || (search.getCity() != null && search.getCity()
+                                                                                                 .length() != 0)) {
       for (Long aLong : dummyDB.keySet()) {
         Person Person = dummyDB.get(aLong);
         if (search.getName() != null && search.getName()
@@ -219,9 +170,6 @@ public class PersonResource {
         }
       }
     }
-
-    response.setPersonList(list);
-
-    return response;
+    return list;
   }
 }

@@ -1,22 +1,17 @@
 package com.github.mvp4g.domain.dto.shared.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.github.mvp4g.domain.dto.shared.AbstractDto;
-
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-@JsonTypeName("Address")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY)
 public class Address
-  extends AbstractDto
-  implements Serializable {
+    implements Serializable {
 
-  private long id;
+  private long adressId;
 
   private String street;
+
   private String zip;
+
   private String city;
 
   /* for serialization only */
@@ -24,13 +19,13 @@ public class Address
     super();
   }
 
-  public Address(long id,
+  public Address(long adressId,
                  String street,
                  String zip,
                  String city) {
     super();
 
-    this.id = id;
+    this.adressId = adressId;
     this.street = street;
     this.zip = zip;
     this.city = city;
@@ -60,11 +55,11 @@ public class Address
     this.city = city;
   }
 
-  public long getId() {
-    return id;
+  public long getAdressId() {
+    return adressId;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setAdressId(long adressId) {
+    this.adressId = adressId;
   }
 }

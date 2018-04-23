@@ -36,5 +36,10 @@ public interface IListView
   void edit(List<Person> personList);
 
   interface Presenter {
+
+    void doEdit(Person selectedItem);
+
+    void doNew();
+
   }
 }

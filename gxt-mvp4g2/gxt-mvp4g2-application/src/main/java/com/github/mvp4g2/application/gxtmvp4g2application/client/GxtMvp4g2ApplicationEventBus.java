@@ -175,7 +175,14 @@ public interface GxtMvp4g2ApplicationEventBus
     historyConverter = DefaultHistoryConverter.class,
     navigationEvent = true
   )
-  void gotoDetail(long id);
+  void showPerson(long id);
+
+  @Event(
+      historyName = "BB8-1",
+      historyConverter = DefaultHistoryConverter.class,
+      navigationEvent = true
+  )
+  void newPerson();
 
   @Event
   void setStatusMessage(String message);

@@ -204,8 +204,9 @@
           <sourceLevel>${maven.compiler.source}</sourceLevel>
           <logLevel>TRACE</logLevel>
           <startupUrls>
-            <startupUrl>GxtMvp4g2Application.html</startupUrl>
+            <startupUrl>http://localhost:8080/GxtMvp4g2Application.html</startupUrl>
           </startupUrls>
+          <port>8080</port>
           <!--<devmodeWorkDir>${project.build.directory}/devModeWorkDir</devmodeWorkDir>-->
           <devmodeWorkDir>${project.basedir}/../gxt-mvp4g2-server/target/gxt-mvp4g2-server</devmodeWorkDir>
           <launcherDir>${project.basedir}/../gxt-mvp4g2-server/target/gxt-mvp4g2-server</launcherDir>

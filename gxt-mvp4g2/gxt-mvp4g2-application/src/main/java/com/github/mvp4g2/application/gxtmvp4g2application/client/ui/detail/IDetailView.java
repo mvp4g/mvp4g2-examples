@@ -1,5 +1,6 @@
 package com.github.mvp4g2.application.gxtmvp4g2application.client.ui.detail;
 
+import com.github.mvp4g.domain.dto.shared.model.Person;
 import com.github.mvp4g.mvp4g2.core.ui.IsLazyReverseView;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -32,6 +33,14 @@ public interface IDetailView
 
   boolean isDirty();
 
+  void edit(Person person,
+            boolean isNew);
+
   interface Presenter {
+
+    void doSave(Person flush);
+
+    void doCancel();
+
   }
 }

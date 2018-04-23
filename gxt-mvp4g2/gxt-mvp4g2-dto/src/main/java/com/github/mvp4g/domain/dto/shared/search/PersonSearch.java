@@ -1,19 +1,13 @@
 package com.github.mvp4g.domain.dto.shared.search;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.github.mvp4g.domain.dto.shared.AbstractDto;
-
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-@JsonTypeName("PersonSearch")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY)
 public class PersonSearch
-  extends AbstractDto
-  implements Serializable {
+    implements Serializable {
 
   private String name;
+
   private String city;
 
   public PersonSearch() {
