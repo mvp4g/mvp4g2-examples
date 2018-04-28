@@ -3,8 +3,9 @@ To help you to understand how the framework works, Mvp4g2 comes with tutorials a
 
 To run the examples:
 
-* clone [mvp4g2](https://github.com/mvp4g/mvp4g2) and install it (mvn install).
-* clone mvp4g2-examples and run mvn gwt:devmode to start one of the examples
+* clone mvp4g2-examples
+* select an exampl
+* run mvn gwt:devmode
 
 Please, keep in mind, mvp4g2 ist a client framework, so all server calls are simulated on the client side and are mocked in this examples. Because of that, there is no need to have a server. Also, mvp4g2 does not force you to use a special widget lib. This is up to you. In this examples we use native Elemental 2 and Elemento, which does not look very nice, but works!
 
