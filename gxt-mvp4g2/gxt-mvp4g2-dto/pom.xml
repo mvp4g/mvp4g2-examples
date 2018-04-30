@@ -2,12 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.mvp4g</groupId>
-  <artifactId>gxt-mvp4g2-dto</artifactId>
-  <version>1.0-SNAPSHOT</version>
 
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.github.mvp4g</groupId>
+    <artifactId>gxt-mvp4g2-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <name>gxt-mvp4g2-dto</name>
+
+  <artifactId>gxt-mvp4g2-dto</artifactId>
   <packaging>jar</packaging>
+  <description>DTO of the gxt + mvp4g2 example</description>
 
   <licenses>
     <license>
@@ -17,39 +25,31 @@
     </license>
   </licenses>
 
-  <!--<developers>-->
-    <!--<developer>-->
-      <!--<name>Frank Hossfeld</name>-->
-      <!--<id>frankhossfeld</id>-->
-      <!--<email>hossfeld@hossfeld-solutions.de</email>-->
-      <!--<organization>Hossfeld Solutions GmbH</organization>-->
-      <!--<roles>-->
-        <!--<role>Java Developer</role>-->
-      <!--</roles>-->
-    <!--</developer>-->
-  <!--</developers>-->
+  <developers>
+    <developer>
+      <name>Frank Hossfeld</name>
+      <id>frankhossfeld</id>
+      <email>hossfeld@hossfeld-solutions.de</email>
+      <organization>Hossfeld Solutions GmbH</organization>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </developer>
+  </developers>
 
-  <!--<scm>-->
-    <!--<connection>scm:git@github.com:mvp4g/mvp4g2.git</connection>-->
-    <!--<developerConnection>scm:git:git@github.com:mvp4g/mvp4g2.git</developerConnection>-->
-    <!--<url>scm:git:https://github.com/mvp4g/mvp4g2</url>-->
-  <!--</scm>-->
+  <scm>
+    <connection>scm:git@github.com:mvp4g/mvp4g2-examples.git</connection>
+    <developerConnection>scm:git:git@github.com:mvp4g/mvp4g2-examples.git</developerConnection>
+    <url>scm:git:https://github.com/mvp4g/mvp4g2-examples</url>
+  </scm>
 
-  <!--<issueManagement>-->
-    <!--<system>GitHub</system>-->
-    <!--<url>https://github.com/mvp4g/mvp4g2/issues</url>-->
-  <!--</issueManagement>-->
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/mvp4g/mvp4g2-examples/issues</url>
+  </issueManagement>
 
   <properties>
     <jackson.annotation.version>2.9.5</jackson.annotation.version>
-
-    <!-- Maven -->
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-
-    <plugin.version.compiler.maven>3.5.1</plugin.version.compiler.maven>
-
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
@@ -84,7 +84,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${plugin.version.compiler.maven}</version>
+        <version>${plugin.version.maven.compiler}</version>
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>

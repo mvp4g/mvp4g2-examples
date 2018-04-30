@@ -6,27 +6,30 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.mvp4g</groupId>
-  <artifactId>gxt-mvp4g2</artifactId>
+  <artifactId>gxt-mvp4g2-parent</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>gxt-mvp4g2</name>
+  <name>gxt-mvp4g2-parent</name>
   <description>GXT project using mvp4g2</description>
   <packaging>pom</packaging>
 
+  <modules>
+    <module>gxt-mvp4g2-dto</module>
+    <module>gxt-mvp4g2-application</module>
+    <module>gxt-mvp4g2-server</module>
+  </modules>
+
   <properties>
+    <!-- jackson -->
+    <jackson.version>2.8.4</jackson.version>
+
     <!-- Maven -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
-    <plugin.version.compiler.maven>3.5.1</plugin.version.compiler.maven>
+    <plugin.version.maven.compiler>3.5.1</plugin.version.maven.compiler>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
-  <modules>
-    <!--<module>gxt-mvp4g2-dto</module>-->
-    <!--<module>gxt-mvp4g2-server</module>-->
-    <!--<module>gxt-mvp4g2-application</module>-->
-  </modules>
 
   <build>
     <plugins>
@@ -52,15 +55,14 @@
 
       <!-- Commercial (with Support) -->
       <!-- <url>https://maven.sencha.com/repo/gxt-commercial-release</url> -->
-      <url>https://maven.sencha.com/repo/gxt-support-commercial-release</url>
+      <!--<url>https://maven.sencha.com/repo/gxt-support-commercial-release</url>-->
       <!-- <url>https://maven.sencha.com/repo/gxt-commercial-snapshot</url> -->
 
       <!-- GPL -->
-      <!-- <url>https://maven.sencha.com/repo/gxt-gpl-release</url> -->
+       <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
       <!-- <url>https://maven.sencha.com/repo/gxt-gpl-snapshot</url> -->
-
       <!-- GPL with Support -->
-      <!-- <url>https://maven.sencha.com/repo/gxt-support-gpl-release</url> -->
+       <!--<url>https://maven.sencha.com/repo/gxt-support-gpl-release</url>-->
     </repository>
   </repositories>
 
@@ -75,10 +77,10 @@
       <!-- Commercial (with Support) -->
       <!-- <url>https://maven.sencha.com/repo/gxt-commercial-release</url> -->
       <!-- <url>https://maven.sencha.com/repo/gxt-support-commercial-release</url> -->
-      <url>https://maven.sencha.com/repo/gxt-commercial-snapshot</url>
+      <!--<url>https://maven.sencha.com/repo/gxt-commercial-snapshot</url>-->
 
       <!-- GPL -->
-      <!-- <url>https://maven.sencha.com/repo/gxt-gpl-release</url> -->
+       <url>https://maven.sencha.com/repo/gxt-gpl-release</url>
       <!-- <url>https://maven.sencha.com/repo/gxt-gpl-snapshot</url> -->
 
       <!-- GPL with Support -->
@@ -93,5 +95,4 @@
       </releases>
     </pluginRepository>
   </pluginRepositories>
-
 </project>
