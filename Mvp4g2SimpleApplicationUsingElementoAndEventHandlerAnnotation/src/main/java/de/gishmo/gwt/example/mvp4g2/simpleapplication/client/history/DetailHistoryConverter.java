@@ -17,10 +17,11 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history;
 
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
-import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import com.github.mvp4g.mvp4g2.core.history.IsHistoryConverter;
 import com.github.mvp4g.mvp4g2.core.history.annotation.History;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.PersonSearch;
+import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 
 /**
  * The DetailHistoryConverter of the application.
@@ -41,6 +42,9 @@ public class DetailHistoryConverter
   public void convertFromToken(String historyName,
                                String param,
                                Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus eventBus) {
+    ClientContext.get()
+                 .setPersonSearch(new PersonSearch("",
+                                                   ""));
     try {
       long id = Long.parseLong(param);
       eventBus.gotoDetail(id);

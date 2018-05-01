@@ -50,7 +50,6 @@ public class ListPresenter
   @EventHandler
   public void onGotoList(String searchName,
                          String searchCity) {
-    GWT.debugger();
     ClientContext.get()
                  .getPersonService()
                  .search(new PersonSearch(searchName,
@@ -65,7 +64,6 @@ public class ListPresenter
                            @Override
                            public void onSuccess(Method method,
                                                  List<Person> persons) {
-                             GWT.debugger();
                              view.setData(persons);
                              eventBus.setContent(view.asElement());
                              if (persons.size() == 0) {

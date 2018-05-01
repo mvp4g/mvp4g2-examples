@@ -48,8 +48,8 @@ public class SearchHistoryConverter
         searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
       }
     }
-    eventBus.gotoSearch(searchName,
-                        searchCity);
+    eventBus.gotoSearch(convertParameter(searchName),
+                        convertParameter(searchCity));
   }
 
   @Override
