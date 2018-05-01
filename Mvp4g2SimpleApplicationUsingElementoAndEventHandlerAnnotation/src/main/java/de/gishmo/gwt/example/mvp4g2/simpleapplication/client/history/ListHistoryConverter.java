@@ -17,18 +17,19 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.history;
 
+import com.github.mvp4g.mvp4g2.core.history.IsHistoryConverter;
+import com.github.mvp4g.mvp4g2.core.history.annotation.History;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.data.model.dto.PersonSearch;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
-import com.github.mvp4g.mvp4g2.core.history.IsHistoryConverter;
-import com.github.mvp4g.mvp4g2.core.history.annotation.History;
 
 /**
  * The ListHistoryConverter of the application.
- *
+ * <p>
  * We use different HistroyConverter to check wheather the framework can
  * handle different converers or not!
- */@History(type = History.HistoryConverterType.DEFAULT)
+ */
+@History(type = History.HistoryConverterType.DEFAULT)
 public class ListHistoryConverter
   implements IsHistoryConverter<Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus> {
 
@@ -49,13 +50,18 @@ public class ListHistoryConverter
       if (param.length() > param.indexOf(DELIMITER) + DELIMITER.length()) {
         searchCity = param.substring(param.indexOf(DELIMITER) + DELIMITER.length());
       }
-      ClientContext.get()
-                   .setPersonSearch(new PersonSearch(searchName,
-                                                     searchCity));
     }
+    ClientContext.get()
+                 .setPersonSearch(new PersonSearch(convertParameter(searchName),
+                                                   convertParameter(searchCity)));
     if (searchName.length() > 0 || searchCity.length() > 0) {
-      eventBus.gotoList(searchName,
-                        searchCity);
+      if ("undefined".equals(searchName) || "undefined".equals(searchCity)) {
+        eventBus.gotoSearch("",
+                            "");
+      } else {
+        eventBus.gotoList(searchName,
+                          searchCity);
+      }
     } else {
       eventBus.gotoSearch("",
                           "");

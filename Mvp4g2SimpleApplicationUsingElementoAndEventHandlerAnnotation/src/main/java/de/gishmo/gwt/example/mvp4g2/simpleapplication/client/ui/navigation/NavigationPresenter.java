@@ -17,10 +17,10 @@
 
 package de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.navigation;
 
+import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.Mvp4g2SimpleApplicationUsingElementoAndEventHandlerAnnotationEventBus;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.model.ClientContext;
 import de.gishmo.gwt.example.mvp4g2.simpleapplication.client.ui.AbstractSimpleApplicationPresenter;
-import com.github.mvp4g.mvp4g2.core.ui.annotation.Presenter;
 import elemental2.dom.Element;
 
 @Presenter(viewClass = NavigationView.class, viewInterface = INavigationView.class)
@@ -58,11 +58,17 @@ public class NavigationPresenter
 
   @Override
   public void doShowSearch() {
-    eventBus.gotoSearch(ClientContext.get()
+    if (ClientContext.get()
+                     .getPersonSearch() != null) {
+      eventBus.gotoSearch(ClientContext.get()
                                      .getPersonSearch()
                                      .getName(),
                         ClientContext.get()
                                      .getPersonSearch()
                                      .getCity());
+    } else {
+      eventBus.gotoSearch("",
+                          "");
+    }
   }
 }

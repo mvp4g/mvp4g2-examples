@@ -90,7 +90,6 @@ public class DetailPresenter
   @EventHandler
   public void onGotoDetail(long id) {
     eventBus.setNavigationConfirmation(this);
-    GWT.debugger();
     ClientContext.get()
                  .getPersonService()
                  .get(Long.toString(id),
@@ -104,7 +103,6 @@ public class DetailPresenter
                         @Override
                         public void onSuccess(Method method,
                                               Person person) {
-                          GWT.debugger();
                           view.setUpData(person);
                           eventBus.setContent(view.asElement());
                           eventBus.setStatus("Edit person data");
